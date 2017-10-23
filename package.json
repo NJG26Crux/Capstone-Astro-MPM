@@ -1,0 +1,28 @@
+{
+  "name": "capstone-astro-mpm",
+  "version": "1.0.0",
+  "description": "Astro-Photography Mosaic Project Manager",
+  "main": "index.js",
+  "dependencies": {
+    "@uirouter/angularjs": "^1.0.10",
+    "angular": "^1.6.6"
+  },
+  "devDependencies": {
+    "dotenv": "^4.0.0",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.12.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NJG26Crux/Capstone-Astro-MPM.git"
+  },
+  "author": "Jeff Mobley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NJG26Crux/Capstone-Astro-MPM/issues"
+  },
+  "homepage": "https://github.com/NJG26Crux/Capstone-Astro-MPM#readme"
+}
