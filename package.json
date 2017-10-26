@@ -23,7 +23,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "knex": "knex",
     "start": "node ./bin/www",
-    "migrate": "knex migrate:latest"
+    "migrate": "knex migrate:latest",
+    "heroku-postbuild": "knex migrate:latest",
+    "nodemon": "nodemon server.js"
   },
   "repository": {
     "type": "git",

@@ -1,2 +1,4 @@
 # Capstone-Astro-MPM
 Astro-Photography Mosaic Project Manager
+
+JWT_KEY: 93862c5ec5b6b31532b7c45b38cf303bde8d31d7abd04faaa5a3e56fcf4dfb8655de9af424c7532141edbd47d5db5c670ddd3fb94334722b85b56034b2d6b4c0
