@@ -1,0 +1,81 @@
+<html lang="en" ng-app="LoginApp">
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+<!-- Angular Material style sheet -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+<script src="script.js"></script>
+</head>
+
+<body ng-controller="navController as navController">
+
+<!-- Login Button-->
+<div>
+<md-button layout-align-sm="left" class="md-fab md-primary" aria-label="Profile" ng-click="navController.showAdvanced($event)">
+<md-icon><i class="material-icons">&#xE899;</i></md-icon>
+</md-button>
+</div>
+
+
+<!--loginModal -->
+<script type="text/ng-template" id="loginModal.tmpl.html">
+<md-dialog aria-label="ITS - Portal LogIn" ng-controller="navController as navController">
+
+<form ng-cloak name="loginform" autocomplete="off">
+
+<md-toolbar>
+<div class="md-toolbar-tools">
+    <h2>LogIn Form</h2>
+    <span flex></span>
+    <md-button class="md-icon-button" ng-click="close()">
+        <i class="material-icons">highlight_off</i>
+    </md-button>
+</div>
+</md-toolbar>
+
+<md-dialog-content layout="row">
+
+<div layout-padding>
+    <!-- <img src="https://s22.postimg.org/pshxr4mnl/login.png" /> -->
+</div>
+
+<div class="md-dialog-content">
+
+    <md-input-container class="md-block">
+        <label>User Name</label>
+        <input type="text" ng-model="user.name" autocomplete="off">
+    </md-input-container>
+
+    <md-input-container class="md-block">
+        <label>User Password</label>
+        <input type="password" ng-model="user.password" autocomplete="nope">
+    </md-input-container>
+
+    <md-button class="md-raised md-primary md-button md-ink-ripple" ng-click="answer('LogIn')">
+        LogIn
+    </md-button>
+
+    <md-button ng-click="answer('LogIn')">
+        SignUp
+    </md-button>
+
+    <md-button ng-click="answer('Cancel')">
+        Cancel
+    </md-button>
+
+</div>
+</md-dialog-content>
+
+</form>
+</md-dialog>
+</script>
+
+</body>
