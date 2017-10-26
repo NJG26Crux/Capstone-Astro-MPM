@@ -8,7 +8,7 @@ module.exports = {
   test: {
     client: 'pg',
     connection: "postgres://localhost/astrompm_dev"
-  }
+  },
 
   production: {
     client: 'pg',
