@@ -18,6 +18,30 @@ footer {
   padding-bottom: 5px;
 }
 
+/*.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.Site-content {
+  flex: 1;
+}*/
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.main {
+  flex-grow: 1;
+  overflow: auto;
+  min-height: 2em;
+}
+
 /*.animate-if.ng-enter,
 .animate-if.ng-leave {
   -webkit-transition: opacity ease-in-out 1s;

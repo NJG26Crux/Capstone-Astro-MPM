@@ -2,190 +2,33 @@
 <html ng-app="app">
 
 <head>
+  <base href="/">
   <meta charset="utf-8">
   <title>Astro MPM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <link rel="stylesheet"href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
   <link rel="stylesheet" href="css/index.css">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.6/angular.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
   <script defer src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-animate.min.js"></script>
   <script defer src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-aria.min.js"></script>
   <script defer src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-messages.min.js"></script>
-  <!-- <script defer src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script> -->
+
   <script defer src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
   <script defer src="js/app.module.js"></script>
-  <script defer src="js/app.js"></script>
+  <script defer src="js/components/root.component.js"></script>
+  <script defer src="js/components/home.component.js"></script>
+  <!-- <script defer src="js/app.js"></script> -->
 </head>
 
-<body ng-controller="navController as navController">
 
-  <div layout="column" layout-fill>
+<body>
 
-    <header>
-      <!--loginModal -->
-      <script type="text/ng-template" id="loginModal.tmpl.html">
-      <md-dialog aria-label="ITS - Portal LogIn" ng-controller="navController as $ctrl">
-
-      <form ng-cloak name="loginform" autocomplete="off">
-
-      <md-toolbar>
-      <div class="md-toolbar-tools">
-          <h2 ng-if=$ctrl.logIn class="animate-if">LogIn Form</h2>
-          <h2 ng-if=!$ctrl.logIn class="animate-if">SignUp Form</h2>
-          <span flex></span>
-          <md-button class="md-icon-button" ng-click="close()">
-              <i class="material-icons">highlight_off</i>
-          </md-button>
-      </div>
-      </md-toolbar>
-
-      <md-dialog-content layout="row">
-
-      <div layout-padding>
-          <!-- <img src="https://s22.postimg.org/pshxr4mnl/login.png" /> -->
-      </div>
-
-      <div class="md-dialog-content">
-
-          <md-input-container class="md-block" class="animate-if"> <!--  ng-if=$ctrl.logIn -->
-              <label>User Name</label>
-              <input type="text" ng-model="user.name" autocomplete="off">
-          </md-input-container>
-
-          <md-input-container class="md-block" ng-if=!$ctrl.logIn class="animate-if">
-              <label>email</label>
-              <input type="text" ng-model="user.name" autocomplete="off">
-          </md-input-container>
-
-          <md-input-container class="md-block" class="animate-if"> <!--  ng-if=$ctrl.logIn -->
-              <label>Password</label>
-              <input type="password" ng-model="user.password" autocomplete="off">
-          </md-input-container>
-
-          <md-input-container class="md-block" ng-if=!$ctrl.logIn class="animate-if">
-              <label>Password again</label>
-              <input type="password" ng-model="user.password" autocomplete="off">
-          </md-input-container>
-
-          <md-button class="md-raised md-primary md-button md-ink-ripple" ng-click="answer('LogIn')" ng-if=$ctrl.logIn class="animate-if">
-              LogIn
-          </md-button>
-
-          <md-button class="md-raised md-primary md-button md-ink-ripple" ng-click="answer('SignUp')" ng-if=!$ctrl.logIn class="animate-if">
-              SignUp
-          </md-button>
-
-          <md-button ng-click="$ctrl.logIn = !$ctrl.logIn" ng-if=!$ctrl.logIn class="animate-if"> <!-- "answer('LogIn')" -->
-              LogIn
-          </md-button>
-
-          <md-button ng-click="$ctrl.logIn = !$ctrl.logIn" ng-if=$ctrl.logIn class="animate-if"> <!-- "answer('showSignup')" -->
-              SignUp
-          </md-button>
-
-          <md-button ng-click="answer('Cancel')">
-              Cancel
-          </md-button>
-
-      </div>
-      </md-dialog-content>
-
-      </form>
-      </md-dialog>
-      </script>
-
-      <!-- Navbar -->
-      <div layout="column">
-        <img src="images/AstroMPM_Logo.png" width="100%">
-      </div>
-
-      <md-toolbar layout="row">
-        <span flex> </span>
-        <md-button> Hello userName </md-button>
-        <md-button> Home </md-button>
-        <md-button> Projects </md-button>
-        <md-button ng-click="navController.showAdvanced($event)"> Login </md-button>
-        <md-button> Logout </md-button>
-      </md-toolbar>
-
-    </header>
-
-    <main flex>
-      <ui-view>Content Provided by ui-view</ui-view>
-    </main>
-
-    <footer>
-      <div layout="column" flex>
-        <div layout="row">
-          <div flex="30">
-            <span class="whiteText fivePadding">News:</span>
-            <ul class="fivePadding">
-              <li><a href="#" md-colors="{color:'accent'}">these links provided by the Space.com API</a></li>
-              <li><a href="#" md-colors="{color:'accent'}">these links provided by the Space.com API</a></li>
-              <li><a href="#" md-colors="{color:'accent'}">these links provided by the Space.com API</a></li>
-              <li><a href="#" md-colors="{color:'accent'}">these links provided by the Space.com API</a></li>
-            </ul>
-          </div>
-          <div class="fivePadding" flex="5">
-            <div class="whiteText fivePadding">Featured Projects:</div>
-          </div>
-          <div layout-align="center center"  flex>
-            <div class="fivePadding" layout="row">
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/1307/20130706_elevenMessiers950_data.jpg" height=50px></div>
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/1405/scorpio_guisard_constellation_960.jpg" height=50px></div>
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/1511/NGC1333_aae1024.jpg" height=50px></div>
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/0810/ic2118_ssro800.jpg" height=50px></div>
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/1506/sh155walter_z66_1024x720.jpg" height=50px></div>
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/1503/OrionClouds_Andreo_2048.jpg" height=50px></div>
-            </div>
-            <div class="fivePadding" layout="row">
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/0911/m78wide_tvdavis900.jpg" height=50px></div>
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/0906/b44_davis.jpg" height=50px></div>
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/0804/orionwitch_guisard.jpg" height=50px></div>
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/0701/oriondeepwide_gendler720.jpg" height=50px></div>
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/1308/SagTriplet6D_hallasNew950.jpg" height=50px></div>
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/0606/catspaw_gendler.jpg" height=50px></div>
-              <!-- <div flex="25"><img src="https://apod.nasa.gov/apod/image/9911/lunation_ajc.gif" height=50px></div> -->
-            </div>
-            <!-- <div layout="row">
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/1006/n2359Thor_mazlin2048.jpg" height=50px></div>
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/0610/bubble_mouquet.jpg" height=50px></div>
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/1703/Cygnus-New-1024.jpg" height=50px></div>
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/1310/NGC5982_LRGB_leshin_950.jpg" height=50px></div>
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/1310/bubble52_colombari_960.jpg" height=50px></div>
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/0807/virgo_kerschhuber.jpg" height=50px></div>
-            </div>
-            <div layout="row">
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/0512/m31_gendler_Nmosaic1c50.jpg" height=50px></div>
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/0711/LagoonCA2007_mayda_rc720.jpg" height=50px></div>
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/1202/ic410wide_cannistra900.jpg" height=50px></div>
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/1705/c71-Pclark_villaverdeV3C.jpg" height=50px></div>
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/1510/PerseusCloud_hilborn1024.jpg" height=50px></div>
-              <div flex="25"><img src="https://apod.nasa.gov/apod/image/0901/s147metsavainioNBMedium_c800.jpg" height=50px></div>
-            </div> -->
-            <!-- layout-align="center center" -->
-          </div>
-          <div layout="column" layout-align="center center" flex="20">
-            <h5 class="fivePadding">APOD</h5>
-            <img  class="bottomFivePadding" src="https://apod.nasa.gov/apod/image/0806/ngc1300_hst.jpg" height=90px>
-          </div>
-        </div>
-
-        <!-- Copyright -->
-        <div layout="column" flex>
-          <div class="bottomFooter" layout="row fivePadding">
-            <span class="fivePadding">Copyright 2017 Jeff and Galvanize G56</span.
-          </div>
-        </div>
-      </div>
-    </footer>
-
-  </div>
+   <ui-view></ui-view>
 
 </body>
-
 </html>
 
 

@@ -1,0 +1,97 @@
+<md-dialog aria-label="ITS - Portal LogIn" >
+
+  <form ng-cloak novalidate name="form" ng-submit="$ctrl.loginForm()" role="form" autocomplete="off">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2 ng-if=$ctrl.logIn class="animate-if">LogIn Form</h2>
+        <h2 ng-if=!$ctrl.logIn class="animate-if">SignUp Form</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="$ctrl.close()">
+          <i class="material-icons">highlight_off</i>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content layout="row">
+
+      <div layout-padding>
+        <!-- <img src="https://s22.postimg.org/pshxr4mnl/login.png" /> -->
+      </div>
+
+      <div class="md-dialog-content">
+
+        <md-input-container class="md-block form-group animate-if" ng-class="{ 'has-error': form.firstname.$dirty && form.firstname.$error.required }" ng-if=!$ctrl.logIn>
+          <!--  ng-if=$ctrl.logIn -->
+          <label>First Name</label>
+          <input type="text" name="firstname" id="firstname" class="form-control" ng-model="$ctrl.form.firstname" autocomplete="off" required />
+          <span ng-show="form.firstname.$touched && form.firstname.$error.required" class="help-block">First Name is required</span>
+        </md-input-container>
+
+        <md-input-container class="md-block form-group animate-if" ng-class="{ 'has-error': form.lastname.$dirty && form.lastname.$error.required }" ng-if=!$ctrl.logIn>
+          <!--  ng-if=$ctrl.logIn -->
+          <label>Last Name</label>
+          <input type="text" name="lastname" id="lastname" class="form-control" ng-model="$ctrl.form.lastname" autocomplete="off" required />
+          <span ng-show="form.lastname.$dirty && form.lastname.$error.required" class="help-block">Last Name is required</span>
+        </md-input-container>
+
+        <md-input-container class="md-block form-group animate-if" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+          <!--  ng-if=$ctrl.logIn -->
+          <label>User Name</label>
+          <input type="text" name="username" id="username" class="form-control" ng-model="$ctrl.form.username" autocomplete="off" required />
+          <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">User Name is required</span>
+        </md-input-container>
+
+        <md-input-container class="md-block form-group animate-if" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }" ng-if=!$ctrl.logIn>
+          <label>email</label>
+          <input type="email" name="email" id="email" class="form-control" ng-model="$ctrl.form.email" autocomplete="off" required />
+          <span ng-show="form.email.$touched && form.email.$error.required" class="help-block">email is required</span>
+          <span ng-show="form.email.$touched && form.email.$invalid" class="help-block">email is invalid</span>
+        </md-input-container>
+        {{form.email}}
+
+        <md-input-container class="md-block form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+          <!--  ng-if=$ctrl.logIn -->
+          <label>Password</label>
+          <input type="password" name: "password" id="password" class="form-control" ng-model="$ctrl.form.password" autocomplete="off" required />
+          <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+        </md-input-container>
+
+        <md-input-container class="md-block form-group animate-if" ng-class="{ 'has-error': form.passwordagain.$dirty && form.passwordagain.$error.required }" ng-if=!$ctrl.logIn>
+          <label>Password again</label>
+          <input type="password" name="passwordagain" id="passwordagain" class="form-control" ng-model="$ctrl.form.passwordagain" autocomplete="off" required />
+          <span ng-show="form.passwordagain.$dirty && form.passwordagain.$error.required" class="help-block">Password Again is required</span>
+          <span ng-show="form.paassword === form.passwordagain" class="help-block">Both Passwords must Match</span> 
+        </md-input-container>
+
+
+        <div class="form-actions">
+          <md-button class="md-raised md-primary md-button md-ink-ripple animate-if" type="submit" ng-click="$ctrl.login()" ng-disabled="form.$invalid || $ctrl.form.dataLoading" ng-if=$ctrl.logIn>
+            LogIn
+          </md-button>
+
+          <md-button type="submit" class="md-raised md-primary md-button md-ink-ripple animate-if" ng-click="$ctrl.signup()" ng-disabled="form.$invalid || $ctrl.form.dataLoading" ng-if=!$ctrl.logIn>
+            SignUp
+          </md-button>
+
+          <md-button class="animate-if" ng-click="$ctrl.logIn = !$ctrl.logIn" ng-if="!$ctrl.logIn">
+            <!-- "answer('LogIn')" -->
+            LogIn
+          </md-button>
+
+          <md-button class="animate-if" ng-click="$ctrl.logIn = !$ctrl.logIn" ng-if="$ctrl.logIn">
+            <!-- "answer('showSignup')" -->
+            SignUp
+          </md-button>
+
+          <md-button ng-click="$ctrl.close()">
+            Cancel
+          </md-button>
+        </div>
+
+        <div> {{$ctrl.form | json}}
+
+      </div>
+    </md-dialog-content>
+
+  </form>
+</md-dialog>

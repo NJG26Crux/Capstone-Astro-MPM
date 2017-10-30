@@ -1,0 +1,91 @@
+<div layout="column" layout-fill="" class="layout-fill layout-column">
+
+  <header>
+
+    <!-- Navbar -->
+    <div layout="column" class="layout-column">
+      <img src="images/AstroMPM_Logo.png" width="100%">
+    </div>
+
+    <md-toolbar layout="row" class="_md layout-row _md-toolbar-transitions">
+      <span flex="" class="flex"> </span>
+      <button class="md-button md-ink-ripple" type="button"> Hello userName </button>
+      <button class="md-button md-ink-ripple" type="button"> Home </button>
+      <button class="md-button md-ink-ripple" type="button"> Projects </button>
+      <button class="md-button md-ink-ripple" type="button" ng-click="$ctrl.showAdvanced($event)"> Login </button>
+      <button class="md-button md-ink-ripple" type="button"> Logout </button>
+    </md-toolbar>
+
+  </header>
+
+  <main class="wrapper" > <!--  flex="" class="flex" -->
+    <div ui-view="" class="main"></div> <!--  layout="column" layout-fill="" class="layout-fill layout-column" flex -->
+  </main>
+
+
+  <footer ng-if="true">
+    <div layout="column" flex="" class="layout-column flex">
+      <div layout="row" class="layout-row">
+        <div flex="30" class="flex-30">
+          <span class="whiteText fivePadding">News:</span>
+          <ul class="fivePadding">
+            <li><a href="#" md-colors="{color:'accent'}" style="color: rgb(255, 64, 129);">these links provided by the Space.com API</a></li>
+            <li><a href="#" md-colors="{color:'accent'}" style="color: rgb(255, 64, 129);">these links provided by the Space.com API</a></li>
+            <li><a href="#" md-colors="{color:'accent'}" style="color: rgb(255, 64, 129);">these links provided by the Space.com API</a></li>
+            <li><a href="#" md-colors="{color:'accent'}" style="color: rgb(255, 64, 129);">these links provided by the Space.com API</a></li>
+          </ul>
+        </div>
+        <div class="fivePadding flex-5" flex="5">
+          <div class="whiteText fivePadding">Featured Projects:</div>
+        </div>
+        <div layout-align="center center" flex="" class="layout-align-center-center flex">
+          <div class="fivePadding layout-row" layout="row">
+            <div flex="25" class="flex-25"><img src="https://apod.nasa.gov/apod/image/1307/20130706_elevenMessiers950_data.jpg" height="50px"></div>
+            <div flex="25" class="flex-25"><img src="https://apod.nasa.gov/apod/image/1405/scorpio_guisard_constellation_960.jpg" height="50px"></div>
+            <div flex="25" class="flex-25"><img src="https://apod.nasa.gov/apod/image/1511/NGC1333_aae1024.jpg" height="50px"></div>
+            <div flex="25" class="flex-25"><img src="https://apod.nasa.gov/apod/image/0810/ic2118_ssro800.jpg" height="50px"></div>
+            <div flex="25" class="flex-25"><img src="https://apod.nasa.gov/apod/image/1506/sh155walter_z66_1024x720.jpg" height="50px"></div>
+            <div flex="25" class="flex-25"><img src="https://apod.nasa.gov/apod/image/1503/OrionClouds_Andreo_2048.jpg" height="50px"></div>
+          </div>
+          <div class="fivePadding layout-row" layout="row">
+            <div flex="25" class="flex-25"><img src="https://apod.nasa.gov/apod/image/0911/m78wide_tvdavis900.jpg" height="50px"></div>
+            <div flex="25" class="flex-25"><img src="https://apod.nasa.gov/apod/image/0906/b44_davis.jpg" height="50px"></div>
+            <div flex="25" class="flex-25"><img src="https://apod.nasa.gov/apod/image/0804/orionwitch_guisard.jpg" height="50px"></div>
+            <div flex="25" class="flex-25"><img src="https://apod.nasa.gov/apod/image/0701/oriondeepwide_gendler720.jpg" height="50px"></div>
+            <div flex="25" class="flex-25"><img src="https://apod.nasa.gov/apod/image/1308/SagTriplet6D_hallasNew950.jpg" height="50px"></div>
+            <div flex="25" class="flex-25"><img src="https://apod.nasa.gov/apod/image/0606/catspaw_gendler.jpg" height="50px"></div>
+            <!-- <div flex="25"><img src="https://apod.nasa.gov/apod/image/9911/lunation_ajc.gif" height=50px></div> -->
+          </div>
+          <!-- <div layout="row">
+          <div flex="25"><img src="https://apod.nasa.gov/apod/image/1006/n2359Thor_mazlin2048.jpg" height=50px></div>
+          <div flex="25"><img src="https://apod.nasa.gov/apod/image/0610/bubble_mouquet.jpg" height=50px></div>
+          <div flex="25"><img src="https://apod.nasa.gov/apod/image/1703/Cygnus-New-1024.jpg" height=50px></div>
+          <div flex="25"><img src="https://apod.nasa.gov/apod/image/1310/NGC5982_LRGB_leshin_950.jpg" height=50px></div>
+          <div flex="25"><img src="https://apod.nasa.gov/apod/image/1310/bubble52_colombari_960.jpg" height=50px></div>
+          <div flex="25"><img src="https://apod.nasa.gov/apod/image/0807/virgo_kerschhuber.jpg" height=50px></div>
+        </div>
+        <div layout="row">
+          <div flex="25"><img src="https://apod.nasa.gov/apod/image/0512/m31_gendler_Nmosaic1c50.jpg" height=50px></div>
+          <div flex="25"><img src="https://apod.nasa.gov/apod/image/0711/LagoonCA2007_mayda_rc720.jpg" height=50px></div>
+          <div flex="25"><img src="https://apod.nasa.gov/apod/image/1202/ic410wide_cannistra900.jpg" height=50px></div>
+          <div flex="25"><img src="https://apod.nasa.gov/apod/image/1705/c71-Pclark_villaverdeV3C.jpg" height=50px></div>
+          <div flex="25"><img src="https://apod.nasa.gov/apod/image/1510/PerseusCloud_hilborn1024.jpg" height=50px></div>
+          <div flex="25"><img src="https://apod.nasa.gov/apod/image/0901/s147metsavainioNBMedium_c800.jpg" height=50px></div>
+        </div> -->
+          <!-- layout-align="center center" -->
+        </div>
+        <div layout="column" layout-align="center center" flex="20" class="layout-align-center-center layout-column flex-20">
+          <h5 class="fivePadding">APOD</h5>
+          <img class="bottomFivePadding" src="https://apod.nasa.gov/apod/image/0806/ngc1300_hst.jpg" height="90px">
+        </div>
+      </div>
+    </div>
+  </footer>
+  <footer>
+    <div layout="column" flex="" class="layout-column flex">
+      <div class="bottomFooter layout-row" layout="row fivePadding">
+        <span class="fivePadding">Copyright 2017 Jeff and Galvanize G56</span>
+      </div>
+    </div>
+  </footer>
+</div>

@@ -14,7 +14,7 @@ app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, '/../', 'node_modules')))
 
-app.use('/api/posts', require('./routes/users'))
+app.use(require('./routes/users')) //'/api/posts', 
 
 app.use('*', function(req, res, next) {
   res.sendFile('index.html', {root: path.join(__dirname, 'public')})
