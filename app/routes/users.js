@@ -102,13 +102,13 @@ router.post('/users', (req, res, next) => {
       return bcrypt.hash(password, 12);
     })
     .then((hashedPassword) => {
-      // const { firstName, lastName } = req.body;
+      const { firstName, lastName, userName, email } = req.body;
       console.log('users.js 106 req.body: ', req.body);
       console.log('firstName: ', req.body.firstName);
       console.log('lastName: ', req.body.lastName);
       console.log('userName: ', req.body.userName);
       console.log('email: ', req.body.email);
-      // const insertUser = { req.body.firstName, req.body.lastName, req.body.userName, req.body.email };
+      const insertUser = { firstName, lastName, userName, email, hashedPassword };
 
       return knex('users').insert(decamelizeKeys(insertUser), '*');
     })
