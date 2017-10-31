@@ -35,14 +35,14 @@
 
     vm.login = function(){
       console.log(vm.form)
-      $http.get('api/post', vm.form).then(console.log('Holy Crap Batman !!!'));
+      $http.get('/token', vm.form).then(); //console.log('Holy Crap Batman !!!')
       $mdDialog.hide();
       delete vm.form;
     }
 
     vm.signup = function(){
       console.log(vm.form)
-      $http.post('/users', vm.form).then(console.log(response.data)); //.fail(console.log(err))
+      $http.post('/users', vm.form).then(); //.fail(console.log(err)) console.log(response.data)
 
     //   const options = {
     //     contentType: 'application/json',

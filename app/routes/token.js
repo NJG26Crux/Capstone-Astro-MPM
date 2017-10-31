@@ -11,6 +11,7 @@ const router = express.Router();
 
 router.get('/token', (req, res) => {
   jwt.verify(req.cookies.token, process.env.JWT_KEY, (err, _payload) => {
+    console.log('req: ', req);
     if (err) {
       return res.send(false);
     }

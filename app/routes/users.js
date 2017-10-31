@@ -66,11 +66,11 @@ router.get('/users/:id', (req, res, next) => {
 });
 
 router.post('/users', (req, res, next) => {
-  console.log('at router.get in routes/users');
+  // console.log('at router.get in routes/users');
 
-  const { firstName, lastName, userName, email, password } = req.body;
+  const { firstname, lastname, username, email, password } = req.body;
 
-  console.log('router.post req.body: ', req.body);
+  // console.log('router.post req.body: ', req.body);
 
   // if (!firstName || !firstName.trim()) {
   //   return next(boom.create(400, 'First name must not be blank'));
@@ -102,8 +102,13 @@ router.post('/users', (req, res, next) => {
       return bcrypt.hash(password, 12);
     })
     .then((hashedPassword) => {
-      const { firstName, lastName } = req.body;
-      const insertUser = { firstName, lastName, userName, email, hashedPassword };
+      // const { firstName, lastName } = req.body;
+      console.log('users.js 106 req.body: ', req.body);
+      console.log('firstName: ', req.body.firstName);
+      console.log('lastName: ', req.body.lastName);
+      console.log('userName: ', req.body.userName);
+      console.log('email: ', req.body.email);
+      // const insertUser = { req.body.firstName, req.body.lastName, req.body.userName, req.body.email };
 
       return knex('users').insert(decamelizeKeys(insertUser), '*');
     })
