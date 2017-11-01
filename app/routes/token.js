@@ -4,27 +4,32 @@ const bcrypt = require('bcrypt-as-promised');
 const boom = require('boom');
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const knex = require('../knex');
+const knex = require('../../knex');
 const { camelizeKeys } = require('humps');
 
 const router = express.Router();
 
 router.get('/token', (req, res) => {
+  console.log('we are at routes.token.get');
   jwt.verify(req.cookies.token, process.env.JWT_KEY, (err, _payload) => {
-    console.log('req: ', req);
     if (err) {
+      console.log('routes.token.get.token.false:');
       return res.send(false);
     }
-
+    console.log('routes.token.get.token.true:');
     res.send(true);
   });
 });
 
-router.post('/token', (req, res, next) => {
-  const { email, password } = req.body;
 
-  if (!email || !email.trim()) {
-    return next(boom.create(400, 'Email must not be blank'));
+
+router.post('/token', (req, res, next) => {
+  console.log('we are at routes.token.post');
+  console.log('req.body: ', req.body);
+  const { userName, password } = req.body;
+  console.log('userName: ', userName, 'password: ', password);
+  if (!userName || !userName.trim()) {
+    return next(boom.create(400, 'User Name must not be blank'));
   }
 
   if (!password || !password.trim()) {
@@ -34,11 +39,11 @@ router.post('/token', (req, res, next) => {
   let user;
 
   knex('users')
-    .where('email', email)
+    .where('user_name', userName)
     .first()
     .then((row) => {
       if (!row) {
-        throw boom.create(400, 'Bad email or password');
+        throw boom.create(400, 'Bad User Name or password');
       }
 
       user = camelizeKeys(row);
@@ -58,7 +63,7 @@ router.post('/token', (req, res, next) => {
       });
 
       delete user.hashedPassword;
-
+      console.log('routes.token.post.token: ', user);
       res.send(user);
     })
     .catch(bcrypt.MISMATCH_ERROR, () => {

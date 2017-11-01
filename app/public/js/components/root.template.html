@@ -9,11 +9,12 @@
 
     <md-toolbar layout="row" class="_md layout-row _md-toolbar-transitions">
       <span flex="" class="flex"> </span>
-      <button class="md-button md-ink-ripple" type="button"> Hello userName </button>
+      <span>Hello {{$ctrl.firstName}} {{$ctrl.form.firstName}}</span>
+      <button class="md-button md-ink-ripple" type="button"> Hello {{$ctrl.firstName}} </button>
       <button class="md-button md-ink-ripple" type="button"> Home </button>
       <button class="md-button md-ink-ripple" type="button"> Projects </button>
       <button class="md-button md-ink-ripple" type="button" ng-click="$ctrl.showAdvanced($event)"> Login </button>
-      <button class="md-button md-ink-ripple" type="button"> Logout </button>
+      <button class="md-button md-ink-ripple" type="button" ng-click="$ctrl.logout($event)"> Logout </button>
     </md-toolbar>
 
   </header>
@@ -85,6 +86,7 @@
     <div layout="column" flex="" class="layout-column flex">
       <div class="bottomFooter layout-row" layout="row fivePadding">
         <span class="fivePadding">Copyright 2017 Jeff and Galvanize G56</span>
+        <a href="testProject.html">Test Project Link</a>
       </div>
     </div>
   </footer>

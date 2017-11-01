@@ -33,7 +33,7 @@ router.get('/users/firstName', authorize, (req, res, next) => {
     .then((firstName) => {
 
       res.setHeader('Content-Type', 'application/json')
-
+      console.log('routes.users.get.firstName: ', firstName);
       res.send({firstName: firstName});
     })
     .catch((err) => {
@@ -66,31 +66,10 @@ router.get('/users/:id', (req, res, next) => {
 });
 
 router.post('/users', (req, res, next) => {
-  // console.log('at router.get in routes/users');
-
-  const { firstname, lastname, username, email, password } = req.body;
-
-  // console.log('router.post req.body: ', req.body);
-
-  // if (!firstName || !firstName.trim()) {
-  //   return next(boom.create(400, 'First name must not be blank'));
-  // }
-  //
-  // if (!lastName || !lastName.trim()) {
-  //   return next(boom.create(400, 'Last name must not be blank'));
-  // }
-  //
-  // if (!email || !email.trim()) {
-  //   return next(boom.create(400, 'Email must not be blank'));
-  // }
-  //
-  // if (!password || password.length < 8) {
-  //   return next(boom.create(
-  //     400,
-  //     'Password must be at least 8 characters long'
-  //   ));
-  // }
-
+  console.log('we are at routes.users.post.');
+  req.body.admin = false;
+  const { firstname, lastname, username, admin, email, password, } = req.body;
+  console.log('req.body: ', req.body);
   knex('users')
     .where('email', email)
     .first()
@@ -102,13 +81,13 @@ router.post('/users', (req, res, next) => {
       return bcrypt.hash(password, 12);
     })
     .then((hashedPassword) => {
-      const { firstName, lastName, userName, email } = req.body;
-      console.log('users.js 106 req.body: ', req.body);
-      console.log('firstName: ', req.body.firstName);
-      console.log('lastName: ', req.body.lastName);
-      console.log('userName: ', req.body.userName);
-      console.log('email: ', req.body.email);
-      const insertUser = { firstName, lastName, userName, email, hashedPassword };
+      const { firstName, lastName, userName, admin, email } = req.body;
+      // console.log('users.js 106 req.body: ', req.body);
+      // console.log('firstName: ', req.body.firstName);
+      // console.log('lastName: ', req.body.lastName);
+      // console.log('userName: ', req.body.userName);
+      // console.log('email: ', req.body.email);
+      const insertUser = { firstName, lastName, userName, admin, email, hashedPassword };
 
       return knex('users').insert(decamelizeKeys(insertUser), '*');
     })
@@ -125,13 +104,13 @@ router.post('/users', (req, res, next) => {
         expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),  // 7 days
         secure: router.get('env') === 'production'
       });
-      console.log('user: ', user);
+      console.log('routes.users.post.user: ', user);
       delete user.hashedPassword;
 
       res.send(user);
     })
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
       next(err);
     });
 });
