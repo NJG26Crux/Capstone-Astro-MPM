@@ -11,8 +11,8 @@ exports.seed = function(knex) {
         user_name: 'NJG26Crux',
         admin: 'true',
         hashed_password:
-        // youreawizard
-       '$2a$12$C9AYYmcLVGYlGoO4vSZTPud9ArJwbGRsJ6TUsNULzR48z8fOnTXbS',
+        // 1234
+       '$2a$12$PjqxGtRWQ3oeh0v35F5h9ujOtrHxBujbe/czqNx9ksrb4VZI5cW36',
         created_at: new Date('2016-06-29 14:26:16 UTC'),
         updated_at: new Date('2016-06-29 14:26:16 UTC')
       }]);

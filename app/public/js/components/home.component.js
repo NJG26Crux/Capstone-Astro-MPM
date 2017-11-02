@@ -7,6 +7,6 @@
   })
 
   function controller(){
-    console.log('here')
+    // console.log('here')
   }
 }());

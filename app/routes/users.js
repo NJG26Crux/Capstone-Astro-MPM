@@ -28,7 +28,9 @@ router.get('/users/firstName', authorize, (req, res, next) => {
   knex('users')
     .where('id', userId)
     .then((user) => {
-      return user[0].first_name
+      if (user) {
+        return user[0].first_name
+      }  
     })
     .then((firstName) => {
 

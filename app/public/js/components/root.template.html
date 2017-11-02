@@ -9,12 +9,13 @@
 
     <md-toolbar layout="row" class="_md layout-row _md-toolbar-transitions">
       <span flex="" class="flex"> </span>
-      <span>Hello {{$ctrl.firstName}} {{$ctrl.form.firstName}}</span>
-      <button class="md-button md-ink-ripple" type="button"> Hello {{$ctrl.firstName}} </button>
+      <span>Hello {{$ctrl.auth.firstName}} </span>
+      <button class="md-button md-ink-ripple" type="button"> Hello {{$ctrl.auth.firstName}} </button>
       <button class="md-button md-ink-ripple" type="button"> Home </button>
       <button class="md-button md-ink-ripple" type="button"> Projects </button>
       <button class="md-button md-ink-ripple" type="button" ng-click="$ctrl.showAdvanced($event)"> Login </button>
-      <button class="md-button md-ink-ripple" type="button" ng-click="$ctrl.logout($event)"> Logout </button>
+      <button class="md-button md-ink-ripple" type="button" ng-click="$ctrl.logout()"> Logout </button>
+      <!-- <button class="md-button md-ink-ripple" type="button" ng-click="$ctrl.print()"> Logout </button> -->
     </md-toolbar>
 
   </header>
