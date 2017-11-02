@@ -18,7 +18,7 @@ footer {
   padding-bottom: 5px;
 }
 
-/*.Site {
+.Site {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -26,7 +26,7 @@ footer {
 
 .Site-content {
   flex: 1;
-}*/
+}
 
 .wrapper {
   width: 100%;

@@ -43,7 +43,7 @@ router.post('/token', (req, res, next) => {
     .first()
     .then((row) => {
       if (!row) {
-        throw boom.create(400, 'Bad User Name or password');
+        throw boom.create(400, 'Bad User Name or Password');
       }
 
       user = camelizeKeys(row);
@@ -67,9 +67,10 @@ router.post('/token', (req, res, next) => {
       res.send(user);
     })
     .catch(bcrypt.MISMATCH_ERROR, () => {
-      throw boom.create(400, 'Bad email or password');
+      throw boom.create(400, 'Bad User Name or Password');
     })
     .catch((err) => {
+      console.log(err);
       next(err);
     });
 });

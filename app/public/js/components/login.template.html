@@ -52,7 +52,7 @@
         <md-input-container class="md-block form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
           <!--  ng-if=$ctrl.logIn -->
           <label>Password</label>
-          <input type="password" name: "password" id="password" class="form-control" ng-model="$ctrl.form.password" autocomplete="off" required />
+          <input type="password" name="password" id="password" class="form-control" ng-model="$ctrl.form.password" autocomplete="off" required />
           <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
         </md-input-container>
 
@@ -73,12 +73,12 @@
             SignUp
           </md-button>
 
-          <md-button class="animate-if" ng-click="$ctrl.logIn = !$ctrl.logIn" ng-if="!$ctrl.logIn">
+          <md-button class="animate-if" ng-click="$ctrl.logInState()" ng-if="!$ctrl.logIn" >
             <!-- "answer('LogIn')" -->
             LogIn
           </md-button>
 
-          <md-button class="animate-if" ng-click="$ctrl.logIn = !$ctrl.logIn" ng-if="$ctrl.logIn">
+          <md-button class="animate-if" ng-click="$ctrl.logInState()" ng-if="$ctrl.logIn">
             <!-- "answer('showSignup')" -->
             SignUp
           </md-button>
@@ -88,7 +88,7 @@
           </md-button>
         </div>
 
-        <div> {{$ctrl.form | json}}
+        <div> {{$ctrl.err}}
 
       </div>
     </md-dialog-content>

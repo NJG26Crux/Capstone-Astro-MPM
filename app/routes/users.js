@@ -11,9 +11,13 @@ const { camelizeKeys, decamelizeKeys } = require('humps');
 const router = express.Router();
 
 const authorize = function(req, res, next) {
+  if (!req.cookies.token) {
+    return next(boom.create(401, 'Unauthorized'));
+  }
   jwt.verify(req.cookies.token, process.env.JWT_KEY, (err, playload) => {
     if (err) {
       return next(boom.create(401, 'Unauthorized'));
+      //hide "hello"
     }
 
     req.claim = playload;
@@ -30,7 +34,7 @@ router.get('/users/firstName', authorize, (req, res, next) => {
     .then((user) => {
       if (user) {
         return user[0].first_name
-      }  
+      }
     })
     .then((firstName) => {
 
@@ -112,7 +116,8 @@ router.post('/users', (req, res, next) => {
       res.send(user);
     })
     .catch((err) => {
-      // console.log(err);
+      console.log(err);
+      // res.send(false);
       next(err);
     });
 });
