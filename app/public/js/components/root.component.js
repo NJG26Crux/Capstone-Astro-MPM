@@ -10,6 +10,7 @@
   function controller($mdDialog, $http, auth) {
     const vm = this;
 
+
     vm.auth = auth;
 
     vm.$onInit = function() {
@@ -52,6 +53,7 @@
 
   angular.module('app').controller('login', ['$mdDialog', '$http', 'auth', '$scope', function($mdDialog, $http, auth, $scope) {
     const vm = this;
+    $scope.form = {};
 
     // vm.firstName = '';
     vm.logIn = true;
@@ -104,24 +106,54 @@
     };
 
     vm.logInState = function() {
-      // console.log('$scope.form: ', $scope.form.userName);
-      vm.err = '';
-      $scope.form.firstName.$dirty = false;
-      $scope.form.firstName.$invalid = false;
+      // console.log('vm.login: ', vm.logIn);
 
-      $scope.form.lastName.$dirty = false;
-      $scope.form.lastName.$invalid = false;
+      // console.log($scope.form.pristine);
+      // vm.err = '';
+      // if ($scope.form.pristine) $scope.form.$setPristine().$setUntouched();;
+      // delete vm.form;
+      // vm.logIn = !vm.logIn;
 
-      $scope.form.userName.$dirty = false;
-      $scope.form.userName.$invalid = false;
+      if (vm.logIn === true) {
+        console.log('vm.login = true');
+        console.log('$dirty: ', $scope.form.$dirty);
+        console.log('user b4:' + $scope.form.userName.$dirty);
 
-      $scope.form.email.$dirty = false;
-      $scope.form.email.$invalid = false;
+        $scope.form.userName.$dirty = false;
+        $scope.form.userName.$invalid = false;
 
-      $scope.form.password.$dirty = false;
-      $scope.form.password.$invalid = false;
-      delete vm.form;
-      vm.logIn = !vm.logIn;
+        $scope.form.password.$dirty = false;
+        $scope.form.password.$invalid = false;
+
+        console.log('user after: ', $scope.form.userName.$dirty);
+        vm.err = '';
+        delete vm.form;
+        vm.logIn = !vm.logIn;
+      } else {
+        console.log('vm.login = false');
+        vm.err = '';
+        delete vm.form;
+        console.log('first b4: ',$scope.form.firstName.$dirty);
+        $scope.form.firstName.$dirty = false;
+        $scope.form.firstName.$invalid = false;
+
+        $scope.form.lastName.$dirty = false;
+        $scope.form.lastName.$invalid = false;
+
+        $scope.form.userName.$dirty = false;
+        $scope.form.userName.$invalid = false;
+
+        $scope.form.email.$dirty = false;
+        $scope.form.email.$invalid = false;
+
+        $scope.form.password.$dirty = false;
+        $scope.form.password.$invalid = false;
+
+        console.log('first after: ',$scope.form.firstName.$dirty);
+        vm.logIn = !vm.logIn;
+      }
+
+      console.log($scope.form.firstName);
     }
 
   }])
