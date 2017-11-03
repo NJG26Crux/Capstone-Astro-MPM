@@ -106,17 +106,17 @@
     vm.logInState = function() {
       // console.log('$scope.form: ', $scope.form.userName);
       vm.err = '';
-      // $scope.form.firstName.$dirty = false;
-      // $scope.form.firstName.$invalid = false;
-      //
-      // $scope.form.lastName.$dirty = false;
-      // $scope.form.lastName.$invalid = false;
+      $scope.form.firstName.$dirty = false;
+      $scope.form.firstName.$invalid = false;
+
+      $scope.form.lastName.$dirty = false;
+      $scope.form.lastName.$invalid = false;
 
       $scope.form.userName.$dirty = false;
       $scope.form.userName.$invalid = false;
 
-      // $scope.form.email.$dirty = false;
-      // $scope.form.email.$invalid = false;
+      $scope.form.email.$dirty = false;
+      $scope.form.email.$invalid = false;
 
       $scope.form.password.$dirty = false;
       $scope.form.password.$invalid = false;
