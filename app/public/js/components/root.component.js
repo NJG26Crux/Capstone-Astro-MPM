@@ -90,70 +90,70 @@
     vm.signup = function() {
       console.log('fun.signup: ', vm.form)
       $http.post('/users', vm.form).then(user => {
-        // if (user.data.firstName) {
+          // if (user.data.firstName) {
           console.log('signup.user.data: ', user.data);
           auth.firstName = 'Hello ' + user.data.firstName;
           console.log('auth.firstName: ', auth.firstName);
           $mdDialog.hide();
           delete vm.form;
-        // }
-      },
-      err => {
-        console.log('err: ', err)
-        vm.err = 'Email already exists'
-        return err;
-      })
+          // }
+        },
+        err => {
+          console.log('err: ', err)
+          vm.err = 'Email already exists'
+          return err;
+        })
     };
 
     vm.logInState = function() {
-      // console.log('vm.login: ', vm.logIn);
-
-      // console.log($scope.form.pristine);
-      // vm.err = '';
-      // if ($scope.form.pristine) $scope.form.$setPristine().$setUntouched();;
-      // delete vm.form;
-      // vm.logIn = !vm.logIn;
 
       if (vm.logIn === true) {
-        console.log('vm.login = true');
-        console.log('$dirty: ', $scope.form.$dirty);
-        console.log('user b4:' + $scope.form.userName.$dirty);
-
-        $scope.form.userName.$dirty = false;
-        $scope.form.userName.$invalid = false;
-
-        $scope.form.password.$dirty = false;
-        $scope.form.password.$invalid = false;
-
-        console.log('user after: ', $scope.form.userName.$dirty);
+        console.log('clearing all login fields');
         vm.err = '';
         delete vm.form;
         vm.logIn = !vm.logIn;
-      } else {
-        console.log('vm.login = false');
+
+        $scope.form.userName.$pristine = true;
+        $scope.form.userName.$dirty = false;
+        $scope.form.userName.$valid = true;
+        $scope.form.userName.$invalid = false;
+
+        $scope.form.password.$pristine = false;
+        $scope.form.password.$dirty = false;
+        $scope.form.password.$valid = false;
+        $scope.form.password.$invalid = false;
+
+      } else if (vm.logIn === false) {
+        console.log('clearing all signup fields');
         vm.err = '';
         delete vm.form;
-        console.log('first b4: ',$scope.form.firstName.$dirty);
+        vm.logIn = !vm.logIn;
+
+        $scope.form.firstName.$pristine = true;
         $scope.form.firstName.$dirty = false;
+        $scope.form.firstName.$valid = true;
         $scope.form.firstName.$invalid = false;
 
+        $scope.form.lastName.$pristine = false;
         $scope.form.lastName.$dirty = false;
+        $scope.form.lastName.$valid = false;
         $scope.form.lastName.$invalid = false;
 
+        $scope.form.userName.$pristine = true;
         $scope.form.userName.$dirty = false;
+        $scope.form.userName.$valid = true;
         $scope.form.userName.$invalid = false;
 
+        $scope.form.email.$pristine = false;
         $scope.form.email.$dirty = false;
+        $scope.form.email.$valid = false;
         $scope.form.email.$invalid = false;
 
+        $scope.form.password.$pristine = false;
         $scope.form.password.$dirty = false;
+        $scope.form.password.$valid = false;
         $scope.form.password.$invalid = false;
-
-        console.log('first after: ',$scope.form.firstName.$dirty);
-        vm.logIn = !vm.logIn;
       }
-
-      console.log($scope.form.firstName);
     }
 
   }])

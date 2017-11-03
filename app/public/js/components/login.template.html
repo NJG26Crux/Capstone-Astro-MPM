@@ -24,28 +24,28 @@
           <!--  ng-if=$ctrl.logIn -->
           <label>First Name</label>
           <input type="text" name="firstName" id="firstName" class="form-control" ng-model="$ctrl.form.firstName" autocomplete="off" required />
-          <span ng-show="form.firstName.$touched && form.firstName.$error.required" class="help-block">First Name is required</span>
+          <span ng-if="form.firstName.$$dirty && form.firstName.$error.required" class="help-block">First Name is required</span>
         </md-input-container>
 
         <md-input-container class="md-block form-group animate-if" ng-class="{ 'has-error': form.lastname.$dirty && form.lastname.$error.required }" ng-if=!$ctrl.logIn>
           <!--  ng-if=$ctrl.logIn -->
           <label>Last Name</label>
           <input type="text" name="lastName" id="lastName" class="form-control" ng-model="$ctrl.form.lastName" autocomplete="off" required />
-          <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Last Name is required</span>
+          <span ng-if="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Last Name is required</span>
         </md-input-container>
 
         <md-input-container class="md-block form-group animate-if" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
           <!--  ng-if=$ctrl.logIn -->
           <label>User Name</label>
           <input type="text" name="userName" id="userName" class="form-control" ng-model="$ctrl.form.userName" autocomplete="off" required />
-          <span ng-show="form.userName.$dirty && form.userName.$error.required" class="help-block">User Name is required</span>
+          <span ng-if="form.userName.$dirty && form.userName.$error.required" class="help-block">User Name is required</span>
         </md-input-container>
 
         <md-input-container class="md-block form-group animate-if" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }" ng-if=!$ctrl.logIn>
           <label>email</label>
           <input type="email" name="email" id="email" class="form-control" ng-model="$ctrl.form.email" autocomplete="off" required />
-          <span ng-show="form.email.$touched && form.email.$error.required" class="help-block">email is required</span>
-          <span ng-show="form.email.$touched && form.email.$invalid" class="help-block">email is invalid</span>
+          <span ng-if="form.email.$dirty && form.email.$error.required" class="help-block">email is required</span>
+          <span ng-if="form.email.$dirty && form.email.$invalid" class="help-block">email is invalid</span>
         </md-input-container>
         <!-- {{form.email}} -->
 
@@ -53,23 +53,23 @@
           <!--  ng-if=$ctrl.logIn -->
           <label>Password</label>
           <input type="password" name="password" id="password" class="form-control" ng-model="$ctrl.form.password" autocomplete="off" required />
-          <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+          <span ng-if="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
         </md-input-container>
 
         <!-- <md-input-container class="md-block form-group animate-if" ng-class="{ 'has-error': form.passwordagain.$dirty && form.passwordagain.$error.required }" ng-if=!$ctrl.logIn>
           <label>Password again</label>
           <input type="password" name="passwordagain" id="passwordagain" class="form-control" ng-model="$ctrl.form.passwordagain" autocomplete="off" required />
-          <span ng-show="form.passwordagain.$dirty && form.passwordagain.$error.required" class="help-block">Password Again is required</span>
-          <span ng-show="form.paassword === form.passwordagain" class="help-block">Both Passwords must Match</span>
+          <span ng-if="form.passwordagain.$dirty && form.passwordagain.$error.required" class="help-block">Password Again is required</span>
+          <span ng-if="form.paassword === form.passwordagain" class="help-block">Both Passwords must Match</span>
         </md-input-container> -->
 
 
         <div class="form-actions">
-          <md-button class="md-raised md-primary md-button md-ink-ripple animate-if" type="submit" ng-click="$ctrl.login()" ng-disabled="form.$invalid || $ctrl.form.dataLoading" ng-if=$ctrl.logIn>
+          <md-button class="md-raised md-primary md-button md-ink-ripple animate-if" type="submit" ng-click="$ctrl.login()" ng-disabled="form.$invalid || $ctrl.form.dataLoading" ng-if=$ctrl.logIn> <!-- ng-disabled="form.$invalid || $ctrl.form.dataLoading" -->
             LogIn
           </md-button>
 
-          <md-button type="submit" class="md-raised md-primary md-button md-ink-ripple animate-if" ng-click="$ctrl.signup()" ng-disabled="form.$invalid || $ctrl.form.dataLoading" ng-if=!$ctrl.logIn>
+          <md-button type="submit" class="md-raised md-primary md-button md-ink-ripple animate-if" ng-click="$ctrl.signup()" ng-disabled="form.$invalid || $ctrl.form.dataLoading" ng-if=!$ctrl.logIn> <!--  ng-disabled="form.$invalid || $ctrl.form.dataLoading" -->
             SignUp
           </md-button>
 
@@ -88,7 +88,7 @@
           </md-button>
         </div>
 
-        <div> {{$ctrl.err}}
+        <div>{{$ctrl.err}}
 
       </div>
     </md-dialog-content>
