@@ -42,6 +42,11 @@ footer {
   min-height: 2em;
 }
 
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
 /*.animate-if.ng-enter,
 .animate-if.ng-leave {
   -webkit-transition: opacity ease-in-out 1s;

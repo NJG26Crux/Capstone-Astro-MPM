@@ -1,0 +1,73 @@
+<main class="wrapper">
+  <div class="main">
+    <h1>Projects Page</h1>
+    <button class="md-button md-ink-ripple" type="button" ui-sref="project"> Project </button>
+    <button class="md-button md-ink-ripple" type="button" ui-sref="newProject"> New Projects </button>
+
+            <!-- ************************************************************* -->
+                <!-- <div layout="row">
+
+                  <div flex="10">column 1</div>
+
+                <div flex="40">column 2
+                  <div layout="column" flex="50">
+                    <div>Top Left</div>
+                    <div layout-align="end center">Bottom Left</div>
+                  </div>
+                </div>
+
+                <div flex="40">column 3
+                  <div layout="column" flex="50">
+                    <div>Top Right</div>
+                    <div layout-align="end center">Bottom Right</div>
+                  </div>
+                </div>
+
+                <div flex="10">column 4</div>
+
+                </div> -->
+            <!-- **************************************************************** -->
+    <div layout="row" flex>
+      <div flex="10">column 1</div>
+      <div flex>column 2
+        <div layout="column" flex>
+          <table style="width:100%">
+            <tr>
+              <th>#</th>
+              <th>Project Creator</th>
+              <th>Object</th>
+              <th>Number of Cells</th>
+              <th>Uncommited Cells</th>
+              <th></th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>John</td>
+              <td>M31</td>
+              <td>27 (3X9)</td>
+              <td>0</td>
+              <td ui-sref="/projects/:1">click here for more info</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Jeff</td>
+              <td>North American</td>
+              <td>9 (3X3)</td>
+              <td>1</td>
+              <td>click here for more info</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Jane</td>
+              <td>Rho Ophiuchi</td>
+              <td>16 (4X4)</td>
+              <td>15</td>
+              <td>click here for more info</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div flex="10">column 3</div>
+    </div>
+  </div>
+</main>

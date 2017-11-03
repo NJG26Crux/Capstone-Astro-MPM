@@ -6,6 +6,7 @@
   "dependencies": {
     "@uirouter/angularjs": "^1.0.10",
     "angular": "^1.6.6",
+    "angular-material-data-table": "^0.10.10",
     "bcrypt-as-promised": "^1.1.0",
     "boom": "^6.0.0",
     "cookie-parser": "^1.4.3",

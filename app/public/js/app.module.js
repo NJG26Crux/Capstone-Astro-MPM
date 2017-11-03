@@ -1,4 +1,4 @@
-angular.module('app', ['ui.router','ngMaterial'])  // move this to new file called app.module.js and ref it first
+angular.module('app', ['ui.router','ngMaterial'])  // , require('angular-material-data-table') //move this to new file called app.module.js and ref it first
 .config(config)
 
 
@@ -16,6 +16,24 @@ function config($stateProvider, $urlRouterProvider, $locationProvider){
         name: 'home',
         url: '/',
         component: 'home',
+        parent: 'root'
+      })
+      .state({
+        name: 'projects',
+        url: '/projects',
+        component: 'projects',
+        parent: 'root'
+      })
+      .state({
+        name: 'project',
+        url: '/projects/:id',
+        component: 'project',
+        parent: 'root'
+      })
+      .state({
+        name: 'newProject',
+        url: '/projects/newProject',
+        component: 'newProject',
         parent: 'root'
       })
 

@@ -11,8 +11,8 @@
       <span flex="" class="flex"> </span>
       <span>{{$ctrl.auth.firstName}} </span>
       <button class="md-button md-ink-ripple" type="button"> {{$ctrl.auth.firstName}} </button>
-      <button class="md-button md-ink-ripple" type="button"> Home </button>
-      <button class="md-button md-ink-ripple" type="button"> Projects </button>
+      <button class="md-button md-ink-ripple" type="button" ui-sref="home"> Home </button>
+      <button class="md-button md-ink-ripple" type="button" ui-sref="projects"> Projects </button>
       <button class="md-button md-ink-ripple" type="button" ng-click="$ctrl.showAdvanced($event)"> Login </button>
       <button class="md-button md-ink-ripple" type="button" ng-click="$ctrl.logout()"> Logout </button>
       <!-- <button class="md-button md-ink-ripple" type="button" ng-click="$ctrl.print()"> Logout </button> -->
