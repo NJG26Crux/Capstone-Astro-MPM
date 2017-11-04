@@ -5,7 +5,7 @@
     controller,
     templateUrl: 'js/components/root.template.html'
   })
-  controller.$inject = ['$mdDialog', '$http', 'auth']
+  // controller.$inject = ['$mdDialog', '$http', 'auth']
 
   function controller($mdDialog, $http, auth) {
     const vm = this;
@@ -51,11 +51,13 @@
     }
   }
 
-  angular.module('app').controller('login', ['$mdDialog', '$http', 'auth', '$scope', function($mdDialog, $http, auth, $scope) {
+  angular.module('app').controller('login', ['$mdDialog', '$http', 'auth', '$scope', 'projects', function($mdDialog, $http, auth, $scope) {
     const vm = this;
     $scope.form = {};
 
     // vm.firstName = '';
+    vm.footer = true; //***************** NEW
+    console.log('vm.footer: ',vm.footer); //***************** NEW
     vm.logIn = true;
     vm.loggedin = false; // for nav bar
     // vm.firstName = "";

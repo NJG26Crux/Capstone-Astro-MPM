@@ -9,5 +9,7 @@
 
   function controller(){
     console.log('here @ projects')
+    const vm = this;
+    // vm.footer = false;
   }
 }());
