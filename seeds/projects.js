@@ -3,7 +3,7 @@ exports.seed = function(knex) {
   return knex('projects').del()
     .then(() => {
       // Inserts seed entries
-      return knex('table_name').insert([{
+      return knex('projects').insert([{
         id: 1,
         name: 'North Americal Nebula',
         object: 'NGC 7000',
