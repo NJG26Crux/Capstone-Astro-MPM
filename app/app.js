@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, '/../', 'node_modules')))
 app.use(require('./routes/users')) //'/api/posts',
 app.use(require('./routes/token'))
 app.use(require('./routes/projects'))
+app.use(require('./routes/project'))
 
 
 app.use('*', function(req, res, next) {

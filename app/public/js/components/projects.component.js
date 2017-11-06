@@ -28,6 +28,11 @@
           console.log(err);
         })
     }
+
+    vm.showProject = function(projectId) {
+      console.log('@ fun.showProj projectId: ', projectId);
+      $state.go(project, {id: projectId})
+    }
   }
 }());
 

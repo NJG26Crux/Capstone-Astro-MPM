@@ -16,11 +16,11 @@ exports.up = function(knex) {
     table.string('img_sensor').notNullable();
     table.integer('img_array_w').notNullable();
     table.integer('img_array_h').notNullable();
-    table.integer('pix_sz').notNullable();
-    table.integer('img_sz_w').notNullable();
-    table.integer('img_sz_h').notNullable();
-    table.integer('fov_w').notNullable();
-    table.integer('fov_h').notNullable();
+    table.decimal('pix_sz', 8, 2).notNullable();
+    table.decimal('img_sz_w', 8, 2).notNullable();
+    table.decimal('img_sz_h', 8, 2).notNullable();
+    table.decimal('fov_w', 8, 2).notNullable();
+    table.decimal('fov_h', 8, 2).notNullable();
     table.integer('target_exp').notNullable();
     table.integer('total_exposures').notNullable();
     table.timestamps(true, true);

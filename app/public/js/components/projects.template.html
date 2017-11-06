@@ -98,6 +98,7 @@
                 <th md-column>Total Cells</th>
                 <th md-column>Uncommitted Cells</th>
                 <th md-column>Created On</th>
+                <th md-column></th>
               </tr>
             </thead>
             <tbody md-body>
@@ -108,11 +109,12 @@
                 <td md-cell>{{project.cells}} ({{project.matrix}})</td>
                 <td md-cell>{{project.uncom_cells}}</td>
                 <td md-cell>{{project.created_at}}</td>
+                <td md-cell><a href="#" g-click="$ctrl.showProject(project.id)">view Details<a></td>
               </tr>
             </tbody>
           </table>
         </md-table-container>
-        <button class="md-button md-ink-ripple" type="button" ui-sref="project"> Project </button>
+        <!-- <button class="md-button md-ink-ripple" type="button" ui-sref="project"> Project </button> -->
         <button class="md-button md-ink-ripple" type="button" ui-sref="newProject"> New Projects </button>
 
         <!-- <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{desserts.count}}" md-on-paginate="getDesserts" md-page-select></md-table-pagination> -->
