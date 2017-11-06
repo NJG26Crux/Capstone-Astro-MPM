@@ -26,7 +26,7 @@ const authorize = function(req, res, next) {
   });
 };
 
-router.get('/users/firstName', authorize, (req, res, next) => {
+router.get('/api/users/firstName', authorize, (req, res, next) => {
 
   const userId = req.claim.userId;
   knex('users')
@@ -47,7 +47,7 @@ router.get('/users/firstName', authorize, (req, res, next) => {
     });
 });
 
-router.get('/users', (req, res, next) => {
+router.get('/api/users', (req, res, next) => {
   knex('users')
     .then((result) => {
       res.send(result)
@@ -55,7 +55,7 @@ router.get('/users', (req, res, next) => {
     .catch((err) => next(err))
 })
 
-router.get('/users/:id', (req, res, next) => {
+router.get('/api/users/:id', (req, res, next) => {
   knex('users')
     .where('id', req.params.id)
     .first()
@@ -71,7 +71,7 @@ router.get('/users/:id', (req, res, next) => {
     });
 });
 
-router.post('/users', (req, res, next) => {
+router.post('/api/users', (req, res, next) => {
   console.log('we are at routes.users.post.');
   req.body.admin = false;
   const { firstname, lastname, username, admin, email, password, } = req.body;

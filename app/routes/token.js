@@ -9,7 +9,7 @@ const { camelizeKeys } = require('humps');
 
 const router = express.Router();
 
-router.get('/token', (req, res) => {
+router.get('/api/token', (req, res) => {
   console.log('we are at routes.token.get');
   jwt.verify(req.cookies.token, process.env.JWT_KEY, (err, _payload) => {
     if (err) {
@@ -23,7 +23,7 @@ router.get('/token', (req, res) => {
 
 
 
-router.post('/token', (req, res, next) => {
+router.post('/api/token', (req, res, next) => {
   console.log('we are at routes.token.post');
   console.log('req.body: ', req.body);
   const { userName, password } = req.body;
@@ -75,7 +75,7 @@ router.post('/token', (req, res, next) => {
     });
 });
 
-router.delete('/token', (req, res) => {
+router.delete('/api/token', (req, res) => {
   res.clearCookie('token');
   res.send(true);
 });

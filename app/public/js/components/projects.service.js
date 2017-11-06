@@ -4,21 +4,24 @@
   angular.module('app')
     .service('projects', function () {
       const vm = this;
-      vm.projects = {};
+      vm.projects = [];
+      console.log('@ service.projets');
 
-      vm.getProjects = function() {
-        $http.get('/projects')
-        .then((projects) => {
-          if (projects) {
-            vm.projects = projects;
-          } else {
-            console.log('no Projects');
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-      }
+      // vm.getProjects = function() {
+        // console.log("@ service.projects.getProjects");
+        // $http.get('/api/projects')
+        // .then((projects) => {
+        //   if (projects) {
+        //     vm.projects = projects;
+        //     console.log('services.projects: ', projects);
+        //   } else {
+        //     console.log('no Projects');
+        //   }
+        // })
+        // .catch((err) => {
+        //   console.log(err);
+        // })
+      // }
     });
 
 }());

@@ -15,19 +15,14 @@
 
     vm.$onInit = function() {
 
-      $http.get('/users/firstName')
+      $http.get('/api/users/firstName')
         .then((firstName) => {
           if (firstName) {
-            // console.log('firstName: ', firstName);
             auth.firstName = 'Hello ' + firstName.data.firstName;
-          } else {
-            // console.log('no firstName');
           }
         })
         .catch((err) => {
-          // console.log(err);;
         });
-
     }
 
     vm.showAdvanced = function(ev) {
@@ -42,7 +37,7 @@
     };
     vm.logout = function() {
       // console.log('logging out');
-      $http.delete('/token').then(data => {
+      $http.delete('/api/token').then(data => {
         auth.firstName = '';
         auth.err = ';'
         // console.log('data: ', data);
@@ -73,7 +68,7 @@
 
     vm.login = function() {
       // console.log('fun.login: ', vm.form)
-      $http.post('/token', vm.form).then(data => {
+      $http.post('/api/token', vm.form).then(data => {
           // console.log('data: ', data)
           // console.log('firstName: ', data.data.firstName);
           auth.firstName = 'Hello ' + data.data.firstName;
@@ -91,7 +86,7 @@
 
     vm.signup = function() {
       console.log('fun.signup: ', vm.form)
-      $http.post('/users', vm.form).then(user => {
+      $http.post('/api/users', vm.form).then(user => {
           // if (user.data.firstName) {
           console.log('signup.user.data: ', user.data);
           auth.firstName = 'Hello ' + user.data.firstName;
