@@ -5,7 +5,7 @@
     controller,
     templateUrl: 'js/components/root.template.html'
   })
-  // controller.$inject = ['$mdDialog', '$http', 'auth']
+  controller.$inject = ['$mdDialog', '$http', 'auth']
 
   function controller($mdDialog, $http, auth) {
     const vm = this;
@@ -22,6 +22,7 @@
           }
         })
         .catch((err) => {
+          // console.log(err)
         });
     }
 
@@ -35,18 +36,19 @@
         fullscreen: this.customFullscreen
       });
     };
+
     vm.logout = function() {
       // console.log('logging out');
       $http.delete('/api/token').then(data => {
         auth.firstName = '';
-        auth.err = ';'
+        auth.err = '';
         // console.log('data: ', data);
       });
       // console.log('logged out?');
     }
   }
 
-  angular.module('app').controller('login', ['$mdDialog', '$http', 'auth', '$scope', 'projects', function($mdDialog, $http, auth, $scope) {
+  angular.module('app').controller('login', ['$mdDialog', '$http', 'auth', '$scope', function($mdDialog, $http, auth, $scope) {
     const vm = this;
     $scope.form = {};
 

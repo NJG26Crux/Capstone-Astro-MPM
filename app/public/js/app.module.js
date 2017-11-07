@@ -1,4 +1,4 @@
-angular.module('app', ['ui.router','ngMaterial', 'md.data.table'])  // , require('angular-material-data-table') //move this to new file called app.module.js and ref it first
+angular.module('app', ['ui.router','ngMaterial', 'md.data.table'])  // , 'material.svgAssetsCache' // , require('angular-material-data-table') //move this to new file called app.module.js and ref it first
 .config(config)
 // angular.module('myApp', ['ngMaterial', 'md.data.table']);
 

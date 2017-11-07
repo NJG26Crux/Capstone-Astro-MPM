@@ -11,6 +11,7 @@ exports.up = function(knex) {
     table.integer('cells_h').notNullable();
     table.integer('uncom_cells').notNullable();
     table.string('tel_ota').notNullable();
+    table.integer('tel_obj').notNullable();
     table.integer('focal_length').notNullable();
     table.integer('focal_ratio').notNullable();
     table.string('img_sensor').notNullable();

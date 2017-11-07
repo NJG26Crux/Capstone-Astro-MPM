@@ -7,6 +7,10 @@
       vm.projects = [];
       console.log('@ service.projets');
 
+      this.findById = function (id) {
+        return vm.projects.find(project => project.id == id)
+      }
+
       // vm.getProjects = function() {
         // console.log("@ service.projects.getProjects");
         // $http.get('/api/projects')

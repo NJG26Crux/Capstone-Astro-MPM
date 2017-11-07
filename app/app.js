@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, '/../', 'node_modules')))
 app.use(require('./routes/users')) //'/api/posts',
 app.use(require('./routes/token'))
 app.use(require('./routes/projects'))
-app.use(require('./routes/project'))
+// app.use(require('./routes/project'))
 
 
 app.use('*', function(req, res, next) {
@@ -44,7 +44,7 @@ app.use(function(err, req, res, next) {
   res.json(err)
 })
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8500;
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

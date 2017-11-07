@@ -5,14 +5,15 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex('projects').insert([{
         id: 1,
-        name: 'North Americal Nebula',
+        name: 'North American Nebula',
         object: 'NGC 7000',
         admin_user_id: 1,
         cells: 16,
         cells_w: 4,
         cells_h: 4,
         uncom_cells: 1,
-        tel_ota: 'Orion EON 130mm ED Triplet Apochromatic Refractor Telescope',
+        tel_ota: 'Orion EON 130mm ED Triplet APO Refractor',
+        tel_obj: 130,
         focal_length: 910,
         focal_ratio: 7,
         img_sensor: 'Nikon D800a',

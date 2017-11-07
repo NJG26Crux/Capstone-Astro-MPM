@@ -1,28 +1,50 @@
 <main class="wrapper">
   <div class="main">
-    <h1>Project Page</h1>
+    <!-- <h1>Project Page</h1> -->
 
     <div layout="row">
 
-      <div flex="10">column 1</div> <!--  layout="row" class="layout-row" -->
+      <div flex="10"></div> <!-- column 1  layout="row" class="layout-row" -->
 
-    <div flex="40">column 2
-      <div layout="column" flex="50"> <!--  class="layout-column" -->
-        <div>Top Left</div>
-        <div layout-align="end center">Bottom Left</div>
+    <div flex="30"> <!-- column 2 -->
+      <div layout="column"> <!--  class="layout-column" -->
+        <!-- <div>Top Left</div>
+        <div layout-align="end center">Bottom Left</div> -->
+        <h3>Image</h3>
       </div>
     </div>
 
-    <div flex="40">column 3
-      <div layout="column" flex="50">
-        <div>Top Right</div>
-        <div layout-align="end center">Bottom Right</div>
+    <div flex="50"> <!-- column 3 -->
+      <div layout="column">
+        <!-- <div>Top Right</div>
+        <div layout-align="end center">Bottom Right</div> -->
+        <h3>{{$ctrl.project.name}}</h3>
+        <div>Created by: {{$ctrl.project.user_name}}</div>
+        <div>Created on: {{$ctrl.project.created_at}}</div>
+        <div>Telescope OTA: {{$ctrl.project.tel_ota}}</div>
+        <div>focal length: {{$ctrl.project.focal_length}} mm</div>
+        <div>focal ratio: f/ {{$ctrl.project.focal_ratio}}</div>
+        <hr>
+        <div>Camera: {{$ctrl.project.img_sensor}}</div>
+        <div>Sensor size: {{$ctrl.project.img_sz_w}} mm x {{$ctrl.project.img_sz_h}} mm</div>
+        <div>Sensor array: {{$ctrl.project.img_array_w}} x {{$ctrl.project.img_array_h}}</div>
+        <div>Pixel size: {{$ctrl.project.pix_sz}} &#956</div>
+        <hr>
+        <div>Field of view: {{($ctrl.project.fov_w / 60).toFixed(2)}} x {{($ctrl.project.fov_h / 60).toFixed(2)}} Arcminutes</div>
+        <hr>
+        <div>Total number of cells: {{$ctrl.project.cells}}</div>
+        <div>Target exposure length: {{$ctrl.project.target_exp}} seconds</div>
+        <div>Total number of exposures: {{$ctrl.project.total_exposures}}</div>
+        <hr>
+        <div>Contributors: TBD</div>
       </div>
     </div>
 
-    <div flex="10">column 4</div>
+    <div flex="10"></div> <!-- column 4 -->
 
     </div>
 
   </div>
 </main>
+
+<!-- {{$ctrl.project}} -->

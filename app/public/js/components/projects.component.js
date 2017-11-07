@@ -7,9 +7,11 @@
   })
   // controller.$inject = ['projects', '$scope', '$http'] // '$nutrition',
 
-  function controller(projects, $http, $scope){ // $nutrition,
+  function controller(projects, $http, $scope, $state){ // $nutrition,
     console.log('@ component.projects')
     const vm = this;
+
+    vm.selected = [];
 
     vm.$onInit = function() {
       console.log("@ service.projects.getProjects");
@@ -31,7 +33,7 @@
 
     vm.showProject = function(projectId) {
       console.log('@ fun.showProj projectId: ', projectId);
-      $state.go(project, {id: projectId})
+      $state.go('project', {id: projectId})
     }
   }
 }());
