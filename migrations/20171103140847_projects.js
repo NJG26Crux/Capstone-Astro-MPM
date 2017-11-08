@@ -5,7 +5,7 @@ exports.up = function(knex) {
     table.increments();
     table.string('name').notNullable();
     table.string('object').notNullable();
-    table.integer('admin_user_id').unique().notNullable();
+    table.integer('admin_user_id').notNullable(); //.unique()
     table.integer('cells').notNullable();
     table.integer('cells_w').notNullable();
     table.integer('cells_h').notNullable();

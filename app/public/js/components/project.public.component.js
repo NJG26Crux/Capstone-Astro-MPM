@@ -3,7 +3,7 @@
 
   angular.module('app').component('project', {
     controller,
-    templateUrl: '/js/components/project.template.html'
+    templateUrl: '/js/components/project.public.template.html'
   })
 
   function controller(projects, $http, $stateParams){

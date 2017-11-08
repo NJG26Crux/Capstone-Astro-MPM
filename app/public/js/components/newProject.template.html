@@ -32,7 +32,7 @@
           <!-- <div ng-controller="AppCtrl" layout="column" ng-cloak="" class="inputdemoErrorsAdvanced" ng-app="MyApp"> -->
 
             <md-content layout-padding="">
-              <form name="projForm">
+              <form name="projForm" ng-submit="$ctrl.addProject()">
                 <div layout="row" layout-xs="column" layout-sm="column" layout-align="space-between center">
                   <div flex-gt-sm="80">
                     <!-- <p>
@@ -61,12 +61,12 @@
 
                   <md-input-container class="md-block" flex-gt-sm="">
                     <label>Name</label>
-                    <input md-maxlength="30" required="" name="name" ng-model="proj.name">
+                    <input md-maxlength="30" name="name" ng-model="$ctrl.proj.name" required="">
 
                     <div class="hint" ng-if="showHints">What shall we call your Project?</div>
 
                     <div ng-messages="projForm.name.$error" ng-if="!showHints">
-                      <div ng-message="required">Name is required.</div> <!-- ADD THIS TO ALL FIELDS -->
+                      <div ng-message="required">Name is required.</div>
                       <div ng-message="md-maxlength">The Name has to be less than 30 characters long.</div>
                     </div>
                   </md-input-container>
@@ -77,11 +77,11 @@
 
                   <md-input-container class="md-block" flex-gt-sm="">
                     <label>Cataloge Id</label>
-                    <input name="object" ng-model="proj.object" minlength="2" maxlength="12"> <!--  ng-pattern="/^[0-9]{3}-[0-9]{2}-[0-9]{4}$/" -->
+                    <input name="object" ng-model="$ctrl.proj.object" minlength="2" maxlength="12" required=""> <!--  ng-pattern="/^[0-9]{3}-[0-9]{2}-[0-9]{4}$/" -->
 
                     <div class="hint" ng-if="showHints">Examples: M31, NGC 7000 or IC 4592</div>
 
-                    <div ng-messages="projForm.social.$error" ng-if="!showHints">
+                    <div ng-messages="projForm.object.$error" ng-if="!showHints">
                       <div ng-message-exp="['minlength', 'maxlength']">The Catalog ID has to be less than 30 characters long.</div>
                     </div>
                   </md-input-container>
@@ -92,7 +92,7 @@
 
                   <md-input-container class="md-block" flex-gt-sm="">
                     <label>Camera</label>
-                    <input md-maxlength="30" name="img_sensor" ng-model="proj.img_sensor" required="" ng-pattern="/^.+@.+\..+$/">
+                    <input md-maxlength="30" name="img_sensor" ng-model="$ctrl.proj.img_sensor" required=""> <!--  ng-pattern="/^.+@.+\..+$/" -->
 
                     <div class="hint" ng-show="showHints">The Make and Model of your Camera?</div>
 
@@ -108,7 +108,7 @@
 
                   <md-input-container class="md-block" flex-gt-sm="">
                     <label>Telescope</label>
-                    <input md-maxlength="30" name="tel_ota" ng-model="proj.tel_ota"> <!--  ng-pattern="/^[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}$/" -->
+                    <input md-maxlength="30" name="tel_ota" ng-model="$ctrl.proj.tel_ota"> <!--  ng-pattern="/^[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}$/" -->
 
                     <div class="hint" ng-show="showHints">Example: Tak FSQ106n, Meade 10" SCT or 16" Newtonian</div>
 
@@ -123,7 +123,7 @@
 
                   <md-input-container class="md-block" flex-gt-sm="">
                     <label>Sensor size (w in mm)</label>
-                    <input name="img_sz_w" ng-model="proj.img_sz_w" minlength="2" maxlength="5">
+                    <input name="img_sz_w" ng-model="$ctrl.proj.img_sz_w" minlength="2" maxlength="5">
 
                     <div class="hint" ng-show="showHints">Example: 23.60</div>
 
@@ -134,7 +134,7 @@
 
                   <md-input-container class="md-block" flex-gt-sm="">
                     <label>Sensor size (h in mm)</label>
-                    <input name="img_sz_h" ng-model="proj.img_sz_h" minlength="2" maxlength="5">
+                    <input name="img_sz_h" ng-model="$ctrl.proj.img_sz_h" minlength="2" maxlength="5">
 
                     <div class="hint" ng-show="showHints">Example: 15.80</div>
 
@@ -149,7 +149,7 @@
 
                   <md-input-container class="md-block" flex-gt-sm="">
                     <label>Objective Size (mm)</label>
-                    <input name="tel_obj" ng-model="proj.tel_obj" minlength="2" maxlength="4">
+                    <input name="tel_obj" ng-model="$ctrl.proj.tel_obj" minlength="2" maxlength="4">
 
                     <div class="hint" ng-show="showHints">Example: Tak FSQ106n, Meade 10" SCT or 16" Newtonian</div>
 
@@ -163,7 +163,7 @@
 
                   <md-input-container class="md-block" flex-gt-sm="">
                     <label>Sensor Array (w)</label>
-                    <input name="img_array_w" ng-model="proj.img_array_w" minlength="2" maxlength="5">
+                    <input name="img_array_w" ng-model="$ctrl.proj.img_array_w" minlength="2" maxlength="5">
 
                     <div class="hint" ng-show="showHints">Example: 3872</div>
 
@@ -174,7 +174,7 @@
 
                   <md-input-container class="md-block" flex-gt-sm="">
                     <label>Sensor Array (h)</label>
-                    <input name="img_array_h" ng-model="proj.img_array_h" minlength="2" maxlength="5">
+                    <input name="img_array_h" ng-model="$ctrl.proj.img_array_h" minlength="2" maxlength="5">
 
                     <div class="hint" ng-show="showHints">Example: 2592</div>
 
@@ -189,7 +189,7 @@
 
                   <md-input-container class="md-block" flex-gt-sm="">
                     <label>focal length (mm)</label>
-                    <input name="focal_length" ng-model="proj.focal_length" minlength="3" maxlength="5">
+                    <input name="focal_length" ng-model="$ctrl.proj.focal_length" minlength="3" maxlength="5">
 
                     <div class="hint" ng-show="showHints">Example: 910</div>
 
@@ -203,7 +203,7 @@
 
                   <md-input-container class="md-block" flex-gt-sm="">
                     <label>Pixel size (&#956)</label>
-                    <input name="pix_sz" ng-model="proj.pix_sz" minlength="1" maxlength="4">
+                    <input name="pix_sz" ng-model="$ctrl.proj.pix_sz" minlength="1" maxlength="4">
 
                     <div class="hint" ng-show="showHints">Example: 6.1</div>
 
@@ -218,11 +218,11 @@
 
                   <md-input-container class="md-block" flex-gt-sm="">
                     <label>focal ratio</label>
-                    <input name="focal_length" ng-model="proj.focal_length" minlength="1" maxlength="3">
+                    <input name="focal_ratio" ng-model="$ctrl.proj.focal_ratio" minlength="1" maxlength="3">
 
                     <div class="hint" ng-show="showHints">Example: 7</div>
 
-                    <div ng-messages="projForm.focal_length.$error" ng-hide="showHints">
+                    <div ng-messages="projForm.focal_ratio.$error" ng-hide="showHints">
                         <div ng-message-exp="['minlength', 'maxlength']">The focal ratio has to be less than 4 digits long.</div>
                     </div>
                   </md-input-container>
@@ -232,7 +232,7 @@
 
                   <!-- <md-input-container class="md-block" flex-gt-sm="">
                     <label>Total Cells</label>
-                    <input name="cells" ng-model="proj.cells" minlength="1" maxlength="2">
+                    <input name="cells" ng-model="$ctrl.proj.cells" minlength="1" maxlength="2">
 
                     <div class="hint" ng-show="showHints">Example: 16</div>
 
@@ -246,7 +246,7 @@
 
                   <md-input-container class="md-block" flex-gt-sm="">
                     <label>Cell Matrix (w)</label>
-                    <input name="cells_w" ng-model="proj.cells_w" minlength="1" maxlength="2">
+                    <input name="cells_w" ng-model="$ctrl.proj.cells_w" minlength="1" maxlength="2">
 
                     <div class="hint" ng-show="showHints">Example: 4</div>
 
@@ -261,7 +261,7 @@
 
                   <md-input-container class="md-block" flex-gt-sm="">
                     <label>Cell Matrix (h)</label>
-                    <input name="total_exposures" ng-model="proj.cells_h" minlength="1" maxlength="2">
+                    <input name="total_exposures" ng-model="$ctrl.proj.cells_h" minlength="1" maxlength="2">
 
                     <div class="hint" ng-show="showHints">Example: 4</div>
 
@@ -275,7 +275,7 @@
 
                   <md-input-container class="md-block" flex-gt-sm="">
                     <label>Target Exposure (seconds)</label>
-                    <input name="target_exp" ng-model="proj.target_exp" minlength="1" maxlength="4">
+                    <input name="target_exp" ng-model="$ctrl.proj.target_exp" minlength="1" maxlength="4">
 
                     <div class="hint" ng-show="showHints">Example: 300</div>
 
@@ -290,7 +290,7 @@
 
                   <md-input-container class="md-block" flex-gt-sm="">
                     <label>Total number of Exposures</label>
-                    <input name="total_exposures" ng-model="proj.total_exposures" minlength="1" maxlength="3">
+                    <input name="total_exposures" ng-model="$ctrl.proj.total_exposures" minlength="1" maxlength="3">
 
                     <div class="hint" ng-show="showHints">Example: 72</div>
 
