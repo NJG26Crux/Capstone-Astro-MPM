@@ -121,11 +121,37 @@ router.get('/api/project/cells/:id', (req, res, next) => {
   console.log('@ routes.projects.cells.id:');
   knex('cells')
     .where('cells.proj_id', req.params.id)
+    .innerJoin('users', 'users.id', 'cells.user_id')
     .then((cells) => {
       console.log('routes.projects.cells.id: ', cells);
+
+
+      // res.send(cells.reduce(function(acc, ele){
+      //   if(acc.hasOwnProperty(ele.user_id)){
+      //     push
+      //   }
+      //   else{
+      //     add
+      //   }
+      //
+      //   return acc;
+      // }, {}))
+
       res.send(cells)
     })
     .catch((err) => next(err))
 })
 
 module.exports = router;
+
+var names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
+
+var countedNames = names.reduce(function (allNames, name) {
+  if (name in allNames) {
+    allNames[name]++;
+  }
+  else {
+    allNames[name] = 1;
+  }
+  return allNames;
+}, {});

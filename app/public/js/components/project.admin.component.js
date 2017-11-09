@@ -29,7 +29,7 @@
 
         $http.get('/api/project/cells/' + $stateParams.id)
           .then(cells => {
-            console.log(cells.data);
+            console.log('cells: ', cells.data);
             vm.cells = cells.data;
           })
 

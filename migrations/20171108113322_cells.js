@@ -5,7 +5,7 @@ exports.up = function(knex) {
     table.increments();
     table.integer('proj_id').notNullable();
     table.integer('user_id').notNullable();
-    table.integer('cell_num').notNullable();
+    table.string('cell_num').notNullable();
     table.decimal('center_ref_ra', 8, 2).notNullable();
     table.decimal('center_ref_dec', 8, 2).notNullable();
     table.string('status').notNullable();

@@ -6,35 +6,35 @@
 
       <div flex="10"></div>
 
-    <div flex="30">
-      <div layout="column">
+      <div flex="30">
+        <div layout="column">
 
-        <h3>Image</h3>
+          <h3>Image</h3>
+        </div>
       </div>
-    </div>
 
-    <div flex="50">
-      <div layout="column">
+      <div flex="50">
+        <div layout="column">
 
-        <h3>{{$ctrl.project.name}}</h3>
-        <div>Created by: {{$ctrl.project.user_name}}</div>
-        <div>Created on: {{$ctrl.project.created_at}}</div>
-        <div>Telescope OTA: {{$ctrl.project.tel_ota}}</div>
-        <div>focal length: {{$ctrl.project.focal_length}} mm</div>
-        <div>focal ratio: f/ {{$ctrl.project.focal_ratio}}</div>
-        <hr>
-        <div>Camera: {{$ctrl.project.img_sensor}}</div>
-        <div>Sensor size: {{$ctrl.project.img_sz_w}} mm x {{$ctrl.project.img_sz_h}} mm</div>
-        <div>Sensor array: {{$ctrl.project.img_array_w}} x {{$ctrl.project.img_array_h}}</div>
-        <div>Pixel size: {{$ctrl.project.pix_sz}} &#956</div>
-        <hr>
-        <div>Field of view: {{($ctrl.project.fov_w / 60).toFixed(2)}} x {{($ctrl.project.fov_h / 60).toFixed(2)}} Arcminutes</div>
-        <hr>
-        <div>Total number of cells: {{$ctrl.project.cells}}</div>
-        <div>Target exposure length: {{$ctrl.project.target_exp}} seconds</div>
-        <div>Total number of exposures: {{$ctrl.project.total_exposures}}</div>
-        <hr>
-        <div>Contributors Contact Info:</div>
+          <h3>{{$ctrl.project.name}}</h3>
+          <div>Created by: {{$ctrl.project.user_name}}</div>
+          <div>Created on: {{$ctrl.project.created_at}}</div>
+          <div>Telescope OTA: {{$ctrl.project.tel_ota}}</div>
+          <div>focal length: {{$ctrl.project.focal_length}} mm</div>
+          <div>focal ratio: f/ {{$ctrl.project.focal_ratio}}</div>
+          <hr>
+          <div>Camera: {{$ctrl.project.img_sensor}}</div>
+          <div>Sensor size: {{$ctrl.project.img_sz_w}} mm x {{$ctrl.project.img_sz_h}} mm</div>
+          <div>Sensor array: {{$ctrl.project.img_array_w}} x {{$ctrl.project.img_array_h}}</div>
+          <div>Pixel size: {{$ctrl.project.pix_sz}} &#956</div>
+          <hr>
+          <div>Field of view: {{($ctrl.project.fov_w / 60).toFixed(2)}} x {{($ctrl.project.fov_h / 60).toFixed(2)}} Arcminutes</div>
+          <hr>
+          <div>Total number of cells: {{$ctrl.project.cells}}</div>
+          <div>Target exposure length: {{$ctrl.project.target_exp}} seconds</div>
+          <div>Total number of exposures: {{$ctrl.project.total_exposures}}</div>
+          <hr>
+          <div>Contributors Contact Info:</div>
           <div layout="row">
 
             <div flex="10">
@@ -43,7 +43,8 @@
             <div flex>
               <div layout="column">
                 <div ng-repeat="contributor in $ctrl.contributors" flex>
-                  <div>{{contributor.first_name}}: {{contributor.email}}</div> <!--  {{contributor.last_name}} User Name: {{contributor.user_name}} email: -->
+                  <div>{{contributor.first_name}}: {{contributor.email}}</div>
+                  <!--  {{contributor.last_name}} User Name: {{contributor.user_name}} email: -->
                 </div>
               </div>
             </div>
@@ -51,30 +52,54 @@
           </div>
 
           <hr>
+          <!-- TABLE -->
 
-          <div ng-repeat="cell in $ctrl.cells"> <!--   -->
-            <div layout="column">
-              <div>{Name}'s cells:</div>
+          <md-toolbar class="md-table-toolbar md-default">
+            <div class="md-toolbar-tools">
+              <span>Cells</span>
+            </div>
+          </md-toolbar>
+
+      <!-- exact table from live demo --> <!--  md-order-by="nameToLower" </span> --> <!--  md-order-by="calories.value"  md-numeric -->
+
+          <md-table-container>
+            <table md-table md-row-select multiple ng-model="$ctrl.selected" md-progress="promise">
+              <thead md-head md-order="query.order" md-on-reorder="getProjects">
+                <tr md-row>
+                  <th md-column>Cell</th>
+                  <th md-column>Center Position</th>
+                  <th md-column>By</th>
+                  <th md-column>Status</th>
+                  <th md-column>Data</th>
+                </tr>
+              </thead>
+              <tbody md-body>
+                <tr md-row md-select="dessert" md-select-id="name" md-auto-select ng-repeat="cell in $ctrl.cells">
+                  <td md-cell>{{cell.cell_num}}</td>
+                  <td md-cell>{{cell.center_ref_ra}} RA, {{cell.center_ref_dec}} dec</td>
+                  <td md-cell>{{cell.first_name}}</td>
+                  <td md-cell>{{cell.status}}</td>
+                  <td md-cell><a href="{{cell.url}}">{{cell.url}}</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </md-table-container>
+
+          <!-- TABLE -->
+
+          <!-- <div ng-repeat="cell in $ctrl.cells">
+            <div layout="collumn">
               <div layout="row">
-
-                <div flex="10"></div>
-                <!-- **** work on Join cells table to populate below -->
-                <div layout="row" flex>
-                  <div>{cell_num} ({center_ref_ra} {center_ref_dec}) status: {Completed} link: {url} &nbsp</div>
-                  <a href="#"> edit </a>
-                </div>
-
+                <div>{{cell.cell_num}} ({{cell.center_ref_ra}} {{cell.center_ref_dec}}) Contributed by: {{cell.first_name}} status: {{cell.status}} link: {{cell.url}} &nbsp</div>
+                <a href="#"> edit </a>
               </div>
-
             </div>
-          </div>
+          </div> -->
 
-          <hr>
-
+        </div>
       </div>
-    </div>
 
-    <div flex="10"></div>
+      <div flex="10"></div>
 
     </div>
 

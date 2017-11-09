@@ -14,7 +14,7 @@
 
     <div layout="row">
 
-      <div flex="10">column 1</div>
+      <div flex="10"></div> <!-- column 1 -->
 
       <!-- <div flex="40">column 2
         <div layout="column" flex="50">
@@ -23,10 +23,10 @@
         </div>
       </div> -->
 
-      <div flex="80">column 2
+      <div flex="80"> <!-- column 2 -->
         <div layout="column">
-          <div>Top Right</div>
-          <div layout-align="end center">Bottom Right</div>
+          <!-- <div>Top Right</div>
+          <div layout-align="end center">Bottom Right</div> -->
 
           <!-- ************************************************************************************** -->
           <!-- <div ng-controller="AppCtrl" layout="column" ng-cloak="" class="inputdemoErrorsAdvanced" ng-app="MyApp"> -->
@@ -55,37 +55,6 @@
                   <md-input-container>
                     <md-switch ng-model="showHints">Showing {{showHints ? "Hints" : "Errors"}}</md-switch>
                   </md-input-container>
-                </div>
-
-                <div layout-gt-sm="row">
-
-                  <md-input-container class="md-block" flex-gt-sm="">
-                    <label>Name</label>
-                    <input md-maxlength="30" name="name" ng-model="$ctrl.proj.name" required="">
-
-                    <div class="hint" ng-if="showHints">What shall we call your Project?</div>
-
-                    <div ng-messages="projForm.name.$error" ng-if="!showHints">
-                      <div ng-message="required">Name is required.</div>
-                      <div ng-message="md-maxlength">The Name has to be less than 30 characters long.</div>
-                    </div>
-                  </md-input-container>
-
-                  <div flex="5" hide-xs="" hide-sm="">
-                    <!-- Spacer //-->
-                  </div>
-
-                  <md-input-container class="md-block" flex-gt-sm="">
-                    <label>Cataloge Id</label>
-                    <input name="object" ng-model="$ctrl.proj.object" minlength="2" maxlength="12" required=""> <!--  ng-pattern="/^[0-9]{3}-[0-9]{2}-[0-9]{4}$/" -->
-
-                    <div class="hint" ng-if="showHints">Examples: M31, NGC 7000 or IC 4592</div>
-
-                    <div ng-messages="projForm.object.$error" ng-if="!showHints">
-                      <div ng-message-exp="['minlength', 'maxlength']">The Catalog ID has to be less than 30 characters long.</div>
-                    </div>
-                  </md-input-container>
-
                 </div>
 
                 <div layout-gt-sm="row">
@@ -271,6 +240,43 @@
                   </md-input-container>
 
                 </div>
+
+                <div layout="row" layout-align="center center">
+                  <!-- ************ ALADIN ************ -->
+                  <aladin></aladin>
+                  <!-- ************ ALADIN ************ -->
+                </div>
+
+                <div layout-gt-sm="row">
+
+                  <md-input-container class="md-block" flex-gt-sm="">
+                    <label>Name</label>
+                    <input md-maxlength="30" name="name" ng-model="$ctrl.proj.name" required="">
+
+                    <div class="hint" ng-if="showHints">What shall we call your Project?</div>
+
+                    <div ng-messages="projForm.name.$error" ng-if="!showHints">
+                      <div ng-message="required">Name is required.</div>
+                      <div ng-message="md-maxlength">The Name has to be less than 30 characters long.</div>
+                    </div>
+                  </md-input-container>
+
+                  <div flex="5" hide-xs="" hide-sm="">
+                    <!-- Spacer //-->
+                  </div>
+
+                  <md-input-container class="md-block" flex-gt-sm="">
+                    <label>Cataloge Id</label>
+                    <input name="object" ng-model="$ctrl.proj.object" minlength="2" maxlength="12" required=""> <!--  ng-pattern="/^[0-9]{3}-[0-9]{2}-[0-9]{4}$/" -->
+
+                    <div class="hint" ng-if="showHints">Examples: M31, NGC 7000 or IC 4592</div>
+
+                    <div ng-messages="projForm.object.$error" ng-if="!showHints">
+                      <div ng-message-exp="['minlength', 'maxlength']">The Catalog ID has to be less than 30 characters long.</div>
+                    </div>
+                  </md-input-container>
+
+                </div>
                 <div layout-gt-sm="row">
 
                   <md-input-container class="md-block" flex-gt-sm="">
@@ -338,7 +344,7 @@
         </div>
       </div>
 
-      <div flex="10">column 3</div>
+      <div flex="10"></div> <!-- column 3 -->
 
     </div>
 
