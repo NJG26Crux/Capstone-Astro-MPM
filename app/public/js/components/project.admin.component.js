@@ -27,6 +27,12 @@
           vm.contributors = contributors.data;
         })
 
+        $http.get('/api/project/cells/' + $stateParams.id)
+          .then(cells => {
+            console.log(cells.data);
+            vm.cells = cells.data;
+          })
+
     }
   }
 }());

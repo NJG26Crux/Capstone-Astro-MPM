@@ -52,13 +52,13 @@
 
           <hr>
 
-          <div> <!--  ng-repeat="" -->
+          <div ng-repeat="cell in $ctrl.cells"> <!--   -->
             <div layout="column">
               <div>{Name}'s cells:</div>
               <div layout="row">
 
                 <div flex="10"></div>
-
+                <!-- **** work on Join cells table to populate below -->
                 <div layout="row" flex>
                   <div>{cell_num} ({center_ref_ra} {center_ref_dec}) status: {Completed} link: {url} &nbsp</div>
                   <a href="#"> edit </a>

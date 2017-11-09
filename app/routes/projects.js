@@ -117,4 +117,15 @@ function validate(req, res, next) {
   next()
 }
 
+router.get('/api/project/cells/:id', (req, res, next) => {
+  console.log('@ routes.projects.cells.id:');
+  knex('cells')
+    .where('cells.proj_id', req.params.id)
+    .then((cells) => {
+      console.log('routes.projects.cells.id: ', cells);
+      res.send(cells)
+    })
+    .catch((err) => next(err))
+})
+
 module.exports = router;
