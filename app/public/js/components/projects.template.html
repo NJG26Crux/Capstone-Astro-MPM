@@ -109,7 +109,7 @@
                 <td md-cell>{{project.cells}} ({{project.cells_w}}x{{project.cells_h}})</td>
                 <td md-cell>{{project.uncom_cells}}</td>
                 <td md-cell>{{project.created_at}}</td>
-                <td md-cell><a href="#" ng-click="$ctrl.showProject(project.id)">view Details<a></td>
+                <td md-cell><a href="#" ng-click="$ctrl.showProject(project.id, project.admin_user_id)">view Details<a></td>
               </tr>
             </tbody>
           </table>

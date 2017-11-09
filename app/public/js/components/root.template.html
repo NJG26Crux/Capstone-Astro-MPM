@@ -9,8 +9,8 @@
 
     <md-toolbar layout="row" layout-align="end center" class="_md layout-row _md-toolbar-transitions">
       <span flex="" class="flex"> </span>
-      <span>{{$ctrl.auth.firstName}} </span>
-      <button class="md-button md-ink-ripple" type="button"> {{$ctrl.auth.firstName}} </button>
+      <!-- <span>{{$ctrl.auth.firstName}} </span> -->
+      <button class="md-button md-ink-ripple" type="button"> Hello {{$ctrl.auth.user.first_name}} </button>
       <button class="md-button md-ink-ripple" type="button" ui-sref="home"> Home </button>
       <button class="md-button md-ink-ripple" type="button" ui-sref="projects"> Projects </button>
       <button class="md-button md-ink-ripple" type="button" ng-click="$ctrl.showAdvanced($event)"> Login </button>

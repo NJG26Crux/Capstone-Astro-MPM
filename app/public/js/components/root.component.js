@@ -16,9 +16,11 @@
     vm.$onInit = function() {
 
       $http.get('/api/users/firstName')
-        .then((firstName) => {
-          if (firstName) {
-            auth.firstName = 'Hello ' + firstName.data.firstName;
+        .then((user) => {
+          console.log('@ component.root get/firstname user: ', user.data[0]);
+          if (user.data[0]) {
+            auth.user = user.data[0]
+            console.log(auth.user)
           }
         })
         .catch((err) => {

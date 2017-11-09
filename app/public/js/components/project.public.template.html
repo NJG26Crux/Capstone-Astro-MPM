@@ -1,23 +1,21 @@
 <main class="wrapper">
   <div class="main">
-    <!-- <h1>Project Page</h1> -->
+    <h1>Public</h1>
 
     <div layout="row">
 
-      <div flex="10"></div> <!-- column 1  layout="row" class="layout-row" -->
+      <div flex="10"></div>
 
-    <div flex="30"> <!-- column 2 -->
-      <div layout="column"> <!--  class="layout-column" -->
-        <!-- <div>Top Left</div>
-        <div layout-align="end center">Bottom Left</div> -->
+    <div flex="30">
+      <div layout="column">
+
         <h3>Image</h3>
       </div>
     </div>
 
-    <div flex="50"> <!-- column 3 -->
+    <div flex="50">
       <div layout="column">
-        <!-- <div>Top Right</div>
-        <div layout-align="end center">Bottom Right</div> -->
+
         <h3>{{$ctrl.project.name}}</h3>
         <div>Created by: {{$ctrl.project.user_name}}</div>
         <div>Created on: {{$ctrl.project.created_at}}</div>
@@ -40,11 +38,9 @@
       </div>
     </div>
 
-    <div flex="10"></div> <!-- column 4 -->
+    <div flex="10"></div>
 
     </div>
 
   </div>
 </main>
-
-<!-- {{$ctrl.project}} -->

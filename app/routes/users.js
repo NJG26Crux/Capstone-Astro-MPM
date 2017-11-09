@@ -33,15 +33,17 @@ router.get('/api/users/firstName', authorize, (req, res, next) => {
     .where('id', userId)
     .then((user) => {
       if (user) {
-        return user[0].first_name
+        console.log('@ routes.users.firstName user: ', user);
+        // return user[0].first_name
+        res.send(user)
       }
     })
-    .then((firstName) => {
-
-      res.setHeader('Content-Type', 'application/json')
-      console.log('routes.users.get.firstName: ', firstName);
-      res.send({firstName: firstName});
-    })
+    // .then((firstName) => {
+    //
+    //   res.setHeader('Content-Type', 'application/json')
+    //   console.log('routes.users.get.firstName: ', firstName);
+    //   res.send({firstName: firstName});
+    // })
     .catch((err) => {
       next(err);
     });

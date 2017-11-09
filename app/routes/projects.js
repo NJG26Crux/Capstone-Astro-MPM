@@ -10,6 +10,7 @@ const router = express.Router();
 router.get('/api/projects', (req, res, next) => {
   console.log('@routes.projects');
   knex('projects')
+    // .innerJoin('proj_user', 'proj_user.proj_id', 'projects.id')
     .innerJoin('users', 'users.id', 'projects.admin_user_id')
     .then((result) => {
       console.log('routes.projects: ', result);
@@ -18,12 +19,12 @@ router.get('/api/projects', (req, res, next) => {
     .catch((err) => next(err))
 })
 
-router.get('/api/projects/:id', (req, res, next) => {
-  console.log('@routes.project/:id');
+router.get('/api/projects/:id', (req, res, next) => { // /contributors
+  console.log('@ routes.project/:id');
   console.log('id: ', req.params.id);
-  // const projectId = req.claim.id;
   knex('projects')
     .where('projects.id', req.params.id)
+    // .innerJoin('proj_user', 'proj_user.proj_id', 'projects.id')
     .innerJoin('users', 'users.id', 'projects.admin_user_id')
     .first()
     .then((project) => {
@@ -33,45 +34,22 @@ router.get('/api/projects/:id', (req, res, next) => {
     .catch((err) => next(err))
 })
 
-// router.post('/apt/projects', (req, res, next) => {
-//   console.log('@ routes.projects.post');
-//   const {
-//     name,
-//     object,
-//     admin_user_id,
-//     cells,
-//     cells_w,
-//     cells_h,
-//     uncom_cells,
-//     tel_ota,
-//     tel_obj,
-//     focal_length,
-//     focal_ratio,
-//     img_sensor,
-//     img_array_w,
-//     img_array_h,
-//     pix_sz,
-//     img_sz_w,
-//     img_sz_h,
-//     fov_w,
-//     fov_h,
-//     target_exp,
-//     total_exposures,
-//   } = req.body;
-//   console.log('req.body: ', req.body);
-//   knex('projects')
-//   .then((project) => {
-//     console.log('project: ', project);
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//     // res.send(false);
-//     next(err);
-//   });
-//
-// })
+router.get('/api/projects/contributors/:id', (req, res, next) => {
+  console.log('@ routes.projects/contributors/:id');
+  console.log('id: ', req.params.id);
+  knex('proj_user')
+    .select('users.*')
+    .innerJoin('users', 'users.id', 'proj_user.user_id')
+    .where('proj_user.proj_id', req.params.id)
+    // .first()
+    .then((contributors) => {
+      console.log('routes.projects.contributors: ', contributors);
+      res.send(contributors)
+    })
+    .catch((err) => next(err))
+})
 
-router.post('/api/projects', (req, res, next) => { // validate,
+router.post('/api/projects', validate, (req, res, next) => {
   console.log('@ routes.projects.post: ', req.body);
   knex('projects')
     .insert(params(req))
@@ -106,17 +84,37 @@ function params(req) {
   }
 }
 
-// function validate(req, res, next) {
-//   const errors = [];
-//   ['title', 'body', 'author', 'image_url'].forEach(field => {
-//     if (!req.body[field] || req.body[field].trim() === '') {
-//       errors.push({field: field, messages: ["cannot be blank"]})
-//     }
-//   })
-//   if (errors.length) return res.status(422).json({errors})
-//   next()
-// }
+function validate(req, res, next) {
+  const errors = [];
+  [
+    name,
+    object,
+    admin_user_id,
+    cells,
+    cells_w,
+    cells_h,
+    uncom_cells,
+    tel_ota,
+    tel_obj,
+    focal_length,
+    focal_ratio,
+    img_sensor,
+    img_array_w,
+    img_array_h,
+    pix_sz,
+    img_sz_w,
+    img_sz_h,
+    fov_w,
+    fov_h,
+    target_exp,
+    total_exposures,
+  ].forEach(field => {
+    if (!req.body[field] || req.body[field].trim() === '') {
+      errors.push({field: field, messages: ["cannot be blank"]})
+    }
+  })
+  if (errors.length) return res.status(422).json({errors})
+  next()
+}
 
 module.exports = router;
-
-// name, object, admin_user_id, cells, cells_w, cells_h, uncom_cells, tel_ota, tel_obj, focal_length, focal_ratio, img_sensor, img_array_w, img_array_h, pix_sz, img_sz_w, img_sz_h, fov_w, fov_h, target_exp, total_exposures,

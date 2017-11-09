@@ -5,9 +5,9 @@
     controller,
     templateUrl: '/js/components/projects.template.html'
   })
-  // controller.$inject = ['projects', '$scope', '$http'] // '$nutrition',
+  controller.$inject = ['projects', '$http', '$scope','$state', 'auth'] // '$nutrition', '$scope',
 
-  function controller(projects, $http, $scope, $state){ // $nutrition,
+  function controller(projects, $http, $scope, $state, auth){ // $nutrition,
     console.log('@ component.projects')
     const vm = this;
 
@@ -31,9 +31,24 @@
         })
     }
 
-    vm.showProject = function(projectId) {
+    vm.showProject = function(projectId, admin_user_id) {
       console.log('@ fun.showProj projectId: ', projectId);
-      $state.go('project', {id: projectId})
+
+      // $http.get('/api/projects/contributors/' + projectId)
+      //   .then(contributors => {
+      //     console.log(contributors.data);
+      //     vm.contributors = contributors.data;
+      //   })
+
+      console.log(auth.user.id, admin_user_id)
+
+      if (auth.user.id === admin_user_id) {
+        $state.go('projectAdmin', {id: projectId})
+      } else if (false) {
+
+      }else {
+        $state.go('project', {id: projectId})
+      }
     }
   }
 }());

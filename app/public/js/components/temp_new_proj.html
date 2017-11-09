@@ -301,3 +301,15 @@
 Copyright 2016 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
 -->
+
+const userId = req.claim.userId;
+knex('users')
+  .where('id', userId)
+  .then((user) => {
+    if (user) {
+      res.send(user[0])
+    }
+  })
+  .catch((err) => {
+    next(err);
+  });
