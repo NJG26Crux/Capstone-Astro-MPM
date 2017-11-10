@@ -30,7 +30,7 @@ exports.seed = function(knex) {
         updated_at: new Date('2016-06-29 14:26:16 UTC')
       },
       {
-        id: 2,
+        id: 3,
         first_name: 'Scott',
         last_name: 'Hurlow',
         email: 'scott.hurlow@galvanize.com',
@@ -38,10 +38,11 @@ exports.seed = function(knex) {
         admin: 'false',
         hashed_password:
         // 1234
-       '$$2a$12$w1HOqf3Ns/MrWd3unSeCTOp6NngwcPuNZeSMvUmmgDgAk.4pem25u',
+       '$2a$12$w1HOqf3Ns/MrWd3unSeCTOp6NngwcPuNZeSMvUmmgDgAk.4pem25u',
         created_at: new Date('2016-06-29 14:26:16 UTC'),
         updated_at: new Date('2016-06-29 14:26:16 UTC')
-      }]);
+      }
+    ]);
     })
     .then(() => {
       return knex.raw(

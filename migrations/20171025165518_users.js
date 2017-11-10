@@ -8,7 +8,7 @@ exports.up = function(knex) {
     table.string('email').unique().notNullable();
     table.string('user_name').notNullable();
     table.boolean('admin').notNullable();
-    table.specificType('hashed_password', 'char(60)').notNullable();
+    table.specificType('hashed_password', 'char(60)').notNullable(); 
     table.timestamps(true, true);
   });
 };
