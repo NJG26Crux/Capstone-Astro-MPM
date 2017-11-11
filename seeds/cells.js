@@ -5,8 +5,9 @@ exports.seed = function(knex) {
 
       return knex('cells').insert([{
         id: 1,
-        proj_id: 1,
-        user_id: 1,
+        // proj_id: 1,
+        // user_id: 2,
+        pu_id: 1,
         cell_num: 'C3',
         center_ref_ra: 983.20,
         center_ref_dec: -1343.00,
@@ -17,8 +18,9 @@ exports.seed = function(knex) {
       },
       {
         id: 2,
-        proj_id: 1,
-        user_id: 1,
+        // proj_id: 1,
+        // user_id: 2,
+        pu_id: 2,
         cell_num: 'A3',
         center_ref_ra: 923.20,
         center_ref_dec: -1323.00,
@@ -29,8 +31,9 @@ exports.seed = function(knex) {
       },
       {
         id: 3,
-        proj_id: 1,
-        user_id: 2,
+        // proj_id: 1,
+        // user_id: 2,
+        pu_id: 3,
         cell_num: 'B2',
         center_ref_ra: 983.20,
         center_ref_dec: -1343.00,

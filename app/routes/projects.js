@@ -80,34 +80,34 @@ function params(req) {
     fov_w: req.body.fov_w,
     fov_h: req.body.fov_h,
     target_exp: req.body.target_exp,
-    total_exposures: req.body.total_exposures,
+    total_exposures: req.body.total_exposures
   }
 }
 
 function validate(req, res, next) {
   const errors = [];
   [
-    name,
-    object,
-    admin_user_id,
-    cells,
-    cells_w,
-    cells_h,
-    uncom_cells,
-    tel_ota,
-    tel_obj,
-    focal_length,
-    focal_ratio,
-    img_sensor,
-    img_array_w,
-    img_array_h,
-    pix_sz,
-    img_sz_w,
-    img_sz_h,
-    fov_w,
-    fov_h,
-    target_exp,
-    total_exposures,
+    'name',
+    'object',
+    'admin_user_id',
+    'cells',
+    'cells_w',
+    'cells_h',
+    'uncom_cells',
+    'tel_ota',
+    'tel_obj',
+    'focal_length',
+    'focal_ratio',
+    'img_sensor',
+    'img_array_w',
+    'img_array_h',
+    'pix_sz',
+    'img_sz_w',
+    'img_sz_h',
+    'fov_w',
+    'fov_h',
+    'target_exp',
+    'total_exposures'
   ].forEach(field => {
     if (!req.body[field] || req.body[field].trim() === '') {
       errors.push({field: field, messages: ["cannot be blank"]})
@@ -121,6 +121,7 @@ router.get('/api/project/cells/:id', (req, res, next) => {
   console.log('@ routes.projects.cells.id:');
   knex('cells')
     .where('cells.proj_id', req.params.id)
+    .orderBy('cell_num')
     .innerJoin('users', 'users.id', 'cells.user_id')
     .then((cells) => {
       console.log('routes.projects.cells.id: ', cells);
@@ -142,16 +143,119 @@ router.get('/api/project/cells/:id', (req, res, next) => {
     .catch((err) => next(err))
 })
 
+router.post('/api/cells', (req, res, next) => {  // validateCell,
+  console.log('@ routes.projects.cells.post: ', req.body);
+  knex('users')
+    .where('email', req.body.ctbr_email)
+    .then((user) => {
+      console.log('@ routes.project.cells.post user: ', user[0].id);
+      req.body.user_id = user[0].id;
+      console.log('after user.id req.body: ', req.body);
+      // knex('proj_user')
+      //   .where('user_id', user[0].id)
+      //   .where('proj_id', req.body.proj_id)
+      //   .then((proj_user) =>{
+      //     console.log(proj_user.id);
+      //     if (!proj_user.id) {
+      //       .insert({
+      //         user_id: user[0].id,
+      //         proj_id: req.body.proj_id,
+      //       })
+      //     }
+      //   })
+    return knex('cells')
+      .insert(paramsCell(req))
+      .returning('*')
+    })
+    .then(cell => res.json(cell[0]))
+    .catch(err => next(err))
+  })
+
+function paramsCell(req) {
+  return {
+    proj_id: req.body.proj_id,
+    user_id: req.body.user_id,
+    cell_num: req.body.cell_num,
+    center_ref_ra: req.body.center_ref_ra,
+    center_ref_dec: req.body.center_ref_dec,
+    status: req.body.status,
+    url: req.body.url
+  }
+}
+
+function validateCell(req, res, next) {
+  console.log(req.body);
+  const errors = [];
+  [
+    'proj_id',
+    // user_id,
+    'cell_num',
+    'center_ref_ra',
+    'center_ref_dec',
+    'status',
+    'url'
+  ].forEach(field => {
+    if (!req.body[field] || req.body[field].trim() === '') {
+      errors.push({field: field, messages: ["cannot be blank"]})
+    }
+  })
+  if (errors.length) return res.status(422).json({errors})
+  next()
+}
+
+router.patch('/api/cells/:id', (req, res, next) => {
+  knex('cells')
+    .where('id', req.params.id)
+    .first()
+    .then((cell) => {
+      if (!cell) {
+        return next();
+      }
+
+      return knex('cells')
+        .update({
+          proj_id: req.body.proj_id,
+          user_id: req.body.user_id,
+          cell_num: req.body.cell_num,
+          center_ref_ra: req.body.center_ref_ra,
+          center_ref_dec: req.body.center_ref_dec,
+          status: req.body.status,
+          url: req.body.url
+        }, '*')
+        .where('id', req.params.id);
+    })
+    .then((cells) => {
+      res.send(cells[0]);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+router.delete('/cells/:id', (req, res, next) => {
+  let artist;
+
+  knex('cells')
+    .where('id', req.params.id)
+    .first()
+    .then((row) => {
+      if (!row) {
+        return next();
+      }
+
+      cell = row;
+
+      return knex('cells')
+        .del()
+        .where('id', req.params.id);
+    })
+    .then(() => {
+      delete cell.id;
+      res.send(cell);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 module.exports = router;
-
-var names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
-
-var countedNames = names.reduce(function (allNames, name) {
-  if (name in allNames) {
-    allNames[name]++;
-  }
-  else {
-    allNames[name] = 1;
-  }
-  return allNames;
-}, {});

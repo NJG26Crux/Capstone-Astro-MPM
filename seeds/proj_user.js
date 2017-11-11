@@ -17,6 +17,13 @@ exports.seed = function(knex) {
         proj_id: 1,
         created_at: new Date('2016-06-29 14:26:16 UTC'),
         updated_at: new Date('2016-06-29 14:26:16 UTC')
+      },
+      {
+        id: 3,
+        user_id: 3,
+        proj_id: 1,
+        created_at: new Date('2016-06-29 14:26:16 UTC'),
+        updated_at: new Date('2016-06-29 14:26:16 UTC')
       }]);
     })
     .then(() => {
