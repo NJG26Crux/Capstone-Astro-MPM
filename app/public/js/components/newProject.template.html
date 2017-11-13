@@ -286,6 +286,8 @@
                 </div>
 
                 <hr>
+                <div>FOV (w x h Degrees): {{$ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60}} {{$ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60}}</div> <!-- {{$ctrl.proj.img_sz_w}} {{$ctrl.proj.img_sz_h}} {{$ctrl.proj.focal_length}} -->
+                <hr>
 
                 <div>
                   <div class="aladinCont" layout="row" layout-align="center center">
@@ -297,8 +299,22 @@
                       <div layout="row" class="boarder3">layer 2
                         <aladin></aladin>
 
-                        <!-- <div layout="column">
-                          <form name="aladinForm" ng-submit="$ctrl.updateAladin()">
+                        <div flex="5" hide-xs="" hide-sm="">
+                          <!-- Spacer //-->
+                        </div>
+
+                        <div layout="column">
+
+                          <div flex="5" hide-xs="" hide-sm="">
+                            <!-- Spacer //-->
+                          </div>
+
+                          <form name="aladinForm" id="aladinForm">
+
+                            <md-input-container class="md-block" flex-gt-sm="">
+                              <label>Cat Name</label>
+                              <input name="catName" ng-model="$ctrl.aladin.catName"  minlength="1" maxlength="30" required="">
+                            </md-input-container>
 
                             <md-input-container class="md-block" flex-gt-sm="">
                               <label>FOV</label>
@@ -316,15 +332,17 @@
                             </md-input-container>
 
                             <div>
-                              <md-button type="submit">Submit</md-button>
+                              <md-button ng-click="$ctrl.updateAladin()">Submit</md-button>
                             </div>
 
                             <div>
-                              {{$ctrl.aladin}}
+                              <p>{{$ctrl.aladin}}</p>
+                              <p>Pristine: {{aladinForm.$pristine}}</p>
+                              <p>Errors: {{aladinForm.$error | json}}</p>
                             </div>
 
                           </form>
-                        </div> -->
+                        </div>
 
                       </div>
                     <!-- ************ ALADIN ************  class="inner" -->

@@ -21,9 +21,12 @@
         e.preventDefault()
         console.log('preventDefault @ aladin');
       })
-      aladinServ.aladin = A.aladin('#aladin-lite-div', {survey: "P/DSS2/color", fov:aladinServ.aladin.fov, target: "m31"}); //1.486
+      aladinServ.aladin = A.aladin('#aladin-lite-div', {survey: "P/DSS2/color", fov:1.486, target: "m31"}); //1.486 aladinServ.aladin.fov
     }
-    return {controller, link, template:`<div id="aladin-lite-div" style="width:{{$ctrl.aladin.width}}px;height:{{$ctrl.aladin.height}}px;"></div>`} //800 600
+
+
+    
+    return {controller, link, template:`<div id="aladin-lite-div" style="width:800px;height:600px;"></div>`} //800 600 {{$ctrl.aladin.width}} {{$ctrl.aladin.height}}
   }])
 
 }());

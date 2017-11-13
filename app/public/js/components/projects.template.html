@@ -98,6 +98,8 @@
                 <th md-column>Total Cells</th>
                 <th md-column>Uncommitted Cells</th>
                 <th md-column>Created On</th>
+                <th md-column>(project.id</th>
+                <th md-column>project.admin_user_id</th>
                 <th md-column></th>
               </tr>
             </thead>
@@ -109,6 +111,8 @@
                 <td md-cell>{{project.cells}} ({{project.cells_w}}x{{project.cells_h}})</td>
                 <td md-cell>{{project.uncom_cells}}</td>
                 <td md-cell>{{project.created_at}}</td>
+                <td md-cell>{{project.id}}</td>
+                <td md-cell>{{project.admin_user_id}}</td>
                 <td md-cell><a href="#" ng-click="$ctrl.showProject(project.id, project.admin_user_id)">view Details<a></td>
               </tr>
             </tbody>

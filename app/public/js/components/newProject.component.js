@@ -7,16 +7,12 @@
     templateUrl: '/js/components/newProject.template.html'
   })
 
-  function controller($http){
-    const vm = this
+  controller.$inject=['$http','aladinServ'];
+  function controller($http, aladinServ){
+    const vm = this;
     vm.showHints = true;
 
-    vm.proj = {
-      // name: "default Name"
-      // email: "",
-      // social: "123456789",
-      // phone: "N/A"
-    }
+    vm.proj = {};
 
     vm.addProject = function() {
       vm.proj.admin_user_id = 1; //***** This needs to be changed
@@ -30,6 +26,14 @@
           console.log('vm.proj: ', vm.proj);
           delete vm.proj
         })
+    }
+
+    vm.updateAladin = function() {
+      console.log('@ new.Proj.updateAladin.fun');
+      aladinServ.aladin.setFov(vm.aladin.fov) //<FoV-in-degrees>
+      aladinServ.aladin.gotoObject(vm.aladin.catName) //.gotoObject .animateTo
+      delete vm.aladin;
+      // vm.aladinForm.$setPristine();
     }
 
   }

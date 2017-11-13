@@ -156,8 +156,8 @@
 
     vm.addCtbr = function() {
       console.log($stateParams);
-      vm.ctbr.proj_id = parseInt($stateParams.id);
-      $http.post('/api/proj_user', vm.addCtbr)
+      vm.ctbr.proj_id = $stateParams.id;
+      $http.post('/api/proj_user', vm.ctbr)
         .then((addCtbr) => {
           console.log('addCtbr: ', addCtbr);
           delete vm.addCtbr;

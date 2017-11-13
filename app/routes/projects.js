@@ -10,8 +10,9 @@ const router = express.Router();
 router.get('/api/projects', (req, res, next) => {
   console.log('@routes.projects');
   knex('projects')
+    .select('projects.*') //, proj_users.id as proj_user_id, user.id as user_id
     // .innerJoin('proj_user', 'proj_user.proj_id', 'projects.id')
-    .innerJoin('users', 'users.id', 'projects.admin_user_id')
+    // .innerJoin('users', 'users.id', 'proj_user.user_id')
     .then((result) => {
       console.log('routes.projects: ', result);
       res.send(result)
@@ -262,9 +263,11 @@ router.delete('/api/cells/:id', (req, res, next) => {
 router.post('/api/proj_user/', validatePU, (req, res, next) => {
   console.log('@ router.projects.proj_user.post');
   knex('users')
-    .where ('email', req.body.ctrb_email)
+    .where ('email', req.body.email)
     .then((proj_user) => {
-      req.body.user_id = user.id;
+      console.log('proj_user: ', proj_user);
+      req.body.user_id = proj_user[0].id;
+      console.log('req.body: ', req.body);
       return knex('proj_user')
         .insert(paramsPU(req))
         .returning('*')
@@ -275,14 +278,14 @@ router.post('/api/proj_user/', validatePU, (req, res, next) => {
 
 function paramsPU(req) {
   return {
-    user_id: req.body.title,
-    proj_id: req.body.body
+    user_id: req.body.user_id,
+    proj_id: req.body.proj_id
   }
 }
 
 function validatePU(req, res, next) {
   const errors = [];
-  ['user_id', 'proj_id'].forEach(field => {
+  ['email', 'proj_id'].forEach(field => {
     if (!req.body[field] || req.body[field].trim() === '') {
       errors.push({field: field, messages: ["cannot be blank"]})
     }
