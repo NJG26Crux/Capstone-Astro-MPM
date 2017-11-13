@@ -20,96 +20,99 @@
           <div>Created by: {{$ctrl.project.user_name}}</div>
           <div>Created on: {{$ctrl.project.created_at}}</div>
           <hr>
-          <div>Telescope OTA: {{$ctrl.project.tel_ota}}</div>
-          <div>focal length: {{$ctrl.project.focal_length}} mm</div>
-          <div>focal ratio: f/ {{$ctrl.project.focal_ratio}}</div>
+          <div layout="row" class="boarder1">
+            <div layout="column">
+              <div>Telescope OTA: {{$ctrl.project.tel_ota}}</div>
+              <div>focal length: {{$ctrl.project.focal_length}} mm</div>
+              <div>focal ratio: f/ {{$ctrl.project.focal_ratio}}</div>
+            </div>
+            <div layout="row" layout-align="end end" flex>
+              <!-- <img src="./images/{{$ctrl.project.optDiag}}" width="200px" height="auto"> -->
+              <div>{{$ctrl.project.ota}}</div>
+              <img src="./images/{{$ctrl.project.otaImg}}" width="200px" height="auto">
+            </div>
+          </div>
           <hr>
-          <div>Camera: {{$ctrl.project.img_sensor}}</div>
-          <div>Sensor size: {{$ctrl.project.img_sz_w}} mm x {{$ctrl.project.img_sz_h}} mm</div>
-          <div>Sensor array: {{$ctrl.project.img_array_w}} x {{$ctrl.project.img_array_h}}</div>
-          <div>Pixel size: {{$ctrl.project.pix_sz}} &#956</div>
+          <div layout="row" class="boarder1">
+            <div layout="column">
+              <div>Camera: {{$ctrl.project.img_sensor}}</div>
+              <div>Sensor size: {{$ctrl.project.img_sz_w}} mm x {{$ctrl.project.img_sz_h}} mm</div>
+              <div>Sensor array: {{$ctrl.project.img_array_w}} x {{$ctrl.project.img_array_h}}</div>
+              <div>Pixel size: {{$ctrl.project.pix_sz}} &#956</div>
+            </div>
+            <div layout="row" layout-align="end end" flex>
+              <div>{{$ctrl.project.cam}}</div>
+              <img src="./images/{{$ctrl.project.camImg}}" width="200px" height="auto">
+            </div>
+          </div>
           <hr>
           <div>Field of view: {{($ctrl.project.fov_w / 60).toFixed(2)}} x {{($ctrl.project.fov_h / 60).toFixed(2)}} Arcminutes</div>
           <hr>
           <div>Total number of cells: {{$ctrl.project.cells}}</div>
           <div>Target exposure length: {{$ctrl.project.target_exp}} seconds</div>
           <div>Total number of exposures: {{$ctrl.project.total_exposures}}</div>
-          <hr>
+        </div>
+
+        <hr>
+        <div layout="row">
           <div>Contributors Contact Info:</div>
-          <div layout="row">
+          <th><button class="md-icon-button md-button md-ink-ripple" type="button" ng-click="$ctrl.showAddCtbr()" aria-label="add_ctbr"> <!--  ng-transclude="" -->
+              <md-icon class="material-icons">add_box</md-icon>
+              <div class="md-ripple-container"></div></button></th>
+        </div>
+        <div layout="row">
 
-            <div flex="10">
-            </div>
-
-            <div flex>
-              <div layout="column">
-                <div ng-repeat="contributor in $ctrl.contributors" flex>
-                  <div>{{contributor.first_name}}: {{contributor.email}} <i class="material-icons">mail</i></div>
-                  <!--  {{contributor.last_name}} User Name: {{contributor.user_name}} email: -->
-                </div>
-              </div>
-            </div>
-
+          <div flex="10">
           </div>
 
-          <hr>
-          <!-- TABLE -->
-
-          <md-toolbar class="md-table-toolbar md-default">
-            <div class="md-toolbar-tools">
-              <span>Cells</span>
-            </div>
-          </md-toolbar>
-
-      <!-- exact table from live demo --> <!--  md-order-by="nameToLower" </span> --> <!--  md-order-by="calories.value"  md-numeric -->
-      <table md-table md-row-select multiple ng-model="selected" md-progress="promise">
-        <thead md-head md-order="query.order" md-on-reorder="getDesserts">
-          <tr md-row>
-            <th md-column md-order-by="nameToLower"><span>Dessert (100g serving)</span></th>
-            <th md-column md-numeric md-order-by="calories.value"><span>Calories</span></th>
-
-          <md-table-container>
-            <table md-table md-row-select multiple ng-model="$ctrl.selected" md-progress="promise">
-              <thead md-head md-order="query.order" md-on-reorder="getProjects">
-                <tr md-row>
-                  <th md-column>Cell</th>
-                  <th md-column>Center Position</th>
-                  <th md-column>By</th>
-                  <th md-column>Status</th>
-                  <th md-column>Data</th>
-        <!-- ***************** Add Cell Button ***************** -->
-                  <th><button class="md-icon-button md-button md-ink-ripple" type="button" ng-click="$ctrl.addCell()" aria-label="add_cell"> <!--  ng-transclude="" -->
-                    <md-icon class="material-icons">add_box</md-icon>
-                    <div class="md-ripple-container"></div></button></th>
-        <!-- ***************** Add Cell Button ***************** -->
-
-                </tr>
-              </thead>
-              <tbody md-body>
-                <tr md-row md-select="dessert" md-select-id="name" md-auto-select ng-repeat="cell in $ctrl.cells">
-                  <td md-cell>{{cell.cell_num}}</td>
-                  <td md-cell>{{cell.center_ref_ra}} RA, {{cell.center_ref_dec}} dec</td>
-                  <td md-cell>{{cell.first_name}}</td>
-                  <td md-cell>{{cell.status}}</td>
-                  <td md-cell><a href="{{cell.url}}">{{cell.url}}</a></td>
-                  <td><i ng-click="createCell()" class="material-icons">create</i><i ng-click="deleteCell()" class="material-icons">delete_forever</i></td>
-                </tr>
-              </tbody>
-            </table>
-          </md-table-container>
-
-          <!-- TABLE -->
-
-          <!-- <div ng-repeat="cell in $ctrl.cells">
-            <div layout="collumn">
-              <div layout="row">
-                <div>{{cell.cell_num}} ({{cell.center_ref_ra}} {{cell.center_ref_dec}}) Contributed by: {{cell.first_name}} status: {{cell.status}} link: {{cell.url}} &nbsp</div>
-                <a href="#"> edit </a>
+          <div flex>
+            <div layout="column">
+              <div ng-repeat="contributor in $ctrl.contributors" flex>
+                <div>{{contributor.first_name}}: {{contributor.email}} <i class="material-icons">mail</i><i ng-click="deleteCtbr()" class="material-icons">delete_forever</i></div>
               </div>
             </div>
-          </div> -->
+          </div>
 
         </div>
+
+        <hr>
+        <!-- TABLE -->
+
+        <md-toolbar class="md-table-toolbar md-default">
+          <div class="md-toolbar-tools">
+            <span>Cells</span>
+          </div>
+        </md-toolbar>
+
+        <md-table-container>
+          <table md-table md-row-select multiple ng-model="$ctrl.selected" md-progress="promise">
+            <thead md-head md-order="query.order" md-on-reorder="getProjects">
+              <tr md-row>
+                <th md-column>Cell</th>
+                <th md-column>Center Position</th>
+                <th md-column>By</th>
+                <th md-column>Status</th>
+                <th md-column>Data</th>
+                <!-- ***************** Add Cell Button ***************** -->
+                <th><button class="md-icon-button md-button md-ink-ripple" type="button" ng-click="$ctrl.showAdvanced($event)" aria-label="add_cell"> <!--  ng-transclude="" -->
+                    <md-icon class="material-icons">add_box</md-icon>
+                    <div class="md-ripple-container"></div></button></th>
+                <!-- ***************** Add Cell Button ***************** -->
+              </tr>
+            </thead>
+            <tbody md-body>
+              <tr md-row md-select="dessert" md-select-id="name" md-auto-select ng-repeat="cell in $ctrl.cells">
+                <td md-cell>{{cell.cell_num}}</td>
+                <td md-cell>{{cell.center_ref_ra}} RA, {{cell.center_ref_dec}} dec</td>
+                <td md-cell>{{cell.first_name}}</td>
+                <td md-cell>{{cell.status}}</td>
+                <td md-cell><a href="{{cell.url}}">{{cell.url}}</a></td>
+                <td><i ng-click="createCell()" class="material-icons">create</i><i ng-click="deleteCell()" class="material-icons">delete_forever</i></td>
+              </tr>
+            </tbody>
+          </table>
+        </md-table-container>
+
       </div>
 
       <div flex="10"></div>
@@ -117,70 +120,5 @@
     </div>
 
   </div>
-  <!-- *********************** Add Cell Dialog ********************** -->
-  <md-dialog add-cell-dialog="" role="dialog" tabindex="-1" aria-describedby="dialog_27" class="md-transition-in" style="" aria-label="Add Cell ...">
-  <md-dialog-content class="md-dialog-content" id="dialog_27">
 
-    <h2 class="md-title">Add Cell</h2>
-
-    <!-- ngIf: item.form.$submitted && item.form.$invalid -->
-
-    <form name="cell.form" ng-submit="ctrl.addCell()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max" style="">
-      <div layout="row" class="input-row layout-row">
-
-        <md-input-container flex="" class="flex">
-          <label for="input_19">Cell Location</label>
-          <input name="cell_num" ng-model="$ctrl.cell.cell_num" required="" class="ng-pristine ng-untouched md-input ng-invalid ng-invalid-required" id="input_19" aria-required="true" aria-invalid="true" style="" ng-trim="false"> <!--  md-maxlength="20" -->
-        <div class="md-errors-spacer"></div></md-input-container> <!-- <div class="md-char-counter">0/20</div> -->
-
-        <md-input-container flex="" class="flex">
-          <label for="input_20">Contributor Email</label>
-          <input name="ctbr_email" type="email" ng-model="$ctrl.cell.ctbr_email" required="" class="ng-pristine ng-untouched md-input ng-valid-min ng-valid-max ng-invalid ng-invalid-required" id="input_20" aria-required="true" aria-invalid="true" style="">
-        <div class="md-errors-spacer"></div></md-input-container>
-
-      </div>
-
-      <!-- <h3 class="md-subhead">Macronutrients</h3> -->
-
-      <div layout="row" class="input-row layout-row">
-
-        <md-input-container flex="" class="flex">
-          <label for="input_21">Center RA (Arcminutes)</label>
-          <input name="center_ref_ra" type="number" min="0" max="1440" ng-model="$ctrl.cell.center_ref_ra" required="" class="ng-pristine ng-untouched md-input ng-valid-min ng-valid-max ng-invalid ng-invalid-required" id="input_21" aria-required="true" aria-invalid="true" style="">
-        <div class="md-errors-spacer"></div></md-input-container>
-
-        <md-input-container flex="" class="flex">
-          <label for="input_22">Center DEC (Arcminutes)</label>
-          <input name="center_ref_dec" type="number" min="-5400" max="5400" ng-model="$ctrl.cell.center_ref_dec" required="" class="ng-pristine ng-untouched md-input ng-valid-min ng-valid-max ng-invalid ng-invalid-required" id="input_22" aria-required="true" aria-invalid="true" style="">
-        <div class="md-errors-spacer"></div></md-input-container>
-
-      </div>
-
-      <!-- <h3 class="md-subhead">Micronutrients</h3> -->
-
-      <div layout="row" class="input-row layout-row">
-
-        <md-input-container flex="" class="flex">
-          <label for="input_24">Status</label>
-          <input name="status" ng-model="$ctrl.cell.status" required="" class="ng-pristine ng-untouched md-input ng-valid-min ng-valid-max ng-invalid ng-invalid-required" id="input_24" aria-required="true" aria-invalid="true" style="">
-        <div class="md-errors-spacer"></div></md-input-container>
-
-        <md-input-container flex="" class="flex">
-          <label for="input_25">URL</label>
-          <input name="url" type="url" ng-model="$ctrl.cell.url" required="" class="ng-pristine ng-untouched md-input ng-valid-min ng-valid-max ng-invalid ng-invalid-required" id="input_25" aria-required="true" aria-invalid="true" style="">
-        <div class="md-errors-spacer"></div></md-input-container>
-
-      </div>
-
-    </form>
-
-  </md-dialog-content>
-
-  <div class="md-actions">
-    <button class="md-primary md-button md-ink-ripple" type="button" ng-click="$ctrl.addCell()" ng-disabled="item.form.$invalid" aria-label="Add Cell" aria-disabled="true" disabled="disabled"><span>Add Cell</span></button> <!--  ng-transclude="" -->
-    <button class="md-primary md-button md-ink-ripple" type="button" ng-click="$ctrl.cancel()" aria-label="Cancel"><span>Cancel</span></button> <!--  ng-transclude="" -->
-  </div>
-
-<div class="md-dialog-focus-trap" tabindex="0"></div></md-dialog>
-  <!-- *********************** Add Cell Dialog ********************** -->
 </main>

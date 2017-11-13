@@ -1,0 +1,66 @@
+<!-- *********************** Add Cell Dialog ********************** -->
+<md-dialog add-cell-dialog="" role="dialog" tabindex="-1" aria-describedby="dialog_27" class="md-transition-in" style="" aria-label="Add Cell ...">
+<md-dialog-content class="md-dialog-content" id="dialog_27">
+
+  <h2 class="md-title">Add Cell</h2>
+
+  <!-- ngIf: item.form.$submitted && item.form.$invalid -->
+
+  <form name="cell.form" ng-submit="ctrl.addCell()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max" style="">
+    <div layout="row" class="input-row layout-row">
+
+      <md-input-container flex="" class="flex">
+        <label for="input_19">Cell Location</label>
+        <input name="cell_num" ng-model="$ctrl.cell.cell_num" required="" class="ng-pristine ng-untouched md-input ng-invalid ng-invalid-required" id="input_19" aria-required="true" aria-invalid="true" style="" ng-trim="false"> <!--  md-maxlength="20" -->
+      <div class="md-errors-spacer"></div></md-input-container> <!-- <div class="md-char-counter">0/20</div> -->
+
+      <md-input-container flex="" class="flex">
+        <label for="input_20">Contributor Email</label>
+        <input name="ctbr_email" type="email" ng-model="$ctrl.cell.ctbr_email" required="" class="ng-pristine ng-untouched md-input ng-valid-min ng-valid-max ng-invalid ng-invalid-required" id="input_20" aria-required="true" aria-invalid="true" style="">
+      <div class="md-errors-spacer"></div></md-input-container>
+
+    </div>
+
+    <!-- <h3 class="md-subhead">Macronutrients</h3> -->
+
+    <div layout="row" class="input-row layout-row">
+
+      <md-input-container flex="" class="flex">
+        <label for="input_21">Center RA (Arcminutes)</label>
+        <input name="center_ref_ra" type="number" min="0" max="1440" ng-model="$ctrl.cell.center_ref_ra" required="" class="ng-pristine ng-untouched md-input ng-valid-min ng-valid-max ng-invalid ng-invalid-required" id="input_21" aria-required="true" aria-invalid="true" style="">
+      <div class="md-errors-spacer"></div></md-input-container>
+
+      <md-input-container flex="" class="flex">
+        <label for="input_22">Center DEC (Arcminutes)</label>
+        <input name="center_ref_dec" type="number" min="-5400" max="5400" ng-model="$ctrl.cell.center_ref_dec" required="" class="ng-pristine ng-untouched md-input ng-valid-min ng-valid-max ng-invalid ng-invalid-required" id="input_22" aria-required="true" aria-invalid="true" style="">
+      <div class="md-errors-spacer"></div></md-input-container>
+
+    </div>
+
+    <!-- <h3 class="md-subhead">Micronutrients</h3> -->
+
+    <div layout="row" class="input-row layout-row">
+
+      <md-input-container flex="" class="flex">
+        <label for="input_24">Status</label>
+        <input name="status" ng-model="$ctrl.cell.status" required="" class="ng-pristine ng-untouched md-input ng-valid-min ng-valid-max ng-invalid ng-invalid-required" id="input_24" aria-required="true" aria-invalid="true" style="">
+      <div class="md-errors-spacer"></div></md-input-container>
+
+      <md-input-container flex="" class="flex">
+        <label for="input_25">URL</label>
+        <input name="url" type="url" ng-model="$ctrl.cell.url" required="" class="ng-pristine ng-untouched md-input ng-valid-min ng-valid-max ng-invalid ng-invalid-required" id="input_25" aria-required="true" aria-invalid="true" style="">
+      <div class="md-errors-spacer"></div></md-input-container>
+
+    </div>
+
+  </form>
+
+</md-dialog-content>
+
+<div class="md-actions">
+  <button class="md-primary md-button md-ink-ripple" type="button" ng-click="$ctrl.addCell()" ng-disabled="item.form.$invalid" aria-label="Add Cell" aria-disabled="true" disabled="disabled"><span>Add Cell</span></button> <!--  ng-transclude="" -->
+  <button class="md-primary md-button md-ink-ripple" type="button" ng-click="$ctrl.close()" aria-label="Cancel"><span>Cancel</span></button> <!--  ng-transclude="" -->
+</div>
+
+<div class="md-dialog-focus-trap" tabindex="0"></div></md-dialog>
+<!-- *********************** Add Cell Dialog ********************** -->

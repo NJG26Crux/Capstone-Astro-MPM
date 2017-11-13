@@ -120,9 +120,10 @@ function validate(req, res, next) {
 router.get('/api/project/cells/:id', (req, res, next) => {
   console.log('@ routes.projects.cells.id:');
   knex('cells')
-    .where('cells.proj_id', req.params.id)
+    .innerJoin('proj_user', 'proj_user.id', 'cells.pu_id')
+    .innerJoin('users', 'users.id', 'proj_user.user_id')
+    .where('proj_user.proj_id', req.params.id)
     .orderBy('cell_num')
-    .innerJoin('users', 'users.id', 'cells.user_id')
     .then((cells) => {
       console.log('routes.projects.cells.id: ', cells);
 
@@ -232,7 +233,7 @@ router.patch('/api/cells/:id', (req, res, next) => {
     });
 });
 
-router.delete('/cells/:id', (req, res, next) => {
+router.delete('/api/cells/:id', (req, res, next) => {
   let artist;
 
   knex('cells')
@@ -257,5 +258,39 @@ router.delete('/cells/:id', (req, res, next) => {
       next(err);
     });
 });
+
+router.post('/api/proj_user/', validatePU, (req, res, next) => {
+  console.log('@ router.projects.proj_user.post');
+  knex('users')
+    .where ('email', req.body.ctrb_email)
+    .then((proj_user) => {
+      req.body.user_id = user.id;
+      return knex('proj_user')
+        .insert(paramsPU(req))
+        .returning('*')
+    })
+    .then(proj_user => res.json(proj_user[0]))
+    .catch(err => next(err))
+})
+
+function paramsPU(req) {
+  return {
+    user_id: req.body.title,
+    proj_id: req.body.body
+  }
+}
+
+function validatePU(req, res, next) {
+  const errors = [];
+  ['user_id', 'proj_id'].forEach(field => {
+    if (!req.body[field] || req.body[field].trim() === '') {
+      errors.push({field: field, messages: ["cannot be blank"]})
+    }
+  })
+  if (errors.length) return res.status(422).json({errors})
+  next()
+}
+
+// deleteCtbr()
 
 module.exports = router;

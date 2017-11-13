@@ -90,6 +90,50 @@
                 </div>
                 <div layout-gt-sm="row">
 
+                  <md-input-container  layout-gt-sm="row" class="md-block" flex-gt-sm="">
+
+                    <!-- <form ng-submit="submit()" ng-controller="AppCtrl" ng-cloak> -->
+                      <p>Camera Type: <span class="radioValue">{{ $ctrl.proj.cam }}</span> </p>
+
+                      <md-radio-group ng-model="$ctrl.proj.cam">
+
+                        <md-radio-button value="DSLR" class="md-primary"> DSLR </md-radio-button>
+                        <md-radio-button value="cooled DSLR"> cooled DSLR </md-radio-button>
+                        <md-radio-button value="CCD Monochrome"> CCD Monochrome </md-radio-button>
+                        <md-radio-button value="CCD Color"> CCD Color </md-radio-button>
+                        <md-radio-button value="CMOS Monochrome"> CMOS Monochrome </md-radio-button>
+                        <md-radio-button value="CMOS Color"> CMOS Color </md-radio-button>
+
+                      </md-radio-group>
+                    <!-- </form> -->
+
+                  </md-input-container>
+
+                  <div flex="5" hide-xs="" hide-sm="">
+                    <!-- Spacer // -->
+                  </div>
+
+                  <md-input-container  layout-gt-sm="row" class="md-block" flex-gt-sm="">
+
+                    <!-- <form ng-submit="submit()" ng-controller="AppCtrl" ng-cloak> -->
+                      <p>Telescope Type: <span class="radioValue">{{ $ctrl.proj.ota }}</span> </p>
+
+                      <md-radio-group ng-model="$ctrl.proj.ota">
+
+                        <md-radio-button value="Refractor" class="md-primary"> Refractor </md-radio-button>
+                        <md-radio-button value="Reflector"> Reflector </md-radio-button>
+                        <md-radio-button value="Schmidt-Cassigrain"> Schmidt-Cassigrain </md-radio-button>
+                        <md-radio-button value="Ritchey-Chrétiens"> Ritchey-Chrétiens </md-radio-button>
+                        <md-radio-button value="Dall-Kirkham"> Dall-Kirkham </md-radio-button>
+
+                      </md-radio-group>
+                    <!-- </form> -->
+
+                  </md-input-container>
+
+                </div>
+                <div layout-gt-sm="row">
+
                   <md-input-container class="md-block" flex-gt-sm="">
                     <label>Sensor size (w in mm)</label>
                     <input name="img_sz_w" ng-model="$ctrl.proj.img_sz_w" minlength="2" maxlength="5">
@@ -241,11 +285,54 @@
 
                 </div>
 
-                <div layout="row" layout-align="center center">
-                  <!-- ************ ALADIN ************ -->
-                  <aladin></aladin>
-                  <!-- ************ ALADIN ************ -->
+                <hr>
+
+                <div>
+                  <div class="aladinCont" layout="row" layout-align="center center">
+                    <div  layout="row" layout-align="center center">
+                    <!-- ************ ALADIN ************ <section>  class="inner"-->
+
+                      <div id="screwAladin" class="aladinCont inner boarder2">layer 1</div>
+
+                      <div layout="row" class="boarder3">layer 2
+                        <aladin></aladin>
+
+                        <!-- <div layout="column">
+                          <form name="aladinForm" ng-submit="$ctrl.updateAladin()">
+
+                            <md-input-container class="md-block" flex-gt-sm="">
+                              <label>FOV</label>
+                              <input name="fov" ng-model="$ctrl.aladin.fov"  minlength="1" maxlength="6" required="">
+                            </md-input-container>
+
+                            <md-input-container class="md-block" flex-gt-sm="">
+                              <label>Width</label>
+                              <input name="width" ng-model="$ctrl.aladin.width"  minlength="1" maxlength="6" required="">
+                            </md-input-container>
+
+                            <md-input-container class="md-block" flex-gt-sm="">
+                              <label>height</label>
+                              <input name="height" ng-model="$ctrl.aladin.height"  minlength="1" maxlength="6" required="">
+                            </md-input-container>
+
+                            <div>
+                              <md-button type="submit">Submit</md-button>
+                            </div>
+
+                            <div>
+                              {{$ctrl.aladin}}
+                            </div>
+
+                          </form>
+                        </div> -->
+
+                      </div>
+                    <!-- ************ ALADIN ************  class="inner" -->
+                    </div>
+                  </div>
                 </div>
+
+                <hr>
 
                 <div layout-gt-sm="row">
 

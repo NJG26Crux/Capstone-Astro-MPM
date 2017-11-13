@@ -5,8 +5,9 @@
     .service('aladinServ', function () {
       const vm = this;
 
-      vm.width = 400;
-      vm.height = 400;
+      // vm.width = 400;
+      // vm.height = 400;
+
     });
 
 }());

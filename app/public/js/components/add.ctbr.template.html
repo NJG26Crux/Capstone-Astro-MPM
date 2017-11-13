@@ -1,0 +1,29 @@
+<!-- *********************** Add CTRB Dialog ********************** -->
+<md-dialog add-ctbr-dialog="" role="dialog" tabindex="-1" aria-describedby="dialog_27" class="md-transition-in" style="" aria-label="Add Contributor ...">
+<md-dialog-content class="md-dialog-content" id="dialog_27">
+
+  <h2 class="md-title">Add Contributor</h2>
+
+  <!-- ngIf: item.form.$submitted && item.form.$invalid -->
+
+  <form name="ctbr.form" ng-submit="ctrl.addCtbr()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max" style="">
+    <div layout="row" class="input-row layout-row">
+
+      <md-input-container flex="" class="flex">
+        <label for="input_26">Contributor Email</label>
+        <input name="ctbr_email" ng-model="$ctrl.ctbr.email" required="" class="ng-pristine ng-untouched md-input ng-invalid ng-invalid-required" id="input_26" aria-required="true" aria-invalid="true" style="" ng-trim="false"> <!--  md-maxlength="20" -->
+      <div class="md-errors-spacer"></div></md-input-container> <!-- <div class="md-char-counter">0/20</div> -->
+
+    </div>
+
+  </form>
+
+<div class="md-dialog-actions">
+  <button class="md-primary md-button md-ink-ripple" type="button" ng-click="$ctrl.addCtbr()" ng-disabled="item.form.$invalid" aria-label="Add Contributor" aria-disabled="true" disabled="disabled"><span>Add Contributor</span></button> <!--  ng-transclude="" -->
+  <button class="md-primary md-button md-ink-ripple" type="button" ng-click="$ctrl.closeCtbr()" aria-label="Cancel"><span>Cancel</span></button> <!--  ng-transclude="" -->
+</div>
+
+</md-dialog-content>
+
+<div class="md-dialog-focus-trap" tabindex="0"></div></md-dialog>
+<!-- *********************** Add Cell Dialog ********************** -->
