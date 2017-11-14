@@ -16,25 +16,41 @@
     <div flex="50">
       <div layout="column">
 
-        <h3>{{$ctrl.project.name}}</h3>
+        <h3>{{$ctrl.project.name}} ({{$ctrl.project.object}})</h3>
         <div>Created by: {{$ctrl.project.user_name}}</div>
         <div>Created on: {{$ctrl.project.created_at}}</div>
-        <div>Telescope OTA: {{$ctrl.project.tel_ota}}</div>
-        <div>focal length: {{$ctrl.project.focal_length}} mm</div>
-        <div>focal ratio: f/ {{$ctrl.project.focal_ratio}}</div>
         <hr>
-        <div>Camera: {{$ctrl.project.img_sensor}}</div>
-        <div>Sensor size: {{$ctrl.project.img_sz_w}} mm x {{$ctrl.project.img_sz_h}} mm</div>
-        <div>Sensor array: {{$ctrl.project.img_array_w}} x {{$ctrl.project.img_array_h}}</div>
-        <div>Pixel size: {{$ctrl.project.pix_sz}} &#956</div>
+        <div layout="row" class="boarder1">
+          <div layout="column">
+            <div>Telescope OTA: {{$ctrl.project.tel_ota}}</div>
+            <div>focal length: {{$ctrl.project.focal_length}} mm</div>
+            <div>focal ratio: f/ {{$ctrl.project.focal_ratio}}</div>
+          </div>
+          <div layout="row" layout-align="end end" flex>
+            <!-- <img src="./images/{{$ctrl.project.optDiag}}" width="200px" height="auto"> -->
+            <div>{{$ctrl.project.ota}}</div>
+            <img src="./images/{{$ctrl.project.otaImg}}" width="200px" height="auto">
+          </div>
+        </div>
+        <hr>
+        <div layout="row" class="boarder1">
+          <div layout="column">
+            <div>Camera: {{$ctrl.project.img_sensor}}</div>
+            <div>Sensor size: {{$ctrl.project.img_sz_w}} mm x {{$ctrl.project.img_sz_h}} mm</div>
+            <div>Sensor array: {{$ctrl.project.img_array_w}} x {{$ctrl.project.img_array_h}}</div>
+            <div>Pixel size: {{$ctrl.project.pix_sz}} &#956</div>
+          </div>
+          <div layout="row" layout-align="end end" flex>
+            <div>{{$ctrl.project.cam}}</div>
+            <img src="./images/{{$ctrl.project.camImg}}" width="200px" height="auto">
+          </div>
+        </div>
         <hr>
         <div>Field of view: {{($ctrl.project.fov_w / 60).toFixed(2)}} x {{($ctrl.project.fov_h / 60).toFixed(2)}} Arcminutes</div>
         <hr>
         <div>Total number of cells: {{$ctrl.project.cells}}</div>
         <div>Target exposure length: {{$ctrl.project.target_exp}} seconds</div>
         <div>Total number of exposures: {{$ctrl.project.total_exposures}}</div>
-        <hr>
-        <div>Contributors: TBD</div>
       </div>
     </div>
 

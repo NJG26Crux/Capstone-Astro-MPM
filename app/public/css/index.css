@@ -18,6 +18,10 @@ footer {
   padding-bottom: 5px;
 }
 
+.bottomTenPadding {
+  padding-bottom: 20px;
+}
+
 .Site {
   display: flex;
   min-height: 100vh;
@@ -43,9 +47,10 @@ footer {
 }
 
 th, td {
-    padding: 10px;
-    text-align: center;
+  padding: 10px;
+  text-align: center;
 }
+
 
 /*.animate-if.ng-enter,
 .animate-if.ng-leave {
@@ -64,6 +69,7 @@ th, td {
   opacity: 1;
 }*/
 
+
 /*.aladin-zoomControl {
   display: none;
 }*/
@@ -72,26 +78,17 @@ th, td {
   border-style: double;
 }
 
-.boarder2 {
-  border-style: solid;
-    border-color: red;
-    margin: 10px;
-}
-
 .boarder3 {
   border-style: solid;
-    border-color: blue;
-    padding: 10px;
+  border-color: blue;
+  width: 100%;
 }
 
-.aladin-fullscreenControl,
-.aladin-zoomControl,
+.aladin-fullscreenControl, .aladin-zoomControl,
 /*.zoomMinus,
 .zoomPlus,*/
-.aladin-logo,
-.aladin-location,
-.aladin-layersControl-container,
-.aladin-gotoControl-container {
+
+.aladin-logo, .aladin-location, .aladin-layersControl-container, .aladin-gotoControl-container {
   display: none;
 }
 
@@ -101,6 +98,15 @@ th, td {
 }
 
 .aladinCont {
-  height: 650px;
-  width: 840px;
+  height: 100%px;
+  width: 100%;
+}
+
+.mouseBlock {
+  height: 420px;
+  width: 645px;
+}
+
+.alignRight {
+  align-content: flex-end;
 }
