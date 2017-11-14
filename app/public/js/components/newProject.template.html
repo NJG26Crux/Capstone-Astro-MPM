@@ -311,7 +311,7 @@
                 </div> -->
 
                 <hr>
-                <div>FOV (w x h Degrees): {{$ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60}} {{$ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60}} Aladin Image 600px Wide {{600 / ($ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60)}}px High</div> <!-- {{$ctrl.proj.img_sz_w}} {{$ctrl.proj.img_sz_h}} {{$ctrl.proj.focal_length}} -->
+                <div>FOV (w x h Degrees): {{$ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60 * .8}} {{$ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60 * .8}} Aladin Image 600px Wide {{600 / ($ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60)}}px High</div> <!-- {{$ctrl.proj.img_sz_w}} {{$ctrl.proj.img_sz_h}} {{$ctrl.proj.focal_length}} -->
                 <div>Aladin Height: {{600 / ($ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.aladin.row / $ctrl.aladin.col)}}</div>
                 <hr>
 
@@ -366,7 +366,12 @@
 
                               <md-input-container class="md-block"> <!--  flex-gt-sm="" -->
                                 <label>Cat Name</label>
-                                <input name="catName" ng-model="$ctrl.aladin.catName"  minlength="1" maxlength="30" required="">
+                                <input name="catName" ng-model="$ctrl.aladin.catName"  minlength="1" maxlength="30"> <!--  required="" -->
+                              </md-input-container>
+
+                              <md-input-container class="md-block"> <!--  flex-gt-sm="" -->
+                                <label>(RA, Dec)</label>
+                                <input name="RaDec" ng-model="$ctrl.aladin.RaDec"  minlength="1" maxlength="30"> <!--  required="" -->
                               </md-input-container>
 
                               <!-- <md-input-container class="md-block">

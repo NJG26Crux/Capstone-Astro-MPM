@@ -50,7 +50,7 @@ router.get('/api/projects/contributors/:id', (req, res, next) => {
     .catch((err) => next(err))
 })
 
-router.post('/api/projects', validate, (req, res, next) => {
+router.post('/api/projects', (req, res, next) => {  //validate,
   console.log('@ routes.projects.post: ', req.body);
   knex('projects')
     .insert(params(req))
@@ -145,8 +145,8 @@ router.get('/api/project/cells/:id', (req, res, next) => {
     .catch((err) => next(err))
 })
 
-router.post('/api/cells', (req, res, next) => {  // validateCell,
-  console.log('@ routes.projects.cells.post: ', req.body);
+router.post('/api/cell', (req, res, next) => {  // validateCell,
+  console.log('@ routes.projects.cell.post: ', req.body);
   knex('users')
     .where('email', req.body.ctbr_email)
     .then((user) => {
@@ -165,7 +165,7 @@ router.post('/api/cells', (req, res, next) => {  // validateCell,
       //       })
       //     }
       //   })
-    return knex('cells')
+    return knex('cell')
       .insert(paramsCell(req))
       .returning('*')
     })
@@ -204,6 +204,43 @@ function validateCell(req, res, next) {
   if (errors.length) return res.status(422).json({errors})
   next()
 }
+
+// ********************** newCelss on createProj ***********************
+router.post('/api/projects/:id/cells', validateCells, (req, res, next) => {
+  console.log('@ routes.projects.cells.post: ', req.body);
+    knex('cells')
+      .insert(paramsCell(req))
+      .returning('*')
+    .then(cell => res.json(cell[0]))
+    .catch(err => next(err))
+  })
+
+function paramsCells(req) {
+  return {
+    proj_id: req.body.proj_id,
+    cell_num: req.body.cell_num,
+    center_ref_ra: req.body.center_ref_ra,
+    center_ref_dec: req.body.center_ref_dec
+  }
+}
+
+function validateCells(req, res, next) {
+  console.log('validateCells: ', req.body);
+  const errors = [];
+  [
+    'proj_id',
+    'cell_num',
+    'center_ref_ra',
+    'center_ref_dec'
+  ].forEach(field => {
+    if (!req.body[field] || req.body[field].trim() === '') {
+      errors.push({field: field, messages: ["cannot be blank"]})
+    }
+  })
+  if (errors.length) return res.status(422).json({errors})
+  next()
+}
+// ********************** newCelss on createProj ***********************
 
 router.patch('/api/cells/:id', (req, res, next) => {
   knex('cells')

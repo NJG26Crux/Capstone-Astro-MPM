@@ -38,12 +38,14 @@ router.get('/api/users/firstName', authorize, (req, res, next) => {
         res.send(user)
       }
     })
+    //****************************
     // .then((firstName) => {
     //
     //   res.setHeader('Content-Type', 'application/json')
     //   console.log('routes.users.get.firstName: ', firstName);
     //   res.send({firstName: firstName});
     // })
+    //***************************
     .catch((err) => {
       next(err);
     });

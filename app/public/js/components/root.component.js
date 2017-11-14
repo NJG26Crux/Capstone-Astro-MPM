@@ -5,9 +5,9 @@
     controller,
     templateUrl: 'js/components/root.template.html'
   })
-  controller.$inject = ['$mdDialog', '$http', 'auth']
+  controller.$inject = ['$mdDialog', '$http', 'auth', '$state']
 
-  function controller($mdDialog, $http, auth) {
+  function controller($mdDialog, $http, auth, $state) {
     const vm = this;
 
 
@@ -19,7 +19,10 @@
         .then((user) => {
           console.log('@ component.root get/firstname user: ', user.data[0]);
           if (user.data[0]) {
-            auth.user = user.data[0]
+            console.log(user.data[0].first_name);
+            user.data[0].hello_first_name = ('Hello ' + user.data[0].first_name);
+            console.log(user.data[0]);
+            vm.auth.user = user.data[0]
             console.log(auth.user)
           }
         })
@@ -42,10 +45,12 @@
     vm.logout = function() {
       // console.log('logging out');
       $http.delete('/api/token').then(data => {
+        vm.auth.user = '';
         auth.firstName = '';
         auth.err = '';
         // console.log('data: ', data);
       });
+      $state.go('home')
       // console.log('logged out?');
     }
   }
