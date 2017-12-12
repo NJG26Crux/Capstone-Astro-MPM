@@ -56,7 +56,6 @@
 
     vm.$onInit = function() {
       vm.aladin.col = 1;
-      vm.aladin.row = 1;
     }
 
     vm.addProject = function() {
@@ -66,6 +65,7 @@
       // add Focal Ratio
       vm.proj.cells = (vm.aladin.col * 2);
       vm.proj.uncom_cells = 0;
+      vm.proj.imgMosiac = vm.dataURL;
 
       let newCells = []
       // baseCenterRaDec [x, y] i.e. [0] [1]
@@ -84,7 +84,7 @@
       for (let i=0; i<vm.aladin.col; i++) {
         for (let j=0; j<vm.aladin.col; j++) {
         let newObj = {}
-        newObj = {cell: (String.fromCharCode(65+i) + (j+1)), centerRa: (firstCenterRaDec[0] + (vm.proj.fov_h * i)).toFixed(5), centerDec: (firstCenterRaDec[1] - (vm.proj.fov_h * j)).toFixed(5)}
+        newObj = {cell_num: (String.fromCharCode(65+i) + (j+1)), center_ref_ra: (firstCenterRaDec[0] + (vm.proj.fov_h * i)).toFixed(5), center_ref_dec: (firstCenterRaDec[1] - (vm.proj.fov_h * j)).toFixed(5)}
         newCells.push(newObj)
         }
       }
@@ -93,7 +93,13 @@
 
       $http.post('/api/projects', vm.proj)
         .then(project => {
+          console.log('@ routes.project.post');
           console.log('vm.proj: ', vm.proj);
+          console.log('project: ', project);
+          const proj_id = project.data.id;
+          for (const cell of newCells) (
+            cell.proj_id = proj_id
+          )
           // delete vm.proj
 
           return $http.post('/api/projects/:id/cells', newCells)

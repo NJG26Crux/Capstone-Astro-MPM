@@ -2,9 +2,8 @@
 exports.up = function(knex, Promise) {
   return knex.schema.alterTable('projects', (table) => {
 
-    table.string('ota').notNullable();
+    table.string('imgMosiac'); //.notNullable()
 
-    table.string('cam').notNullable();
 
   });
 };
@@ -12,9 +11,7 @@ exports.up = function(knex, Promise) {
 exports.down = function(knex, Promise) {
   return knex.schema.alterTable('projects', (table) => {
 
-    table.dropColumn('ota');
-
-    table.dropColumn('cam');
+    table.dropColumn('imgMosiac');
 
   });
 };

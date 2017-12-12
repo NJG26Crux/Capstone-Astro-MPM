@@ -81,7 +81,9 @@ function params(req) {
     fov_w: req.body.fov_w,
     fov_h: req.body.fov_h,
     target_exp: req.body.target_exp,
-    total_exposures: req.body.total_exposures
+    total_exposures: req.body.total_exposures,
+    ota: req.body.ota,
+    cam: req.body.cam
   }
 }
 
@@ -108,7 +110,9 @@ function validate(req, res, next) {
     'fov_w',
     'fov_h',
     'target_exp',
-    'total_exposures'
+    'total_exposures',
+    'ota',
+    'cam'
   ].forEach(field => {
     if (!req.body[field] || req.body[field].trim() === '') {
       errors.push({field: field, messages: ["cannot be blank"]})
@@ -121,9 +125,9 @@ function validate(req, res, next) {
 router.get('/api/project/cells/:id', (req, res, next) => {
   console.log('@ routes.projects.cells.id:');
   knex('cells')
-    .innerJoin('proj_user', 'proj_user.id', 'cells.pu_id')
-    .innerJoin('users', 'users.id', 'proj_user.user_id')
-    .where('proj_user.proj_id', req.params.id)
+    // .innerJoin('proj_user', 'proj_user.id', 'cells.pu_id')
+    // .innerJoin('users', 'users.id', 'proj_user.user_id')
+    .where('cells.proj_id', req.params.id)
     .orderBy('cell_num')
     .then((cells) => {
       console.log('routes.projects.cells.id: ', cells);
@@ -206,10 +210,11 @@ function validateCell(req, res, next) {
 }
 
 // ********************** newCelss on createProj ***********************
-router.post('/api/projects/:id/cells', validateCells, (req, res, next) => {
+router.post('/api/projects/:id/cells',  (req, res, next) => { //validateCells,
   console.log('@ routes.projects.cells.post: ', req.body);
+  console.log('paramsCells(req): ', paramsCells(req));
     knex('cells')
-      .insert(paramsCell(req))
+      .insert(req.body) //paramsCells(req)
       .returning('*')
     .then(cell => res.json(cell[0]))
     .catch(err => next(err))
@@ -237,6 +242,7 @@ function validateCells(req, res, next) {
       errors.push({field: field, messages: ["cannot be blank"]})
     }
   })
+  console.log('errors: ', errors);
   if (errors.length) return res.status(422).json({errors})
   next()
 }
