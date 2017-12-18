@@ -3,8 +3,8 @@
 
   angular.module('app')
 
-  .component('newProject', {controller,
-    templateUrl: '/js/components/newProject.template.html'
+  .component('newProject3', {controller,
+    templateUrl: '/js/components/newProject3.template.html'
   })
 
   controller.$inject=['$http','aladinServ','projServ'];
@@ -12,38 +12,38 @@
     const vm = this;
     vm.showHints = true;
 
-    vm.proj = projServ;
+    // vm.proj = {};
     vm.aladin = {};
     vm.setHeight = 420;
 
+    console.log('@ Proj2 projServ: ', projServ);
+
+    vm.proj = projServ;
 
 
-
-    vm.proj.name = 'test';
-    vm.proj.object = 'test';
-    vm.proj.admin_user_id = 1;
-    vm.proj.cells = 4;
-    vm.proj.cells_w = 2;
-    vm.proj.cells_h = 2;
-    vm.proj.uncom_cells = 3;
-    vm.proj.tel_ota = 'test';
-    vm.proj.ota = 'Refractor';
-    vm.proj.tel_obj = 130;
-    vm.proj.focal_length = 2040;
-    vm.proj.focal_ratio = 7;
-    vm.proj.img_sensor = 'test';
-    vm.proj.cam = 'DSLR';
-    vm.proj.img_array_w = 3872;
-    vm.proj.img_array_h = 2592;
-    vm.proj.pix_sz = 6.10;
-    vm.proj.img_sz_w = 23.6;
-    vm.proj.img_sz_h = 15.8;
-    vm.proj.fov_w = 5349.68;
-    vm.proj.fov_h = 3581.40;
-    vm.proj.target_exp = 300;
-    vm.proj.total_exposures = 72;
-
-    console.log('@ Proj vm.proj: ', vm.proj);
+    // vm.proj.name = 'test';
+    // vm.proj.object = 'test';
+    // vm.proj.admin_user_id = 1;
+    // vm.proj.cells = 4;
+    // vm.proj.cells_w = 2;
+    // vm.proj.cells_h = 2;
+    // vm.proj.uncom_cells = 3;
+    // vm.proj.tel_ota = 'test';
+    // vm.proj.ota = 'Refractor';
+    // vm.proj.tel_obj = 130;
+    // vm.proj.focal_length = 2040;
+    // vm.proj.focal_ratio = 7;
+    // vm.proj.img_sensor = 'test';
+    // vm.proj.cam = 'DSLR';
+    // vm.proj.img_array_w = 3872;
+    // vm.proj.img_array_h = 2592;
+    // vm.proj.pix_sz = 6.10;
+    // vm.proj.img_sz_w = 23.6;
+    // vm.proj.img_sz_h = 15.8;
+    // vm.proj.fov_w = 5349.68;
+    // vm.proj.fov_h = 3581.40;
+    // vm.proj.target_exp = 300;
+    // vm.proj.total_exposures = 72;
 
     let firstCenterRaDec = []
     let baseCenterRaDec = [];
@@ -115,17 +115,9 @@
     }
 
     vm.updateAladin = function() {
-
-      // console.log('vm.proj.img_sz_w: ', vm.proj.img_sz_w);
-      // console.log('vm.proj.img_sz_h: ', vm.proj.img_sz_h);
-      // console.log('vm.proj.focal_length: ', vm.proj.focal_length);
-      // console.log('vm.aladin.row: ', vm.aladin.row);
-      // console.log('vm.aladin.col: ', vm.aladin.col);
-
-      vm.setHeight = Math.round(600 / (vm.proj.img_sz_w * 3438 / vm.proj.focal_length / 60 * .8) * (vm.proj.img_sz_h * 3438 / vm.proj.focal_length / 60 * .8) * (vm.aladin.col)); //vm.aladin.row /
-
+      vm.setHeight = Math.round(600 / (vm.proj.img_sz_w * 3438 / vm.proj.focal_length / 60) * (vm.proj.img_sz_h * 3438 / vm.proj.focal_length / 60) * (vm.aladin.row / vm.aladin.col));
       // console.log('vm.setHeight: ', vm.setHeight);
-      const fovSensorW = (vm.proj.img_sz_w * 3438 / vm.proj.focal_length / 60 * .8) * vm.aladin.col; // * aladinServ.aladin.row
+      const fovSensorW = (vm.proj.img_sz_w * 3438 / vm.proj.focal_length / 60) * vm.aladin.col; // * aladinServ.aladin.row
       const fovSensorH = (vm.proj.img_sz_h * 3438 / vm.proj.focal_length / 60) * vm.aladin.col; // * aladinServ.aladin.row
       // console.log('@ new.Proj.updateAladin.fun vm.aladin: ', vm.aladin);
       // console.log('getFov: ',aladinServ.aladin.getFov());

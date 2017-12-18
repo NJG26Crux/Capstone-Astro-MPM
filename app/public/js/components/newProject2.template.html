@@ -1,0 +1,237 @@
+<main class="wrapper">
+  <div class="main">
+    <h1>New Project Page</h1>
+
+    <div layout="row">
+
+      <div flex="10"></div>
+
+      <div flex="80">
+        <div layout="column">
+
+          <span>Project :</span>
+          <span>{{$ctrl.proj}}</span>
+
+            <md-content layout-padding="">
+              <form name="projForm" ng-submit="$ctrl.addProject()">
+                <div layout="row" layout-xs="column" layout-sm="column" layout-align="space-between center">
+                  <div flex-gt-sm="80">
+
+                  </div>
+
+                  <md-input-container>
+                    <md-switch ng-model="showHints">Showing {{showHints ? "Hints" : "Errors"}}</md-switch>
+                  </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row">
+
+                  <md-input-container class="md-block" flex-gt-sm="">
+                    <span>Camera :</span>
+                    <span>{{$ctrl.proj.img_sensor}}</span>
+                  </md-input-container>
+
+                  <div flex="5" hide-xs="" hide-sm="">
+                  </div>
+
+                  <md-input-container class="md-block" flex-gt-sm="">
+                    <span>Telescope :</span>
+                    <span>{{$ctrl.proj.tel_ota}}</span>
+                  </md-input-container>
+
+                </div>
+                <div layout-gt-sm="row">
+
+                  <md-input-container  layout-gt-sm="row" class="md-block" flex-gt-sm="">
+                      <p>Camera Type: <span class="radioValue">{{ $ctrl.proj.cam }}</span> </p>
+                  </md-input-container>
+
+                  <div flex="5" hide-xs="" hide-sm="">
+                  </div>
+
+                  <md-input-container  layout-gt-sm="row" class="md-block" flex-gt-sm="">
+                      <p>Telescope Type: <span class="radioValue">{{ $ctrl.proj.ota }}</span> </p>
+                  </md-input-container>
+
+                </div>
+                <div layout-gt-sm="row">
+
+                  <md-input-container class="md-block" flex-gt-sm="">
+                    <span>Sensor size (w in mm) :</span>
+                    <span>{{$ctrl.proj.img_sz_w}}</span>
+                  </md-input-container>
+
+                  <div flex="5" hide-xs="" hide-sm="">
+                  </div>
+
+                  <md-input-container class="md-block" flex-gt-sm="">
+                    <span>Sensor size (h in mm) :</span>
+                    <span>{{$ctrl.proj.img_sz_h}}</span>
+                  </md-input-container>
+
+                  <div flex="5" hide-xs="" hide-sm="">
+                  </div>
+
+                  <md-input-container class="md-block" flex-gt-sm="">
+                    <span>focal length (mm) :</span>
+                    <span>{{$ctrl.proj.focal_length}}</span>
+                  </md-input-container>
+
+                </div>
+                <div layout-gt-sm="row">
+
+                  <md-input-container class="md-block" flex-gt-sm="">
+                    <span>Sensor Array (w) :</span>
+                    <span>{{$ctrl.proj.img_array_w}}</span>
+                  </md-input-container>
+
+                  <div flex="5" hide-xs="" hide-sm="">
+                  </div>
+
+                  <md-input-container class="md-block" flex-gt-sm="">
+                    <span>Sensor Array (h) :</span>
+                    <span>{{$ctrl.proj.img_array_h}}</span>
+                  </md-input-container>
+
+                  <div flex="5" hide-xs="" hide-sm="">
+                  </div>
+
+                  <md-input-container class="md-block" flex-gt-sm="">
+                    <span>Pixel size (microns) :</span>
+                    <span>{{$ctrl.proj.pix_sz}}</span>
+                  </md-input-container>
+
+                </div>
+
+                <hr>
+                <div>FOV (w x h Degrees): {{$ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60 * .8}} {{$ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60 * .8}} Aladin Image 600px Wide {{600 / ($ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60)}}px High</div>
+                <div>Aladin Height: {{600 / ($ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.aladin.col)}}</div>
+                <hr>
+
+      <!-- ************ ALADIN ************-->
+                <div flex="100" >
+                  <div class="aladinCont" layout="row">
+                    <div layout="row">
+
+
+
+                      <div layout="row" layout-align="center center" class="boarder3">
+                        <div layout="column">
+                          <div style="width: 1200px; height: 804px; position:relative"> <!--  {{$ctrl.proj.aladin_height}} -->
+                            <aladin></aladin>
+                            <div id="screwAladin" style="height:100%; width:100%; border: 3px solid red; position: absolute; top: 0; left: 0; z-index:9000" class="">layer 1</div>
+                          </div>
+                        </div>
+
+
+
+                        <div  layout="row" flex="30">
+                          <div flex="10">
+
+                          </div>
+                          <div flex="">
+                            <div layout="column" >
+
+                              <md-input-container class="md-block">
+                                <label>Cat Name</label>
+                                <input name="catName" ng-model="$ctrl.aladin.catName"  minlength="1" maxlength="30">
+                              </md-input-container>
+
+                              <md-input-container class="md-block">
+                                <label>(RA, Dec)</label>
+                                <input name="RaDec" ng-model="$ctrl.aladin.RaDec"  minlength="1" maxlength="30">
+                              </md-input-container>
+
+                              <md-input-container class="md-block">
+                                <label>Rows x Columns</label>
+                                <input ng-onclick="$ctrl.updateAladin()" name="Columns" type="number" ng-model="$ctrl.aladin.col" minlength="1" maxlength="6" required="">
+                              </md-input-container>
+
+                              <div class="bottomTenPadding">
+                                <div  layout="row" layout-align="center center">
+
+                                  <div ng-click="$ctrl.moveUp()" onmouseover="" style="cursor: pointer;"><md-icon class="material-icons">arrow_upward</md-icon></div>
+                                  <div ng-click="$ctrl.moveRight()" onmouseover="" style="cursor: pointer;"><md-icon class="material-icons">arrow_forward</md-icon></div>
+                                </div>
+
+                                <div layout="row" layout-align="center center">
+                                  <div ng-click="$ctrl.moveLeft()" onmouseover="" style="cursor: pointer;"><md-icon class="material-icons">arrow_back</md-icon></div>
+                                  <div ng-click="$ctrl.moveDown()" onmouseover="" style="cursor: pointer;"><md-icon class="material-icons">arrow_downward</md-icon></div>
+
+                                </div>
+
+                              </div>
+
+                              <div class=""  layout="row" layout-align="end end">
+                                <md-button ng-click="$ctrl.updateAladin()">Update</md-button>
+                              </div>
+
+                              <div class=""  layout="row" layout-align="end end">
+                                <md-button ng-click="$ctrl.grabImage()">Grab Image</md-button>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+      <!-- ************ ALADIN ************ -->
+
+                <hr>
+
+                <div>Center RA Dec: {{$ctrl.baseCenterRaDec}}</div>
+                <div>Center RA: {{$ctrl.BCRA}}</div>
+                <div>Center Dec: {{$ctrl.BCDec}}</div>
+                <div>cosVal: {{$ctrl.cosVal}}
+                <div>A1 RA: {{$ctrl.A1RA}}</div>
+                <div>A1 Dec: {{$ctrl.A1Dec}}</div>
+                <div>B1 RA: {{$ctrl.B1RA}}</div>
+                <div>B1 Dec: {{$ctrl.B1Dec}}</div>
+                <div>A2 RA: {{$ctrl.A2RA}}</div>
+                <div>A2 Dec: {{$ctrl.A2Dec}}</div>
+                <div>B2 RA: {{$ctrl.B2RA}}</div>
+                <div>B2 Dec: {{$ctrl.B2Dec}}</div>
+                <div>pix2world: {{ctrl.pix2world}}</div>
+
+                <img src="{{$ctrl.proj.dataURL}}">
+
+                <!-- Roger hack! -->
+
+                <div ng-repeat="i in $ctrl.proj.images" >
+                  {{i}}
+                <img src="{{i.dataURI}}">
+                </div>
+
+                <div layout-gt-sm="row">
+
+                  <style>
+
+                    body[dir=rtl] .hint {
+                      right: 2px;
+                      left: auto;
+                    }
+                  </style>
+                </div>
+
+                <button class="md-button md-ink-ripple" type="button" ui-sref="newProject3"> Continue </button>
+
+                <div>
+                  {{$ctrl.projServ}}
+                </div>
+
+              </form>
+
+            </md-content>
+
+        </div>
+      </div>
+
+      <div flex="10"></div>
+
+    </div>
+
+  </div>
+</main>

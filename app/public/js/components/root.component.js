@@ -42,6 +42,18 @@
       });
     };
 
+    vm.signupForm = function(ev) {
+      console.log('clicked on signupForm fun');
+      $mdDialog.show({
+        controller: 'login as $ctrl',
+        templateUrl: 'js/components/signup.template.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose: true,
+        fullscreen: this.customFullscreen
+      });
+    };
+
     vm.logout = function() {
       // console.log('logging out');
       $http.delete('/api/token').then(data => {

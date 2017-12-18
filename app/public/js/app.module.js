@@ -48,5 +48,17 @@ function config($stateProvider, $urlRouterProvider, $locationProvider){
         component: 'newProject',
         parent: 'root'
       })
+      .state({
+        name: 'newProject2',
+        url: '/projects/newProject2',
+        component: 'newProject2',
+        parent: 'root'
+      })
+      .state({
+        name: 'newProject3',
+        url: '/projects/newProject3',
+        component: 'newProject3',
+        parent: 'root'
+      })
 
   }

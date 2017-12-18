@@ -17,8 +17,8 @@ if (process.env.NODE_ENV !== 'test') {
 
 app.use(cookieParser());
 app.use(bodyParser.json({limit: '5mb'})); //app.use(bodyParser.json({limit: ‘5mb’}));
-app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, '/../', 'node_modules')))
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(require('./routes/users')) //'/api/posts',
 app.use(require('./routes/token'))

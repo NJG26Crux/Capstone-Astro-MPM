@@ -2,87 +2,47 @@
   <div class="main">
     <h1>New Project Page</h1>
 
-    <!-- <IFRAME SRC="http://server1.sky-map.org/skywindow?object=M31&zoom=5&img_source=SDSS" WIDTH=1024 HEIGHT=1024></IFRAME> -->
-    <!-- ********************************************* -->
-    <!-- insert this snippet where you want Aladin Lite viewer to appear and after the loading of jQuery -->
-
-    <!-- <div id="aladin-lite-div" style="width:1024px;height:1024px;"></div>
-          <script type="text/javascript" src="//aladin.u-strasbg.fr/AladinLite/api/v2/latest/aladin.min.js" charset="utf-8"></script>
-          <script type="text/javascript">
-          var aladin = A.aladin('#aladin-lite-div', {survey: "P/2MASS/color", fov:5, target: "m31"});
-          </script> -->
-
     <div layout="row">
 
-      <div flex="10"></div> <!-- column 1 -->
+      <div flex="10"></div>
 
-      <!-- <div flex="40">column 2
-        <div layout="column" flex="50">
-          <div>Top Left</div>
-          <div layout-align="end center">Bottom Left</div>
-        </div>
-      </div> -->
-
-      <div flex="80"> <!-- column 2 -->
+      <div flex="80">
         <div layout="column">
-          <!-- <div>Top Right</div>
-          <div layout-align="end center">Bottom Right</div> -->
-
-          <!-- ************************************************************************************** -->
-          <!-- <div ng-controller="AppCtrl" layout="column" ng-cloak="" class="inputdemoErrorsAdvanced" ng-app="MyApp"> -->
-
             <md-content layout-padding="">
               <form name="projForm" ng-submit="$ctrl.addProject()">
                 <div layout="row" layout-xs="column" layout-sm="column" layout-align="space-between center">
                   <div flex-gt-sm="80">
-                    <!-- <p>
-                      The <code>md-input-container</code> gives you the flexibility to display your messages
-                      using many standard angular directives.
-                    </p> -->
-
-                    <!-- <p>
-                      For instance, toggle the switch -->
-
-                      <!-- <span hide-xs="" hide-sm="">to the right</span> -->
-                      <!-- <span hide-gt-sm="">below</span> -->
-
-                      <!-- to see the messages switch between some custom hints, and the actual error messages.
-                      Note that some of the <code>ng-messages</code> containers use <code>ngIf</code> while
-                      others use <code>ng-show</code> or <code>ng-hide</code>.
-                    </p> -->
                   </div>
 
                   <md-input-container>
                     <md-switch ng-model="showHints">Showing {{showHints ? "Hints" : "Errors"}}</md-switch>
                   </md-input-container>
+
                 </div>
 
                 <div layout-gt-sm="row">
 
                   <md-input-container class="md-block" flex-gt-sm="">
                     <label>Camera</label>
-                    <input md-maxlength="30" name="img_sensor" ng-model="$ctrl.proj.img_sensor" required=""> <!--  ng-pattern="/^.+@.+\..+$/" -->
+                    <input md-maxlength="30" name="img_sensor" ng-model="$ctrl.proj.img_sensor" required="">
 
                     <div class="hint" ng-show="showHints">The Make and Model of your Camera?</div>
 
                     <div ng-messages="projForm.img_sensor.$error" ng-hide="showHints">
-                      <!-- <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']"> -->
                         <div ng-message="md-maxlength">The Camera name has to be less than 30 characters long.</div>
                     </div>
                   </md-input-container>
 
                   <div flex="5" hide-xs="" hide-sm="">
-                    <!-- Spacer //-->
                   </div>
 
                   <md-input-container class="md-block" flex-gt-sm="">
                     <label>Telescope</label>
-                    <input md-maxlength="30" name="tel_ota" ng-model="$ctrl.proj.tel_ota"> <!--  ng-pattern="/^[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}$/" -->
+                    <input md-maxlength="30" name="tel_ota" ng-model="$ctrl.proj.tel_ota">
 
                     <div class="hint" ng-show="showHints">Example: Tak FSQ106n, Meade 10" SCT or 16" Newtonian</div>
 
                     <div ng-messages="projForm.tel_ota.$error" ng-hide="showHints">
-                      <!-- <div ng-message="pattern">(###) ###-#### -  -->
                         <div ng-message="md-maxlength">The Telescope name has to be less than 30 characters long.</div>
                     </div>
                   </md-input-container>
@@ -92,7 +52,6 @@
 
                   <md-input-container  layout-gt-sm="row" class="md-block" flex-gt-sm="">
 
-                    <!-- <form ng-submit="submit()" ng-controller="AppCtrl" ng-cloak> -->
                       <p>Camera Type: <span class="radioValue">{{ $ctrl.proj.cam }}</span> </p>
 
                       <md-radio-group ng-model="$ctrl.proj.cam">
@@ -105,17 +64,14 @@
                         <md-radio-button value="CMOS Color"> CMOS Color </md-radio-button>
 
                       </md-radio-group>
-                    <!-- </form> -->
 
                   </md-input-container>
 
                   <div flex="5" hide-xs="" hide-sm="">
-                    <!-- Spacer // -->
                   </div>
 
                   <md-input-container  layout-gt-sm="row" class="md-block" flex-gt-sm="">
 
-                    <!-- <form ng-submit="submit()" ng-controller="AppCtrl" ng-cloak> -->
                       <p>Telescope Type: <span class="radioValue">{{ $ctrl.proj.ota }}</span> </p>
 
                       <md-radio-group ng-model="$ctrl.proj.ota">
@@ -127,7 +83,6 @@
                         <md-radio-button value="Dall-Kirkham"> Dall-Kirkham </md-radio-button>
 
                       </md-radio-group>
-                    <!-- </form> -->
 
                   </md-input-container>
 
@@ -157,19 +112,7 @@
                   </md-input-container>
 
                   <div flex="5" hide-xs="" hide-sm="">
-                    <!-- Spacer //-->
                   </div>
-
-                  <!-- <md-input-container class="md-block" flex-gt-sm="">
-                    <label>Objective Size (mm)</label>
-                    <input name="tel_obj" ng-model="$ctrl.proj.tel_obj" minlength="2" maxlength="4">
-
-                    <div class="hint" ng-show="showHints">Example: Tak FSQ106n, Meade 10" SCT or 16" Newtonian</div>
-
-                    <div ng-messages="projForm.tel_obj.$error" ng-hide="showHints">
-                        <div ng-message-exp="['minlength', 'maxlength']">The Sensor size (w x h) has to be more than 2  and less than 4 digits long.</div>
-                    </div>
-                  </md-input-container> -->
 
                   <md-input-container class="md-block" flex-gt-sm="">
                     <label>focal length (mm)</label>
@@ -208,294 +151,29 @@
                   </md-input-container>
 
                   <div flex="5" hide-xs="" hide-sm="">
-                    <!-- Spacer //-->
                   </div>
 
-                  <!-- <md-input-container class="md-block" flex-gt-sm="">
-                    <label>focal length (mm)</label>
-                    <input name="focal_length" ng-model="$ctrl.proj.focal_length" minlength="3" maxlength="5">
-
-                    <div class="hint" ng-show="showHints">Example: 910</div>
-
-                    <div ng-messages="projForm.focal_length.$error" ng-hide="showHints">
-                        <div ng-message-exp="['minlength', 'maxlength']">The focal length has to be more than 3  and less than 5 digits long.</div>
-                    </div>
-                  </md-input-container> -->
-
                   <md-input-container class="md-block" flex-gt-sm="">
-                    <label>Pixel size (&#956)</label>
+                    <label>Pixel size (microns)</label>
                     <input name="pix_sz" ng-model="$ctrl.proj.pix_sz" minlength="1" maxlength="4">
 
                     <div class="hint" ng-show="showHints">Example: 6.1</div>
 
                     <div ng-messages="projForm.pix_sz.$error" ng-hide="showHints">
-                        <div ng-message-exp="['minlength', 'maxlength']">The Pixel size (w x h) has to be more than 2  and less than 4 digits long.</div>
+                      <div ng-message-exp="['minlength', 'maxlength']">The Pixel size (w x h) has to be more than 2  and less than 4 digits long.</div>
                     </div>
                   </md-input-container>
 
                 </div>
-                <!-- <div layout-gt-sm="row">
-
-                  <md-input-container class="md-block" flex-gt-sm="">
-                  </md-input-container>
-
-                  <md-input-container class="md-block" flex-gt-sm="">
-                    <label>Pixel size (&#956)</label>
-                    <input name="pix_sz" ng-model="$ctrl.proj.pix_sz" minlength="1" maxlength="4">
-
-                    <div class="hint" ng-show="showHints">Example: 6.1</div>
-
-                    <div ng-messages="projForm.pix_sz.$error" ng-hide="showHints">
-                        <div ng-message-exp="['minlength', 'maxlength']">The Pixel size (w x h) has to be more than 2  and less than 4 digits long.</div>
-                    </div>
-                  </md-input-container>
-
-                  <div flex="5" hide-xs="" hide-sm="">
-                    Spacer //
-                  </div>
-
-                  <md-input-container class="md-block" flex-gt-sm="">
-                    <label>focal ratio</label>
-                    <input name="focal_ratio" ng-model="$ctrl.proj.focal_ratio" minlength="1" maxlength="3">
-
-                    <div class="hint" ng-show="showHints">Example: 7</div>
-
-                    <div ng-messages="projForm.focal_ratio.$error" ng-hide="showHints">
-                        <div ng-message-exp="['minlength', 'maxlength']">The focal ratio has to be less than 4 digits long.</div>
-                    </div>
-                  </md-input-container>
-
-                </div> -->
-                <!-- <div layout-gt-sm="row">
-
-                  <md-input-container class="md-block" flex-gt-sm="">
-                    <label>Total Cells</label>
-                    <input name="cells" ng-model="$ctrl.proj.cells" minlength="1" maxlength="2">
-
-                    <div class="hint" ng-show="showHints">Example: 16</div>
-
-                    <div ng-messages="projForm.cells.$error" ng-hide="showHints">
-                        <div ng-message-exp="['minlength', 'maxlength']">The Total Cells has to be  less than 3 digits long.</div>
-                    </div>
-                  </md-input-container>
-
-                </div> -->
-                <!-- <div layout-gt-sm="row">
-
-                  <md-input-container class="md-block" flex-gt-sm="">
-                    <label>Cell Matrix (w)</label>
-                    <input name="cells_w" ng-model="$ctrl.proj.cells_w" minlength="1" maxlength="2">
-
-                    <div class="hint" ng-show="showHints">Example: 4</div>
-
-                    <div ng-messages="projForm.cells_w.$error" ng-hide="showHints">
-                        <div ng-message-exp="['minlength', 'maxlength']">The Matrix (w) has to be  less than 3 digits long.</div>
-                    </div>
-                  </md-input-container>
-
-                  <div flex="5" hide-xs="" hide-sm="">
-                    Spacer //
-                  </div>
-
-                  <md-input-container class="md-block" flex-gt-sm="">
-                    <label>Cell Matrix (h)</label>
-                    <input name="total_exposures" ng-model="$ctrl.proj.cells_h" minlength="1" maxlength="2">
-
-                    <div class="hint" ng-show="showHints">Example: 4</div>
-
-                    <div ng-messages="projForm.cells_h.$error" ng-hide="showHints">
-                        <div ng-message-exp="['minlength', 'maxlength']">The Target Exposure has to be less than 3 digits long.</div>
-                    </div>
-                  </md-input-container>
-
-                </div> -->
 
                 <hr>
-                <div>FOV (w x h Degrees): {{$ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60 * .8}} {{$ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60 * .8}} Aladin Image 600px Wide {{600 / ($ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60)}}px High</div> <!-- {{$ctrl.proj.img_sz_w}} {{$ctrl.proj.img_sz_h}} {{$ctrl.proj.focal_length}} -->
-                <div>Aladin Height: {{600 / ($ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.aladin.row / $ctrl.aladin.col)}}</div>
+                <div>FOV (w x h Degrees): {{$ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60}} {{$ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60 * .8}} Aladin Image 600px Wide {{600 / ($ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60)}}px High</div> <!-- {{$ctrl.proj.img_sz_w}} {{$ctrl.proj.img_sz_h}} {{$ctrl.proj.focal_length}} -->
+                <div>Aladin Height: {{600 / ($ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.aladin.col)}}</div> <!-- $ctrl.aladin.row /  -->
                 <hr>
 
-      <!-- ************ ALADIN ************ <section>  class="inner"-->
-                <div flex="100" >
-                  <div class="aladinCont" layout="row"> <!--  layout-align="center center" -->
-                    <div layout="row"> <!--  layout-align="center center" -->
-
-
-
-                      <div layout="row" layout-align="center center" class="boarder3">
-                        <div layout="column">
-                          <!-- <div>{{600 / ($ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.aladin.row / $ctrl.aladin.col)}}</div> -->
-                          <div style="width: 600px; height:420px; position:relative"> <!-- 420px {{$ctrl.setHeight}} width:600px; height:420px;  ng-style="{height: {{$ctrl.setHeight}} + 'px'}"-->
-                            <aladin></aladin>
-                            <div id="screwAladin" style="height:100%; width:100%; border: 3px solid red; position: absolute; top: 0; left: 0; z-index:9000" class="">layer 1</div>
-                          </div>
-                        </div>
-
-
-
-                        <div  layout="row" flex="30">
-                          <div flex="10"> <!--  layout="row" -->
-
-                            <!-- <form name="aladinForm" id="aladinForm"> -->
-                              <!-- <div flex="10"></div>  Mosaic Selector -->
-                              <!--  flex-gt-sm="" -->
-                              <!-- <md-input-container class="md-block">
-                                <label>Cat Name</label>
-                                <input name="catName" ng-model="$ctrl.aladin.catName"  minlength="1" maxlength="30" required="">
-                              </md-input-container> -->
-
-                              <!-- <md-input-container class="md-block">
-                                <label>FOV</label>
-                                <input name="fov" ng-model="$ctrl.aladin.fov"  minlength="1" maxlength="6" required="">
-                              </md-input-container> -->
-
-                              <!-- <md-input-container class="md-block">
-                                <label>Width</label>
-                                <input name="width" ng-model="$ctrl.aladin.width"  minlength="1" maxlength="6" required="">
-                              </md-input-container> -->
-
-                              <!-- <md-input-container class="md-block">
-                                <label>height</label>
-                                <input name="height" ng-model="$ctrl.aladin.height"  minlength="1" maxlength="6" required="">
-                              </md-input-container> -->
-
-                            <!-- </form> -->
-                          </div>
-                          <div flex="">
-                            <div layout="column" >
-
-                              <md-input-container class="md-block"> <!--  flex-gt-sm="" -->
-                                <label>Cat Name</label>
-                                <input name="catName" ng-model="$ctrl.aladin.catName"  minlength="1" maxlength="30"> <!--  required="" -->
-                              </md-input-container>
-
-                              <md-input-container class="md-block"> <!--  flex-gt-sm="" -->
-                                <label>(RA, Dec)</label>
-                                <input name="RaDec" ng-model="$ctrl.aladin.RaDec"  minlength="1" maxlength="30"> <!--  required="" -->
-                              </md-input-container>
-
-                              <!-- <md-input-container class="md-block">
-                                <label>R.A.</label>
-                                <input name="ra" ng-model="$ctrl.aladin.ra"  minlength="1" maxlength="6" required="">
-                              </md-input-container> -->
-
-                              <!-- <md-input-container class="md-block">
-                                <label>DEC</label>
-                                <input name="dec" ng-model="$ctrl.aladin.dec"  minlength="1" maxlength="6" required="">
-                              </md-input-container> -->
-
-                              <!-- <md-input-container class="md-block">
-                                <label>Rows</label>
-                                <input name="rows" ng-model="$ctrl.aladin.row" minlength="1" maxlength="6" required="">
-                              </md-input-container> -->
-  <!--   ng-init="formkey=1" -->
-                              <md-input-container class="md-block">
-                                <label>Rows x Columns</label>
-                                <input ng-onclick="$ctrl.updateAladin()" name="Columns" type="number" ng-model="$ctrl.aladin.col" minlength="1" maxlength="6" required="">
-                              </md-input-container>
-
-                              <div class="bottomTenPadding">
-                                <div  layout="row" layout-align="center center">
-
-                                  <div ng-click="$ctrl.moveUp()" onmouseover="" style="cursor: pointer;"><md-icon class="material-icons">arrow_upward</md-icon></div>
-                                  <div ng-click="$ctrl.moveRight()" onmouseover="" style="cursor: pointer;"><md-icon class="material-icons">arrow_forward</md-icon></div>
-                                </div>
-
-                                <div layout="row" layout-align="center center">
-                                  <div ng-click="$ctrl.moveLeft()" onmouseover="" style="cursor: pointer;"><md-icon class="material-icons">arrow_back</md-icon></div>
-                                  <div ng-click="$ctrl.moveDown()" onmouseover="" style="cursor: pointer;"><md-icon class="material-icons">arrow_downward</md-icon></div>
-
-                                </div>
-                                <!-- <p>Pristine: {{aladinForm.$pristine}}</p>
-                                <p>Errors: {{aladinForm.$error | json}}</p> -->
-                              </div>
-
-                              <div class=""  layout="row" layout-align="end end">
-                                <md-button ng-click="$ctrl.updateAladin()">Update</md-button>
-                              </div>
-
-                              <div class=""  layout="row" layout-align="end end">
-                                <md-button ng-click="$ctrl.grabImage()">Grab Image</md-button>
-                              </div>
-
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-      <!-- ************ ALADIN ************  class="inner" -->
-
-                <hr>
-
-                <div layout-gt-sm="row">
-
-                  <md-input-container class="md-block" flex-gt-sm="">
-                    <label>Name</label>
-                    <input md-maxlength="30" name="name" ng-model="$ctrl.proj.name" required="">
-
-                    <div class="hint" ng-if="showHints">What shall we call your Project?</div>
-
-                    <div ng-messages="projForm.name.$error" ng-if="!showHints">
-                      <div ng-message="required">Name is required.</div>
-                      <div ng-message="md-maxlength">The Name has to be less than 30 characters long.</div>
-                    </div>
-                  </md-input-container>
-
-                  <div flex="5" hide-xs="" hide-sm="">
-                    <!-- Spacer //-->
-                  </div>
-
-                  <md-input-container class="md-block" flex-gt-sm="">
-                    <label>Cataloge Id</label>
-                    <input name="object" ng-model="$ctrl.proj.object" minlength="2" maxlength="12" required=""> <!--  ng-pattern="/^[0-9]{3}-[0-9]{2}-[0-9]{4}$/" -->
-
-                    <div class="hint" ng-if="showHints">Examples: M31, NGC 7000 or IC 4592</div>
-
-                    <div ng-messages="projForm.object.$error" ng-if="!showHints">
-                      <div ng-message-exp="['minlength', 'maxlength']">The Catalog ID has to be less than 30 characters long.</div>
-                    </div>
-                  </md-input-container>
-
-                </div>
-                <div layout-gt-sm="row">
-
-                  <md-input-container class="md-block" flex-gt-sm="">
-                    <label>Target Exposure (seconds)</label>
-                    <input name="target_exp" ng-model="$ctrl.proj.target_exp" minlength="1" maxlength="4">
-
-                    <div class="hint" ng-show="showHints">Example: 300</div>
-
-                    <div ng-messages="projForm.target_exp.$error" ng-hide="showHints">
-                        <div ng-message-exp="['minlength', 'maxlength']">The Target Exposure has to be less than 5 digits long.</div>
-                    </div>
-                  </md-input-container>
-
-                  <div flex="5" hide-xs="" hide-sm="">
-                    <!-- Spacer //-->
-                  </div>
-
-                  <md-input-container class="md-block" flex-gt-sm="">
-                    <label>Total number of Exposures</label>
-                    <input name="total_exposures" ng-model="$ctrl.proj.total_exposures" minlength="1" maxlength="3">
-
-                    <div class="hint" ng-show="showHints">Example: 72</div>
-
-                    <div ng-messages="projForm.total_exposures.$error" ng-hide="showHints">
-                        <div ng-message-exp="['minlength', 'maxlength']">The Target Exposure has to be less than 4 digits long.</div>
-                    </div>
-                  </md-input-container>
-
-                </div>
                 <div layout-gt-sm="row">
 
                   <style>
-                    /*
-                     * The Material demos system does not currently allow targeting the body element, so this
-                     * must go here in the HTML.
-                     */
                     body[dir=rtl] .hint {
                       right: 2px;
                       left: auto;
@@ -503,10 +181,7 @@
                   </style>
                 </div>
 
-                <div>
-                  <md-button type="submit">Submit</md-button>
-                </div>
-
+                <button class="md-button md-ink-ripple" type="button" ui-sref="newProject2"> Continue </button>
 
                 <div>
                   {{$ctrl.proj}}
@@ -518,19 +193,10 @@
 
             </md-content>
 
-          <!-- </div> -->
-
-          <!--
-          Copyright 2016 Google Inc. All Rights Reserved.
-          Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
-          -->
-
-          <!-- ************************************************************************************** -->
-
         </div>
       </div>
 
-      <div flex="10"></div> <!-- column 3 -->
+      <div flex="10"></div>
 
     </div>
 
