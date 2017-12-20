@@ -167,8 +167,8 @@
                 </div>
 
                 <hr>
-                <div>FOV (w x h Degrees): {{$ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60}} {{$ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60 * .8}} Aladin Image 600px Wide {{600 / ($ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60)}}px High</div> <!-- {{$ctrl.proj.img_sz_w}} {{$ctrl.proj.img_sz_h}} {{$ctrl.proj.focal_length}} -->
-                <div>Aladin Height: {{600 / ($ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.aladin.col)}}</div> <!-- $ctrl.aladin.row /  -->
+                <div>FOV (w x h Degrees): {{$ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60}} {{$ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60 * .8}}</div>
+                <div>Aladin Image 1200px Wide {{1200 / ($ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60)}}px High</div>
                 <hr>
 
                 <div layout-gt-sm="row">
@@ -183,13 +183,7 @@
 
                 <button class="md-button md-ink-ripple" type="button" ui-sref="newProject2"> Continue </button>
 
-                <div>
-                  {{$ctrl.proj}}
-                </div>
-
               </form>
-
-              <img src="{{$ctrl.dataURL}}">
 
             </md-content>
 

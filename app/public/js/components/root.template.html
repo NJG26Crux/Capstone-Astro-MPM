@@ -9,24 +9,22 @@
 
     <md-toolbar layout="row" layout-align="end center" class="_md layout-row _md-toolbar-transitions">
       <span flex="" class="flex"> </span>
-      <!-- <span>{{$ctrl.auth.firstName}} </span> -->
       <button class="md-button md-ink-ripple" type="button"> {{$ctrl.auth.user.hello_first_name}} </button>
       <button class="md-button md-ink-ripple" type="button" ui-sref="home"> Home </button>
       <button class="md-button md-ink-ripple" type="button" ui-sref="projects"> Projects </button>
       <button class="md-button md-ink-ripple" type="button" ng-click="$ctrl.showAdvanced($event)"> Login </button>
       <button class="md-button md-ink-ripple" type="button" ng-click="$ctrl.signupForm()"> Signup </button>
       <button class="md-button md-ink-ripple" type="button" ng-click="$ctrl.logout()"> Logout </button>
-      <!-- <button class="md-button md-ink-ripple" type="button" ng-click="$ctrl.print()"> Logout </button> -->
     </md-toolbar>
 
   </header>
 
-  <main class="wrapper" > <!--  flex="" class="flex" -->
-    <div ui-view="" class="main"></div> <!--  layout="column" layout-fill="" class="layout-fill layout-column" flex -->
+  <main class="wrapper" >
+    <div ui-view="" class="main"></div>
   </main>
 
 
-  <footer ng-if=true> <!-- $ctrl.footer ************** NEW-->
+  <footer ng-if=true>
     <div layout="column" flex="" class="layout-column flex">
       <div layout="row" class="layout-row">
         <div flex="30" class="flex-30">
@@ -57,7 +55,6 @@
             <div flex="25" class="flex-25"><img src="https://apod.nasa.gov/apod/image/0701/oriondeepwide_gendler720.jpg" height="50px"></div>
             <div flex="25" class="flex-25"><img src="https://apod.nasa.gov/apod/image/1308/SagTriplet6D_hallasNew950.jpg" height="50px"></div>
             <div flex="25" class="flex-25"><img src="https://apod.nasa.gov/apod/image/0606/catspaw_gendler.jpg" height="50px"></div>
-            <!-- <div flex="25"><img src="https://apod.nasa.gov/apod/image/9911/lunation_ajc.gif" height=50px></div> -->
           </div>
           <!-- <div layout="row">
           <div flex="25"><img src="https://apod.nasa.gov/apod/image/1006/n2359Thor_mazlin2048.jpg" height=50px></div>
@@ -88,7 +85,6 @@
     <div layout="column" flex="" class="layout-column flex">
       <div class="bottomFooter layout-row" layout="row fivePadding">
         <span class="fivePadding">Copyright 2017 Jeff and Galvanize G56</span>
-        <!-- <a href="testProject.html">Test Project Link</a> -->
       </div>
     </div>
   </footer>
