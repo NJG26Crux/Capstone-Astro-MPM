@@ -16,7 +16,7 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 app.use(cookieParser());
-app.use(bodyParser.json({limit: '5mb'})); //app.use(bodyParser.json({limit: ‘5mb’}));
+app.use(bodyParser.json({limit: '8mb'})); //app.use(bodyParser.json({limit: ‘5mb’}));
 app.use(express.static(path.join(__dirname, '/../', 'node_modules')))
 app.use(express.static(path.join(__dirname, 'public')))
 

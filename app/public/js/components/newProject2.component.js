@@ -155,6 +155,7 @@
           }
           vm.proj.cells.push(newCell);
         }
+        console.log('vm.proj.cells: ', vm.proj.cells);
       }
 
       if (vm.aladin.col > 1) {
@@ -175,7 +176,7 @@
           console.log('vm.proj.images: ', vm.proj.images);
         });
       }
-      console.log('vm.proj.cells: ', vm.proj.cells);
+      // console.log('vm.proj.dataURL: ', vm.proj.dataURL);
       // console.log('vm.proj.images: ', vm.proj.images);
     }
 

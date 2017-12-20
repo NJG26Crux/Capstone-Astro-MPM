@@ -22,7 +22,7 @@
     vm.proj.name = 'test';
     vm.proj.object = 'test';
     vm.proj.admin_user_id = 1;
-    vm.proj.cells = 1;
+    vm.proj.cells = [];
     vm.proj.cells_w = 1;
     vm.proj.cells_h = 1;
     vm.proj.uncom_cells = 1;
@@ -38,8 +38,9 @@
     vm.proj.pix_sz = 6.10;
     vm.proj.img_sz_w = 23.6;
     vm.proj.img_sz_h = 15.8;
-    vm.proj.fov_w = 5349.68;
-    vm.proj.fov_h = 3581.40;
+    vm.proj.col = 1;
+    vm.proj.fov_w = (vm.proj.img_sz_w * 3438 / vm.proj.focal_length / 60 * vm.proj.col * .8).toFixed(5); //5349.68
+    vm.proj.fov_h = (vm.proj.img_sz_h * 3438 / vm.proj.focal_length / 60 * vm.proj.col * .8).toFixed(5); //3581.40
     vm.proj.target_exp = 300;
     vm.proj.total_exposures = 72;
 

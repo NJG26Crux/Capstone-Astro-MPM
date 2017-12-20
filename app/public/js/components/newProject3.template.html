@@ -9,9 +9,6 @@
       <div flex="80">
         <div layout="column">
 
-          <span>Project :</span>
-          <span>{{$ctrl.proj}}</span>
-
             <md-content layout-padding="">
               <form name="projForm" ng-submit="$ctrl.addProject()">
                 <div layout="row" layout-xs="column" layout-sm="column" layout-align="space-between center">
@@ -104,13 +101,49 @@
                 </div>
 
                 <hr>
-                <div>FOV (w x h Degrees): {{$ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60 * .8}} {{$ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60 * .8}} Aladin Image 600px Wide {{600 / ($ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60)}}px High</div>
-                <div>Aladin Height: {{600 / ($ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.aladin.col)}}</div>
+
                 <hr>
+                <!-- <div>FOV (w x h Degrees): {{$ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60 * .8}} {{$ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60 * .8}} Aladin Image 1200px Wide {{1200 / ($ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60)}}px High</div>
+                <div>Aladin Height: {{1200 / ($ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.aladin.col)}}</div> -->
+                <div>FOV (w x h Degrees): {{($ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60 * $ctrl.proj.col * .8).toFixed(4)}} x {{($ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60 * $ctrl.proj.col * .8).toFixed(4)}}</div>
+                <div>Aladin Image 1200px Wide {{Math.round(1200 / ($ctrl.proj.img_sz_w * 3438 / $ctrl.proj.focal_length / 60) * ($ctrl.proj.img_sz_h * 3438 / $ctrl.proj.focal_length / 60))}}px High</div>
+                <hr>
+
+                <!-- <div>Center RA Dec: {{$ctrl.baseCenterRaDec}}</div> -->
+                <div>Center RA: {{$ctrl.BCRA}}</div>
+                <div>Center Dec: {{$ctrl.BCDec}}</div>
+                <div>aladin.col {{$ctrl.aladin.col}}</div>
+                <div>proj.cells: {{$ctrl.proj.cells}}</div>
 
                 <img src="{{$ctrl.proj.dataURL}}">
 
+                <!-- Roger hack! -->
+
+                <div ng-repeat="i in $ctrl.proj.images" >
+                  {{i}}
+                <img src="{{i.dataURI}}">
+                </div>
+
+                <div layout-gt-sm="row">
+
+                  <style>
+
+                    body[dir=rtl] .hint {
+                      right: 2px;
+                      left: auto;
+                    }
+                  </style>
+                </div>
+
+                <button class="md-button md-ink-ripple" type="button" ui-sref="newProject3"> Continue </button>
+
+                <div>
+                  {{$ctrl.proj}}
+                </div>
+
                 <hr>
+
+                <!-- *********************************************************** -->
 
                 <div layout-gt-sm="row">
 
