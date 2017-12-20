@@ -10,7 +10,7 @@
         <div layout="column">
 
           <h3>Image</h3>
-          <img src="{{$ctrl.project.imgMosiac}}">
+          <img src="{{$ctrl.project.imgMosiac}}" height:'auto' width:'550'>
         </div>
       </div>
 
@@ -47,7 +47,7 @@
             </div>
           </div>
           <hr>
-          <div>Field of view: {{($ctrl.project.fov_w * 60).toFixed(2)}} x {{($ctrl.project.fov_h * 60).toFixed(2)}} Arcminutes</div>
+          <div>Field of view: {{($ctrl.project.fov_w / 60).toFixed(2)}} x {{($ctrl.project.fov_h / 60).toFixed(2)}} Arcminutes</div>
           <hr>
           <div>Total number of cells: {{$ctrl.project.cells}}</div>
           <div>Target exposure length: {{$ctrl.project.target_exp}} seconds</div>

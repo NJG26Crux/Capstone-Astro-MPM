@@ -74,23 +74,7 @@ router.get('/api/users/:id', (req, res, next) => {
       next(err);
     });
 });
-// ****************************************************
-router.get('/api/users/:email', (req, res, next) => {
-  knex('users')
-    .where('users.email', req.params.email)
-    .first()
-    .then((result) => {
-      if (!result) {
-        return next();
-      }
 
-      res.send(result);
-    })
-    .catch((err) => {
-      next(err);
-    });
-});
-// ****************************************************
 router.post('/api/users', (req, res, next) => {
   console.log('we are at routes.users.post.');
   req.body.admin = false;

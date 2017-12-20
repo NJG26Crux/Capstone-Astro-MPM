@@ -139,8 +139,7 @@
       vm.BCRA = vm.baseCenterRaDec[0]
       vm.BCDec = vm.baseCenterRaDec[1]
       vm.proj.images = []
-      vm.proj.cells = vm.aladin.col * vm.aladin.col
-      vm.proj.cellsData = []
+      vm.proj.cells = []
 
       for (let i=0; i<vm.aladin.col; i++) {
         const y = Math.round(804 * (((i * 2) + 1) / (vm.aladin.col * 2)));
@@ -154,9 +153,9 @@
             center_ref_ra: (pix2world[0]).toFixed(5),
             center_ref_dec: (pix2world[1]).toFixed(5)
           }
-          vm.proj.cellsData.push(newCell);
+          vm.proj.cells.push(newCell);
         }
-        console.log('vm.proj.cellsData: ', vm.proj.cellsData);
+        console.log('vm.proj.cells: ', vm.proj.cells);
       }
 
       if (vm.aladin.col > 1) {

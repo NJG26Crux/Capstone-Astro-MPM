@@ -38,12 +38,9 @@
     vm.addProject = function() {
       vm.proj.admin_user_id = 1; //***** This needs to be changed
       vm.proj.fov_w = (vm.proj.img_sz_w * 3438 / vm.proj.focal_length / 60 * .8 * vm.proj.col);
-      vm.proj.fov_h = (vm.proj.img_sz_h * 3438 / vm.proj.focal_length / 60 * .8 * vm.proj.col);
+      vm.proj.fov_h = (vm.proj.img_sz_h * 3438 / vm.proj.focal_length / 60 * .8);
       // add Focal Ratio
-
-      // console.log('vm.aladin.col: ', vm.aladin.col);
-      // vm.proj.cells = (vm.aladin.col * vm.aladin.col);
-      console.log('vm.proj.cells: ', vm.proj.cells);
+      vm.proj.cells = (vm.aladin.col * 2);
       vm.proj.uncom_cells = 0;
       vm.proj.imgMosiac = vm.proj.dataURL;
 
@@ -75,12 +72,12 @@
           // console.log('vm.proj: ', vm.proj);
           // console.log('project: ', project);
           const proj_id = project.data.id;
-          for (const cell of vm.proj.cellsData) (
+          for (const cell of vm.proj.cells) (
             cell.proj_id = proj_id
           )
           // delete vm.proj
 
-          return $http.post('/api/projects/:id/cells', vm.proj.cellsData)
+          return $http.post('/api/projects/:id/cells', vm.proj.cells)
         })
         .then(() => {
 

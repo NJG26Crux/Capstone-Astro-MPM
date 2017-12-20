@@ -156,8 +156,13 @@
     // };
 
     vm.addCtbr = function() {
+<<<<<<< HEAD
       vm.ctbr.proj_id = $stateParams.id
       console.log('vm.ctbr: ', vm.ctbr);
+=======
+      console.log($stateParams);
+      vm.ctbr.proj_id = $stateParams.id;
+>>>>>>> parent of 3f90d20... another commit
       $http.post('/api/proj_user', vm.ctbr)
         .then((addCtbr) => {
           console.log('addCtbr: ', addCtbr);
