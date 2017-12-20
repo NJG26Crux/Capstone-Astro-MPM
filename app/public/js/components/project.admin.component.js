@@ -157,37 +157,28 @@
 
     vm.addCtbr = function() {
 <<<<<<< HEAD
+<<<<<<< HEAD
       vm.ctbr.proj_id = $stateParams.id
       console.log('vm.ctbr: ', vm.ctbr);
 =======
       console.log($stateParams);
       vm.ctbr.proj_id = $stateParams.id;
 >>>>>>> parent of 3f90d20... another commit
+=======
+      $http.get('/api/users/:email' + vm.ctbr.email)
+        .then(contributor => {
+          console.log('contributor.data: ', contributor.data);
+          vm.ctbr.user_id = parseInt(contributor.data.id);
+          vm.ctbr.proj_id = parseInt($stateParams.id)
+        })
+      console.log(vm.ctbr);
+>>>>>>> parent of e337570... another commit
       $http.post('/api/proj_user', vm.ctbr)
         .then((addCtbr) => {
           console.log('addCtbr: ', addCtbr);
           delete vm.addCtbr;
         })
     }
-
-    // ***********************
-    // router.post('/api/proj_user/', validatePU, (req, res, next) => {
-    //   console.log('@ router.projects.proj_user.post');
-    //   knex('users')
-    //     .where ('email', req.body.email)
-    //     .then((proj_user) => {
-    //       console.log('proj_user: ', proj_user);
-    //       req.body.user_id = proj_user[0].id;
-    //       console.log('req.body: ', req.body);
-    //       return knex('proj_user')
-    //         .insert(paramsPU(req))
-    //         .returning('*')
-    //     })
-    //     .then(proj_user => res.json(proj_user[0]))
-    //     .catch(err => next(err))
-    // })
-    // ***********************
-
 
     vm.deleteCtbr = function() {
 
