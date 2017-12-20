@@ -156,23 +156,9 @@
     // };
 
     vm.addCtbr = function() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-      vm.ctbr.proj_id = $stateParams.id
       console.log('vm.ctbr: ', vm.ctbr);
-=======
-      console.log($stateParams);
       vm.ctbr.proj_id = $stateParams.id;
->>>>>>> parent of 3f90d20... another commit
-=======
-      $http.get('/api/users/:email' + vm.ctbr.email)
-        .then(contributor => {
-          console.log('contributor.data: ', contributor.data);
-          vm.ctbr.user_id = parseInt(contributor.data.id);
-          vm.ctbr.proj_id = parseInt($stateParams.id)
-        })
-      console.log(vm.ctbr);
->>>>>>> parent of e337570... another commit
+
       $http.post('/api/proj_user', vm.ctbr)
         .then((addCtbr) => {
           console.log('addCtbr: ', addCtbr);
