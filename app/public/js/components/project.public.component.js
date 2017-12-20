@@ -4,9 +4,9 @@
   // angular.module('nutritionApp').controller('addItemController', ['$mdDialog', '$nutrition', '$scope', function ($mdDialog, $nutrition, $scope) {
   // 'use strict';
 
-  angular.module('app').component('projectAdmin', {
+  angular.module('app').component('projectPublic', {
     controller,
-    templateUrl: '/js/components/project.admin.template.html'
+    templateUrl: '/js/components/project.public.template.html'
   })
 
   controller.$inject = ['projects', '$http', '$mdDialog', '$stateParams', 'aladinServ']
