@@ -22,7 +22,8 @@
     vm.proj.name = 'test';
     vm.proj.object = 'test';
     vm.proj.admin_user_id = 1;
-    vm.proj.cells = [];
+    vm.proj.cells = 1;
+    vm.proj.cellsData = [];
     vm.proj.cells_w = 1;
     vm.proj.cells_h = 1;
     vm.proj.uncom_cells = 1;

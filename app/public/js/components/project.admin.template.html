@@ -39,7 +39,7 @@
               <div>Camera: {{$ctrl.project.img_sensor}}</div>
               <div>Sensor size: {{$ctrl.project.img_sz_w}} mm x {{$ctrl.project.img_sz_h}} mm</div>
               <div>Sensor array: {{$ctrl.project.img_array_w}} x {{$ctrl.project.img_array_h}}</div>
-              <div>Pixel size: {{$ctrl.project.pix_sz}} &#956</div>
+              <div>Pixel size: {{$ctrl.project.pix_sz}} (microns)</div> <!-- &#956 -->
             </div>
             <div layout="row" layout-align="end end" flex>
               <div>{{$ctrl.project.cam}}</div>
@@ -47,7 +47,7 @@
             </div>
           </div>
           <hr>
-          <div>Field of view: {{($ctrl.project.fov_w / 60).toFixed(2)}} x {{($ctrl.project.fov_h / 60).toFixed(2)}} Arcminutes</div>
+          <div>Field of view: {{($ctrl.project.fov_w * 60).toFixed(2)}} x {{($ctrl.project.fov_h * 60).toFixed(2)}} Arcminutes</div>
           <hr>
           <div>Total number of cells: {{$ctrl.project.cells}}</div>
           <div>Target exposure length: {{$ctrl.project.target_exp}} seconds</div>

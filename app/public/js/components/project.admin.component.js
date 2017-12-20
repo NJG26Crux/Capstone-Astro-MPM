@@ -156,8 +156,13 @@
     // };
 
     vm.addCtbr = function() {
-      console.log($stateParams);
-      vm.ctbr.proj_id = $stateParams.id;
+      $http.get('/api/users/:email' + vm.ctbr.email)
+        .then(contributor => {
+          console.log('contributor.data: ', contributor.data);
+          vm.ctbr.user_id = parseInt(contributor.data.id);
+          vm.ctbr.proj_id = parseInt($stateParams.id)
+        })
+      console.log(vm.ctbr);
       $http.post('/api/proj_user', vm.ctbr)
         .then((addCtbr) => {
           console.log('addCtbr: ', addCtbr);
