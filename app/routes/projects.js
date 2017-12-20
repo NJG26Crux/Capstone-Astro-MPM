@@ -83,7 +83,8 @@ function params(req) {
     target_exp: req.body.target_exp,
     total_exposures: req.body.total_exposures,
     ota: req.body.ota,
-    cam: req.body.cam
+    cam: req.body.cam,
+    imgMosiac: req.body.imgMosiac
   }
 }
 
@@ -112,7 +113,8 @@ function validate(req, res, next) {
     'target_exp',
     'total_exposures',
     'ota',
-    'cam'
+    'cam',
+    'imgMosiac'
   ].forEach(field => {
     if (!req.body[field] || req.body[field].trim() === '') {
       errors.push({field: field, messages: ["cannot be blank"]})
