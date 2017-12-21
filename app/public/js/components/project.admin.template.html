@@ -47,7 +47,7 @@
             </div>
           </div>
           <hr>
-          <div>Field of view: {{($ctrl.project.fov_w / 60).toFixed(2)}} x {{($ctrl.project.fov_h / 60).toFixed(2)}} Arcminutes</div>
+          <div>Field of view: {{($ctrl.project.fov_w * 60).toFixed(2)}} x {{($ctrl.project.fov_h * 60).toFixed(2)}} Arcminutes</div>
           <hr>
           <div>Total number of cells: {{$ctrl.project.cells}}</div>
           <div>Target exposure length: {{$ctrl.project.target_exp}} seconds</div>
@@ -69,7 +69,7 @@
           <div flex>
             <div layout="column">
               <div ng-repeat="contributor in $ctrl.contributors" flex>
-                <div>{{contributor.first_name}}: {{contributor.email}} <i class="material-icons">mail</i><i ng-click="deleteCtbr()" class="material-icons">delete_forever</i></div>
+                <div>{{contributor.first_name}} {{contributor.last_name}} ({{contributor.user_name}}) : {{contributor.email}} <i ng-click="mailto()" class="material-icons">mail</i><i ng-click="deleteCtbr()" class="material-icons">delete_forever</i></div>
               </div>
             </div>
           </div>
@@ -105,10 +105,10 @@
               <tr md-row md-select="dessert" md-select-id="name" md-auto-select ng-repeat="cell in $ctrl.cells">
                 <td md-cell>{{cell.cell_num}}</td>
                 <td md-cell>{{cell.center_ref_ra}} RA, {{cell.center_ref_dec}} dec</td>
-                <td md-cell>{{cell.first_name}}</td>
+                <td md-cell>{{cell.first_name}} {{cell.last_name}}</td>
                 <td md-cell>{{cell.status}}</td>
                 <td md-cell><a href="{{cell.url}}">{{cell.url}}</a></td>
-                <td><i ng-click="createCell()" class="material-icons">create</i><i ng-click="deleteCell()" class="material-icons">delete_forever</i></td>
+                <td><i ng-click="createCell()" class="material-icons">create</i></td> <!-- <i ng-click="deleteCell()" class="material-icons">delete_forever</i> -->
               </tr>
             </tbody>
           </table>

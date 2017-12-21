@@ -29,7 +29,6 @@
         .then(project => {
           console.log(project.data);
           vm.project = project.data;
-          console.log('vm.project.imgMosiac: ', vm.project.imgMosiac);
           if (vm.project.ota === "Refractor") {
             vm.project.optDiag = "REFRACTOR-Diagram.jpg";
             vm.project.otaImg = "REF-FSQ106N-1.JPG";
