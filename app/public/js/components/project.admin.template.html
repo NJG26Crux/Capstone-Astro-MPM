@@ -95,9 +95,9 @@
                 <th md-column>Status</th>
                 <th md-column>Data</th>
                 <!-- ***************** Add Cell Button ***************** -->
-                <th><button class="md-icon-button md-button md-ink-ripple" type="button" ng-click="$ctrl.showAdvanced($event)" aria-label="add_cell"> <!--  ng-transclude="" -->
+                <!-- <th><button class="md-icon-button md-button md-ink-ripple" type="button" ng-click="$ctrl.showAdvanced($event)" aria-label="add_cell">
                     <md-icon class="material-icons">add_box</md-icon>
-                    <div class="md-ripple-container"></div></button></th>
+                    <div class="md-ripple-container"></div></button></th> -->
                 <!-- ***************** Add Cell Button ***************** -->
               </tr>
             </thead>
@@ -108,7 +108,7 @@
                 <td md-cell>{{cell.first_name}} {{cell.last_name}}</td>
                 <td md-cell>{{cell.status}}</td>
                 <td md-cell><a href="{{cell.url}}">{{cell.url}}</a></td>
-                <td><i ng-click="createCell()" class="material-icons">create</i></td> <!-- <i ng-click="deleteCell()" class="material-icons">delete_forever</i> -->
+                <td><i ng-click="$ctrl.editCell(cell.id)" class="material-icons">create</i></td> <!-- <i ng-click="deleteCell()" class="material-icons">delete_forever</i> -->
               </tr>
             </tbody>
           </table>

@@ -29,6 +29,7 @@
         .then(project => {
           console.log(project.data);
           vm.project = project.data;
+          console.log('vm.project.imgMosiac: ', vm.project.imgMosiac);
           if (vm.project.ota === "Refractor") {
             vm.project.optDiag = "REFRACTOR-Diagram.jpg";
             vm.project.otaImg = "REF-FSQ106N-1.JPG";
@@ -155,15 +156,33 @@
     // };
 
     vm.addCtbr = function() {
+      vm.ctbr.proj_id = $stateParams.id
       console.log('vm.ctbr: ', vm.ctbr);
-      vm.ctbr.proj_id = $stateParams.id;
-
       $http.post('/api/proj_user', vm.ctbr)
         .then((addCtbr) => {
           console.log('addCtbr: ', addCtbr);
           delete vm.addCtbr;
         })
     }
+
+    // ***********************
+    // router.post('/api/proj_user/', validatePU, (req, res, next) => {
+    //   console.log('@ router.projects.proj_user.post');
+    //   knex('users')
+    //     .where ('email', req.body.email)
+    //     .then((proj_user) => {
+    //       console.log('proj_user: ', proj_user);
+    //       req.body.user_id = proj_user[0].id;
+    //       console.log('req.body: ', req.body);
+    //       return knex('proj_user')
+    //         .insert(paramsPU(req))
+    //         .returning('*')
+    //     })
+    //     .then(proj_user => res.json(proj_user[0]))
+    //     .catch(err => next(err))
+    // })
+    // ***********************
+
 
     vm.deleteCtbr = function() {
 
